@@ -1,24 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import { Sleep } from './API';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import ChatIcon from '@mui/icons-material/Chat';
+
+
+const titleText = "minyee2913";
 
 function App() {
+  const [title, setTitle] = useState('');
+  const [show, setShow] = useState('');
+
+  useEffect(() => {
+    const animateTitle = async () => {
+      for (let i = 0; i < titleText.length; i++) {
+        setTitle(titleText.slice(0, i + 1));
+        await Sleep(500);
+      }
+
+      setShow('show-descrip');
+
+      while (true) {
+        await Sleep(1000);
+        setTitle(titleText + "_");
+        await Sleep(1000);
+        setTitle(titleText);
+      }
+    };
+
+    animateTitle();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <p id='title'>{title}</p>
+        <p id='description' className={'description ' + show}>Game Developer</p>
+      </div>
+      <div id='social-tab'>
+        <a href='https://open.kakao.com/me/minyee2913' target='blank'><span className='hover-text'>오픈채팅</span><ChatIcon sx={{ color: 'white', fontSize: 36 }} /></a>
+        <a href='https://github.com/minyee2913' target='blank'><span className='hover-text'>깃허브</span><GitHubIcon sx={{ color: 'white', fontSize: 36 }} /></a>
+        <a href='https://www.youtube.com/channel/UCZQUWTcP51kOFG0TWeHnr_g' target='blank'><span className='hover-text'>유튜브</span><YouTubeIcon sx={{ color: 'white', fontSize: 36 }} /></a>
+      </div>
     </div>
   );
 }
