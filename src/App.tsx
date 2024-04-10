@@ -13,6 +13,9 @@ function App() {
         <Route path='/project'>
           <Project></Project>
         </Route>
+        <Route path='/404'>
+          <Error404></Error404>
+        </Route>
         <Route path='/*'>
           <Error404></Error404>
         </Route>
