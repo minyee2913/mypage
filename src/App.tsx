@@ -1,14 +1,22 @@
 import './App.css';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Main from './main';
+import Project from './project';
+import Error404 from './404';
 
 function App() {
   return (
-    <div>
-      <Route path='/'>
-        <Main></Main>
-      </Route>
-    </div>
+    <Switch>
+        <Route exact path='/'>
+          <Main></Main>
+        </Route>
+        <Route path='/project'>
+          <Project></Project>
+        </Route>
+        <Route path='/*'>
+          <Error404></Error404>
+        </Route>
+    </Switch>
   );
 }
 

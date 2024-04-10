@@ -1,11 +1,17 @@
+import './style.css';
 import { useState, useEffect } from 'react';
 import { Sleep } from '../API';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import ChatIcon from '@mui/icons-material/Chat';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { Link } from 'react-router-dom';
 
 const titleText = "minyee2913";
+
+let i: NodeJS.Timer;
 
 function Main() {
   const [title, setTitle] = useState('');
@@ -16,7 +22,15 @@ function Main() {
     setOpenMenu(' menu-open');
   }
 
+  const MenuClose = ()=>{
+    setOpenMenu('');
+  }
+
   useEffect(() => {
+    if (i !== undefined) {
+      clearInterval(i);
+    }
+
     const animateTitle = async () => {
       for (let i = 0; i < titleText.length; i++) {
         setTitle(titleText.slice(0, i + 1));
@@ -25,7 +39,7 @@ function Main() {
 
       setShow('show-descrip');
 
-      setInterval(async ()=>{
+      i = setInterval(async ()=>{
         setTitle(titleText + "_");
         await Sleep(1000);
         setTitle(titleText);
@@ -41,7 +55,12 @@ function Main() {
             <p id='title'>{title}</p>
             <p id='description' className={'description ' + show}>Game Developer</p>
             <span id='open_menu' className='pointer' onClick={MenuBtn}><ArrowForwardIosIcon sx={{ color: 'white', fontSize: 55 }}></ArrowForwardIosIcon></span>
-            <div className={'menu' + openMenu}></div>
+            <div className={'menu' + openMenu}>
+              <Link to='/project'><div id='project'>
+                <AccountTreeIcon sx={{ color: 'white', fontSize: 80 }}></AccountTreeIcon><span>My Projects</span>
+              </div></Link>
+              <span id='close_menu' className='pointer' onClick={MenuClose}><ArrowBackIosIcon sx={{ color: 'white', fontSize: 55 }}></ArrowBackIosIcon></span>
+            </div>
         </div>
         <div id='social-tab'>
             <a href='https://open.kakao.com/me/minyee2913' target='blank'><span className='hover-text'>오픈채팅</span><ChatIcon sx={{ color: 'white', fontSize: 36 }} /></a>
