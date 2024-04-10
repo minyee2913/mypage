@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9939792c.css",
+    "main.js": "/static/js/main.6d00e371.js",
+    "static/media/DungGeunMo.ttf": "/static/media/DungGeunMo.1ebba65b2b010a1e45d7.ttf",
+    "index.html": "/index.html",
+    "main.9939792c.css.map": "/static/css/main.9939792c.css.map",
+    "main.6d00e371.js.map": "/static/js/main.6d00e371.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9939792c.css",
+    "static/js/main.6d00e371.js"
+  ]
+}
