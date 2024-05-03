@@ -4,130 +4,136 @@
     margin-left: 60px;
     margin-top: 14%;
     transition: 2s;
-  }
-  
-  .description {
-    color: gray;
-    font-size: calc(2vw + 2vh);
-    margin-left: 80px;
-    margin-top: calc(-4vw - 3vh);
-    opacity: 0;
-  }
-  
-  .show-descrip {
-    opacity: 1;
-    transition: 2s;
-  }
-  
-  #social-tab {
+}
+
+.description {
+  color: gray;
+  font-size: calc(2vw + 2vh);
+  margin-left: 80px;
+  margin-top: calc(-4vw - 3vh);
+  opacity: 0;
+}
+
+.show-descrip {
+  opacity: 1;
+  transition: 2s;
+}
+
+#social-tab {
+  position: absolute;
+  left: 10px;
+  bottom: 0px;
+  width: 50vw;
+  height: 40px;
+  display: inline-block;
+}
+
+#social-tab > * {
+  padding: 0 10px;
+}
+
+.hover-text {
+  opacity: 0;
+  position: absolute;
+  color: white;
+  overflow:auto;
+  height: 60px;
+  top: -20px;
+  margin-left: -2px;
+}
+
+.hover-text:hover {
+  opacity: 1;
+}
+
+a {
+  cursor: pointer;
+}
+
+#open_menu {
+  position: absolute;
+  left: calc(100vw - 100px);
+  border-radius: 20px;
+  width: 80px;
+  height: 70px;
+  text-align: center;
+  padding-top: 10px;
+  transition: 0.5s;
+}
+
+#open_menu:hover {
+  background-color: rgba(63, 63, 63, 0.5)
+}
+
+.menu {
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 0px;
+  height: 80vh;
+  background-color: rgb(20, 20, 20);
+  transition: 0.5s;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.menu-open {
+  right: 0px;
+  width: 300px;
+  opacity: 1;
+  height: 100%;
+}
+
+.menu > #close_menu {
     position: absolute;
-    left: 10px;
+    right: -100%;
+    text-align: center;
+    transition: 0s;
+    padding-top: 10px;
     bottom: 0px;
-    width: 50vw;
-    height: 40px;
-    display: inline-block;
-  }
-  
-  #social-tab > * {
-    padding: 0 10px;
-  }
-  
-  .hover-text {
-    opacity: 0;
-    position: absolute;
-    color: white;
-    overflow:auto;
-    height: 60px;
-    top: -20px;
-    margin-left: -2px;
-  }
-  
-  .hover-text:hover {
-    opacity: 1;
-  }
-  
-  .pointer {
-    cursor: pointer;
-  }
-  
-  a {
-    cursor: pointer;
-  }
-  
-  #open_menu {
-    position: absolute;
-    left: calc(100vw - 100px);
+}
+
+.menu-open > #close_menu {
+    right: calc(100% - 80px);
     border-radius: 20px;
     width: 80px;
     height: 70px;
-    text-align: center;
-    padding-top: 10px;
     transition: 0.5s;
-  }
-  
-  #open_menu:hover {
-    background-color: rgba(63, 63, 63, 0.5)
-  }
-  
-  .menu {
-    margin: 0px;
-    padding: 0px;
-    position: absolute;
-    top: 0;
-    left: 100vw;
-    height: 100vh;
-    width: 360px;
-    background-color: rgb(20, 20, 20);
+}
+
+#close_menu:hover {
+background-color: rgba(63, 63, 63, 0.5)
+}
+
+.menu-sec {
+    position: relative;
+    top: calc(20%);
+    width: 100%;
+    height: 80px;
+    line-height: 10px;
     transition: 0.5s;
-    opacity: 0;
-  }
-  
-  .menu-open {
-    left: calc(100vw - 360px);
-    opacity: 1;
-  }
-  
-  .menu > #close_menu {
-      position: absolute;
-      right: -100%;
-      text-align: center;
-      transition: 0s;
-      padding-top: 10px;
-      top: calc(35% + 200px);
-  }
-  
-  .menu-open > #close_menu {
-      right: calc(100% + 10px);
-      border-radius: 20px;
-      width: 80px;
-      height: 70px;
-      transition: 0.5s;
-  }
-  
-  #close_menu:hover {
-  background-color: rgba(63, 63, 63, 0.5)
-  }
-  
-  #project {
-      position: absolute;
-      top: calc(20%);
-      width: 100%;
-      height: 100px;
-      line-height: 10px;
-      transition: 0.5s;
-      color: white;
-      font-size: 30px;
-      padding-left: 12%;
-      padding-top: 4px;
-  }
-  
-  #project > span {
-      position: relative;
-      top: -30px;
-      margin-left: 6%;
-  }
-  
-  #project:hover {
-      background-color: rgb(41, 41, 41);
-      color: gray;
-  }
+    color: white;
+    font-size: 30px;
+    padding-left: 5%;
+    padding-top: 4px;
+}
+
+.menu-sec > span {
+    position: relative;
+    top: -30px;
+    margin-left: 6%;
+}
+
+.menu-sec:hover {
+    background-color: rgb(41, 41, 41);
+    color: gray;
+}
+
+#base {
+  padding: 0px;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+}
