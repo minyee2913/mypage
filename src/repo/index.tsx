@@ -25,7 +25,7 @@ function Repos() {
             const items = data.map(
                 (itm) => <a href={itm.html_url} id='listlink'><div key={itm.id} className='listItem pointer'>
                     <span id='name'>{itm.name}</span><span id='fork'>{itm.fork ? ' [fork]' : ''}</span><span id='lang'>{itm.language}</span>
-                    <br></br><span id='description'>{itm.description}</span>
+                    <br></br><span id='descrip'>{itm.description}</span>
                 </div></a>
             )
 
