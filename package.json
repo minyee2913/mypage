@@ -20,7 +20,10 @@
     "install": "^0.13.0",
     "npm": "^10.5.1",
     "react": "^18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.13.1",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "shx": "^0.3.4",
@@ -56,6 +59,8 @@
   },
   "homepage": "https://human.minyee2913.net",
   "devDependencies": {
+    "@types/react-copy-to-clipboard": "^5.0.7",
+    "@types/react-modal": "^3.16.3",
     "@types/react-router-dom": "^5.3.3"
   }
 }

@@ -34,12 +34,15 @@ export class Pj {
     description?: string;
     links: link[] = [];
     docs?: string;
+    download?: string;
+    version?: string;
     constructor (
+        public id: string,
         public name: string,
     ) {}
 
-    static $(name: string): Pj {
-        return new Pj(name);
+    static $(id: string, name: string): Pj {
+        return new Pj(id, name);
     }
 
     Platform(str: string): Pj {
