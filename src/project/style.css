@@ -23,36 +23,129 @@
     justify-content: center;
 }
 
+@media (max-width: 800px) {
+    .category {
+        height: 8vh;
+    }
+    .category-item {
+        scale: 0.8;
+    }
+    .project_sec {
+        left: 5%;
+        width: 90%;
+
+        animation: appearMobile 0.5s;
+    }
+
+    .project_sec > .buttons {
+        top: calc(40% + 9vw);
+    }
+
+    .project_sec > .descrip {
+        top: calc(40% + 9vw);
+    }
+    
+    .project_sec > .buttons > .btn {
+        width: 45px;
+        height: 45px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .share_btn {
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .project_sec > .title {
+        font-size: calc(70% + 3vw);
+    }
+
+    .project_sec > .platform {
+        font-size: calc(50% + 3vw);
+    }
+
+    .imgNow {
+        scale: 1.2;
+    }
+
+    .imgAfter {
+        scale: 1.2;
+    }
+
+    .imgBefore {
+        scale: 1.2;
+    }
+}
+
+@media (min-width: 800px) {
+    .category {
+        height: 10vh;
+    }
+    .category-item {
+        scale: 1;
+    }
+    .project_sec {
+        left: 20%;
+        width: 60%;
+
+        animation: appear 0.5s;
+    }
+
+    .project_sec > .buttons {
+        top: calc(40% + 9vw);
+    }
+
+    .project_sec > .descrip {
+        top: calc(40% + 9vw);
+    }
+
+    .project_sec > .buttons > .btn {
+        width: 55px;
+        height: 55px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .share_btn {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .project_sec > .title {
+        font-size: calc(70% + 1vw);
+    }
+
+    .project_sec > .platform {
+        font-size: calc(50% + 1vw);
+    }
+}
+
 .project_sec {
     background-color: rgb(15, 15, 15);
     position: absolute;
-    left: 20%;
     top: 15vh;
-    width: 60%;
     height: 80vh;
     text-align: left;
     transition: all 0.2s ease-in-out;
-
-    animation: appear 0.5s;
 }
 
 .project_sec > .buttons {
     width: 100%;
     height: 60px;
-    top: calc(50% + 0px);
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
 }
 
 .project_sec > .buttons > .btn {
-    width: 55px;
-    height: 55px;
     background-color: #252525;
     border-radius: 8px;
-    margin-left: 20px;
-    margin-right: 20px;
 }
 
 .project_sec > .buttons > .btn:hover {
@@ -70,15 +163,10 @@
     color: white;
     margin-top: 15px;
     margin-left: 3%;
-    font-size: calc(70% + 1vw);
 }
 
 .share_btn {
     position:absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
 }
 .share_btn > img {
     width: 100%;
@@ -89,15 +177,13 @@
     color: rgb(0, 240, 40);
     margin-top: calc(-18px - 0.5%);
     margin-left: 3%;
-    font-size: calc(50% + 1vw);
 }
 
 .project_sec > .descrip {
     color: white;
     position: relative;
-    top: calc(50% + 10px);
     text-align: center;
-    font-size: 1.2vw;
+    font-size: 18px;
     word-wrap: break-word;
 }
 
@@ -228,6 +314,19 @@
 
     to {
         width: 60%;
+        opacity: 1;
+    }
+}
+
+@keyframes appearMobile {
+    from {
+        left: 20%;
+        width: 60%;
+        opacity: 0;
+    }
+
+    to {
+        width: 90%;
         opacity: 1;
     }
 }

@@ -8,14 +8,17 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 PrCategory.$("minecraft", "마인크래프트 개발", "img/minecraft.png")
     .Projects(
-        Pj.$("luminous", "Luminous RPG").Platform("MCBE").Images("img/games/luminous/lumi0.gif", "img/games/luminous/lumi1.png", "img/games/luminous/lumi2.png").Description("루미너스 RPG는 높은 퀄리티를 자랑하는 반 오픈월드 액션 RPG 서버입니다.").Docs("https://luminous-rpg.notion.site/146ab655c564453c8ce716dc37aabda6").Video("https://youtube.com/playlist?list=PL8M1DnGkh0qNDJc4cs4UIvycqQP5NVUkv&si=lRQbt0WfKO5slNPV"),
-        Pj.$("valorant", "Valorant Addon").Platform("MCBE").Description("발로란트를 마인크래프트에서 구현한 애드온 입니다.").Github("https://github.com/minyee2913/valorant-addon"),
+        Pj.$("luminous", "Luminous RPG").Platform("MCBE SERVER").Images("img/games/luminous/lumi0.gif", "img/games/luminous/lumi1.png", "img/games/luminous/lumi2.png").Description("루미너스 RPG는 높은 퀄리티를 자랑하는 반 오픈월드 액션 RPG 서버입니다.").Docs("https://luminous-rpg.notion.site/146ab655c564453c8ce716dc37aabda6").Video("https://youtube.com/playlist?list=PL8M1DnGkh0qNDJc4cs4UIvycqQP5NVUkv&si=lRQbt0WfKO5slNPV"),
+        Pj.$("valorant", "Valorant Addon").Platform("MCBE ADDON").Description("발로란트를 마인크래프트에서 구현한 애드온 입니다.").Github("https://github.com/minyee2913/valorant-addon"),
+        Pj.$("murder", "Murder - remaster").Platform("MCBE MAP").Description("유명한 머더 콘텐츠에 직업과 다양한 스킬을 넣어서 배틀 게임으로 변질되어버린 미니게임 맵입니다.").Download("https://www.mediafire.com/file/on1y63pk2o905zk/머더v1.0_-_Murder.mcworld/file"),
+        Pj.$("blockbeat", "Block Beat").Platform("MCBE MAP").Description("마우스를 이용해 노트를 치는 리듬게임 맵입니다.").Video("https://youtu.be/IAYlaAm7CEg?si=ABMHE8oZwRN4EbC6"),
     )
 
 PrCategory.$("unity", "유니티 개발", "img/unity.png")
     .Projects(
         //Pj.$("bum", "범근 러쉬").Platform("PC").Description("동아리 과제로 제작한 연출 연습을 위한 프로젝트 입니다."),
-        Pj.$("eucliwood", "Eucliwood Edge").Platform("PC/Mobile").Description("횡스크롤과 타일 전투가 엮인 로그라이트 게임"),
+        Pj.$("eucliwood", "Eucliwood Edge").Platform("PC/Mobile").Description("횡스크롤과 타일 전투가 엮인 로그라이트 게임입니다."),
+        Pj.$("koroshite", "Koroshite").Platform("PC").Images("img/games/koroshite/koro0.png", "img/games/koroshite/koro1.png", "img/games/koroshite/koro2.png").Description("영웅들의 사후세계를 다루는 싱글 & 멀티플레이 액션 게임입니다.").Docs("https://heady-whitefish-4a4.notion.site/KOROSHITE-9ff743039ac14d0d82d8bc23cca036e7?pvs=4").Github("https://github.com/minyee2913/koroshite").Video("https://youtu.be/w2tzVsoGmVw?si=YVZWh4YWibWJoxe4").Download("https://github.com/minyee2913/koroshite/releases/download/0.0.0.final.boss/Koro.zip"),
     )
 
 function Project() {
@@ -29,8 +32,8 @@ function Project() {
     let pjCode = 0;
 
     const [query, setQuery ] = useSearchParams();
-    const section = query.get("sec")
-    const project = query.get("pj")
+    const section = query.get("sec");
+    const project = query.get("pj");
 
     if (section) {
         category = section;
@@ -193,8 +196,8 @@ function Project() {
                     backgroundColor: "rgba(0, 0, 0, 0.5)"
                 },
                 content: {
-                    width: 1000,
-                    height: 540,
+                    width: "80vw",
+                    height: "40vw",
                     margin: "auto",
                     zIndex: 10,
                     backgroundImage: `url(${modalImg})`,

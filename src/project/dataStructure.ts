@@ -59,6 +59,10 @@ export class Pj {
         this.img = imgs;
         return this;
     }
+    Download(link: string): Pj {
+        this.download = link;
+        return this;
+    }
 
     Github(url: string): Pj {
         this.github = url;
