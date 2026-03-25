@@ -16,9 +16,10 @@ PrCategory.$("minecraft", "마인크래프트 개발", "img/minecraft.png")
 
 PrCategory.$("unity", "유니티 개발", "img/unity.png")
     .Projects(
-        //Pj.$("bum", "범근 러쉬").Platform("PC").Description("동아리 과제로 제작한 연출 연습을 위한 프로젝트 입니다."),
+        Pj.$("bum", "범근 러쉬").Platform("PC").Description("동아리 과제로 제작한 연출 연습을 위한 프로젝트 입니다."),
         Pj.$("eucliwood", "Eucliwood Edge").Platform("PC/Mobile").Description("횡스크롤과 타일 전투가 엮인 로그라이트 게임입니다."),
         Pj.$("koroshite", "Koroshite").Platform("PC").Images("img/games/koroshite/koro0.png", "img/games/koroshite/koro1.png", "img/games/koroshite/koro2.png").Description("영웅들의 사후세계를 다루는 싱글 & 멀티플레이 액션 게임입니다.").Docs("https://heady-whitefish-4a4.notion.site/KOROSHITE-9ff743039ac14d0d82d8bc23cca036e7?pvs=4").Github("https://github.com/minyee2913/koroshite").Video("https://youtu.be/w2tzVsoGmVw?si=YVZWh4YWibWJoxe4").Download("https://github.com/minyee2913/koroshite/releases/download/0.0.0.final.boss/Koro.zip"),
+        Pj.$("ignotus", "IGNOTUS").Platform("Mobile").Description("영역전개"),
     )
 
 function Project() {
