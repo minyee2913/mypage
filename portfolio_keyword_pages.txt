@@ -1,0 +1,56 @@
+2	IGNOTUS, KOROSHITE, Albedo, Hunger of War, ECHO	5~107p | 2025 | -IGNOTUS | - Albedo | 2024 | -KOROSHITE |  Hunger of War | - ECHO | 2023 | ESCAPETHEMUSIC | Edge
+4	Luminous, Valorant, Block Beat, Video Particle	129~135p | 2020~2025... | - Luminous RPG | 2023 | - Valorant Addon | - Video Particle | - Block Beat
+5	IGNOTUS	IGNOTUS | 2.5D02Dto3D
+6	IGNOTUS	IGNOTUS | [明否人至己]]
+7	IGNOTUS	IGNOTUS | SLICI.
+8	IGNOTUS	IGNOTUS
+9	IGNOTUS	[ ol忆是品IK ] | IGNOTUS | m18 | 50G
+10	IGNOTUS	IGNOTUS | MOH量 面LIC) | 50G | 50G |  Ik品o品K
+11	IGNOTUS	普引门 | IGNOTUS | https:llyoutu.be/knDdXG--Q_w?si=aSHezL5cWePz2cQK
+12	IGNOTUS	[刁舍] | IGNOTUS | Anitytils | State | Template Method - | Observer | Component-ol
+13	IGNOTUS	"swiftSuord", | IGNOTUS | public abstract class l | Iten | public abstract string Name ( get; ) | public virtual string Description f get; 1 | 107 | public abstract float AttackDamage ( get; } | erator OnAttack(PlayerBattle battle, bool forced) | public virtual bool Inforced => false, | public ItenType type; | battle.resistTine | e.5f | 8.5f | public virtual ShieldType shieldype -> Shieldtype.Default; | battle-anisator.Attack(3); | public virtual Sprite Shieldicon( | -battle-aninator.direction, e); | public enum ItemType | return nu
+14	IGNOTUS	IGNOTUS | public void Generate(System.Action<Enemy> onSpawn, List<string> roomData - null) | foreach | (Room room ingeneratedRooms) | Destroy(room.gameobject); | foreach (Gameobject objin generatedobjects) | Destroy(obj-gameobject) | generatedRooms.Clear(); | generatedobjects.Clear(); | Vector3posnew(e,e,6) | Gameobject start | Instantiate(startpoint,transform); | start.transform.position -pos+ startoffset; | generatedobjects.Add(start); | Gameobject lastway - null; | for | (int | 4;i | Roomr | GetRandRoom() | if (roonData!-null) |  Get
+15	IGNOTUS	IGNOTUS | IEnumerator loading(bool restoring - false) | cardTime | loadingNow - true; | (Icover.activeself) | cover.SetActive(true); | cover.transform.localPosition - new Vector3(e, | -1888); | CanEffector. current.cCloseout(e); | yield return new WaitForSecondsRealtime(e.if) | UIMobileController.Instance.HUD.SetActive(false): | UIMobileController.Instance. joystick. SetActive(false); | cover.transform.DOLocalMove(Vector3.zero, e.8f).SetEase(Ease.InExpo): | yield return new WaitForSecondsRealtime(e.8f) | SoundManager.Insta
+46	Albedo	Albedo | 音菩：PC | :75%
+47	Albedo	Albedo | [明至]]
+48	Albedo	Albedo
+49	Albedo	Albedo
+50	Albedo	Albedo | 是CH71 | IL易是[]
+51	Albedo	Albedo
+52	Albedo	Albedo | 100pt
+53	Albedo	Albedo |  CH | 品YIOIR
+54	Albedo	Albedo | https://lyoutu.be/eC4HczYUfwA
+55	Albedo	[刁舍] | Albedo | Anitytils | Observer | Component -ol
+56	Albedo	Albedo | public (float minX, float maxx) GetXBoundsofMaps() | public Vector2 GetPosInMap(float posX) | float minx = float.PositiveInfinity; | float maxx = float.NegativeInfinity; | foreach (var map in maps) | foreach (var map in maps) | if (map == null) continue; | if (map == null) continue; | Vector2 localPoint = map.transform.InverseTransformPoint(new Vector2(posX, e)); | //BoxCoLLider2D4 | Vector2 size = map.size; | Vector2 offset = map.offset; | Vector2 size = map.size; | float left = offset.x - size.x / 2f; | Vector2 of
+57	Albedo	Albedo | public void Move(Vector2 axis) | if (stopMove > 0) | return; | moveDelta = axisj | moveDelta.y += axis.x * 0.08f; | moveDelta.x -= axis.y * 0.1f; | transform.Translate(moveDelta.normalized * stat.GetResultValue("moveSpeed") * Time.deltaTime);
+58	Albedo	I加 品K | Albedo | public void Attack() | if( | (atkDelay > ) | return; | atkDelay = attackTime; | Healthobject hp = target .GetComponent<Healthobject>(); | if (hp != null) | hp. GetDamage(damage, health, Healthobject.Cause.Melee); | animator.SetTrigger("Attack"); | APunitytils
+59	KOROSHITE	KOROSHITE | 音菩：PC
+60	KOROSHITE	KOROSHITE
+61	KOROSHITE	KOROSHITE | ABIA
+62	KOROSHITE	IY加 品IK | KOROSHITE | SKIP | SKIP
+63	KOROSHITE	KOROSHITE | samurai | 品11百oo是号o
+64	KOROSHITE	KOROSHITE | (-±   22  0 ) | (5/5) | 10号
+65	KOROSHITE	KOROSHITE | 825
+66	KOROSHITE	普引门 | KOROSHITE | https:/lyoutu.be/Q3kyJ8awLgo?si=BF6WCymrgMlv2s9o
+67	KOROSHITE	[刁舍] | KOROSHITE | 12号-号 | ObserverRPc | Templete Method
+68	KOROSHITE	KOROSHITE | public voidLogin() | if (loginEmail.text.Length <=  II loginPw.text.Length <= )[ | return; | PlayFabClientAPI.LoginwithEmailAddress(new LoginwithEmailAddressRequest()( | Email = loginEmail.text, | Password = loginPw.text, | }，loginsuccess,DisplayplayfabError): | PLAYFAB | public void Register()+ | return; | PlayFabclientAPI.RegisterplayFabUser(new RegisterPlayFabUserRequest()( | Email - registerEmail.text, | Password = registerPw.text, | DisplayName = registerName.text, | RequireBothusernameAndEmail - false, | succ
+69	KOROSHITE	I加 品IK | KOROSHITE | public void OnPhotonSerializeview( | Photonstreamstrean, | PhotonMessageInfo info) | (strean.Iswriting) | strean.SendNext(name_); | stream.SendNext(uniqueCode): | strean.SendNext(health); | stream.SendNext(shield); | strean.SendNext(kill): | public override void OnConnectedToMaster() | strean. SendNext(death); | strean.SendNext(facing); | GameObject startobj = Gameobject.Find("startManager"); | strean.SendNext(isMoving); | strean. SendNext(running); | strean.SendNext(onGround): | if(startobj!=null){ | strean.Sen
+70	KOROSHITE	KOROSHITE | test473 | Player空旦三 Character三从卫 | oaeld | Character | mPlayer(Clone) | MCanvas | vman_mark | Msamurai(Clone)
+71	KOROSHITE	KOROSHITE | IEnumerator cackk() { | skillon = false; | shielding = false; | pl.preventInput = 0.5f; | pl.stopMove = 0.5f; | IEnumerator_shield(Player attacker)( | attacker.ch.CANCEL() | pl.RpcAnimateTrigger("attack3") | CamManager .main.Shake(1); | attacker.ch.atkcool = .5f; | SoundManager.Instance.PlayToDist("vampire_girl_skill", transform-position, 15); | SoundManager.Instance.PlayToDist("samurai_shield",transform.position,15); | pl.Knockback(Vector2.right * -pl.facing * 4); | yield return new WaitForSeconds(0.1f); | pl.He
+73	Hunger of War	Hunger Of War | [明人至] ]
+74	Hunger of War	[ o忆是k ] | Hunger Of War | asdasd | Levelo | 0/1000 | Hello World
+75	Hunger of War	[ o忆是品k ] | Hunger Of War | Test241121 | User01 | empty | npty | empty | empty | ：2/8
+76	Hunger of War	[ o忆是k ] | Hunger Of War | 00:83 | 0126 | Villager01 | （%86） | Villager02 | 5字：00 | 57:00 | Villager03 | Blacksmit | 57:000 | Farmer01 | 至7：000000
+77	Hunger of War	[ lo是品 ] | Hunger Of War | 03:11 | 04:29 | 04+45 | 82 89
+78	Hunger of War	[ o忆是品k ] | Hunger Of War | 01:60 | RIP
+79	Hunger of War	IH 品IK | Hunger Of War | GameManager | PlayerSession | Ebamageable(abstract) | Photon Room , | Inventory | Fielditem | NpcBase(abstract) | AnimalBase(abstract) | StateMachine  | StateMachine  | 可o品in百 | ItemBase | Item1 |  ( ) | Npc2 | Animall1 | Npc1 | Animal2 | Item2 | State 李外 | State外
+80	Hunger of War	Hunger Of War | public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) | if (!stream.Iswriting) { | currentFood = (float)stream.ReceiveNext(); | public override void OnConnectedToMaster() | IsSpectator = (bool)stream.ReceiveNext(); | state = (Playerstate)stream.ReceiveNext(); | Debug.Log("connectmaster"); | name = (string)stream.ReceiveNext(): | Debug. Log("version: " | +PhotonNetwork.AppVersion); | Name = (string)stream.ReceiveNext(): | cnx = (float)stream.ReceiveNext(): | cny - (float)stream.Rec
+93	ECHO	ECHO | Time00:06 | 95% | OL满2品 | 音菩：PC | :60% | IL麦HT | [oo 号品号号lo1odN10号 [o:品 | 品 后 号lo 号
+94	ECHO	ECHO | [明] ]
+129	Luminous	Luminous RPG
+130	Luminous	LuminousRPG | [邑o忆是 ] | https:llyoutu.be/noaMwGSIYFY?si=EQtuC2ofYIXHsWvw | https:llyoutube.com/playlist? | list=PL8M1DnGkh0qNDJc4cs4UIvycqQP5NVUkv&si=3F3MqDO5XFhKpd-G
+131	Valorant	Valorant Addon
+132	Valorant	Valorant Addon | [吕 1ol是] | https://lyoutu.be/27_Dz3ObTzc | [ GITHUB ] | https://github.com/minyee2913/valorant-addon
+133	Video Particle	Video Particle
+134	Block Beat	Block Beat | BLOCHBEAT | Guidix - Halloueen | Perfect! | 42combo | minyee2913
+135	Block Beat	Block Beat | [邑 Iol忆是 ] | https:/youtu.be/ndHBnaODyos?si=-V5IA7Lzn82Enl7G
