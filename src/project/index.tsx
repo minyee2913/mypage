@@ -8,39 +8,20 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 PrCategory.data = [];
 
-PrCategory.$("minecraft", "마인크래프트 개발", "img/minecraft.png")
-    .Projects(
-        Pj.$("luminous", "Luminous RPG")
-            .Platform("MCBE SERVER")
-            .Images("img/games/luminous/lumi0.gif", "img/games/luminous/lumi1.png", "img/games/luminous/lumi2.png")
-            .Description("2020년부터 개발 중인 마인크래프트 BE 서버 기반의 액션, 스토리, RPG, 반오픈월드 프로젝트.")
-            .Docs("https://luminous-rpg.notion.site/146ab655c564453c8ce716dc37aabda6")
-            .Video("https://youtu.be/noaMwGSlYFY?si=EQtuC2ofYlXHsWvw"),
-        Pj.$("valorant", "Valorant Addon")
-            .Platform("MCBE ADDON")
-            .Description("마인크래프트에서 발로란트의 캐릭터와 총기 시스템을 구현한 마인크래프트 BE 애드온 프로젝트.")
-            .Github("https://github.com/minyee2913/valorant-addon")
-            .Video("https://youtu.be/27_Dz3ObTzc"),
-        Pj.$("video-particle", "Video Particle")
-            .Platform("STANDALONE PROGRAM")
-            .Description("영상 파일 데이터를 추출해서 마인크래프트 내 파티클로 영상을 그대로 구현하고 재생하는 별도 프로그램."),
-        Pj.$("blockbeat", "Block Beat")
-            .Platform("MCBE MAP")
-            .Description("키 입력이 아닌 마우스로 에임을 돌려 노트를 치는 마인크래프트 BE 맵 기반 리듬게임.")
-            .Video("https://youtu.be/ndHBnaODyos?si=-V5IA7Lzn82Enl7G"),
-    );
-
 PrCategory.$("unity", "게임 개발", "img/unity.png")
     .Projects(
         Pj.$("ignotus", "IGNOTUS")
             .Platform("Mobile")
             .Images("img/games/ignotus/1.jpg", "img/games/ignotus/2.jpg", "img/games/ignotus/3.jpg")
             .Description("실시간 전투에 타일 시스템을 넣어 턴제 전투 요소를 섞은 모바일 로그라이크 액션 게임.")
+            .Playstore("https://play.google.com/apps/testing/com.minyee2913.ignotus")
             .Video("https://youtu.be/knDdXG--Q_w?si=aSHezL5cWePz2cQK"),
         Pj.$("survival-strategy", "생존 전략!")
             .Platform("PC")
+            .Images("img/games/survival_strategy/1.png", "img/games/survival_strategy/2.png", "img/games/survival_strategy/3.png")
             .Description("모션 그래픽을 이용한 스토리 전개와 플레이어의 행동이 다음 회차 스탯에 반영되는 액션 게임.")
             .Github("https://github.com/minyee2913/survival_strategy")
+            .Download("https://github.com/minyee2913/survival_strategy/releases/download/lol/survival_strategy.exe.zip")
             .Video("https://youtu.be/qY3b2b_TLA0"),
         Pj.$("albedo", "Albedo")
             .Platform("PC")
@@ -72,6 +53,7 @@ PrCategory.$("unity", "게임 개발", "img/unity.png")
             .Description("집에 들어온 NPC들이 벌이는 돌발 행동을 아이템으로 막아내는 아케이드 시뮬레이션 전략 게임."),
         Pj.$("bumgeun-rush", "범근러쉬")
             .Platform("PC")
+            .Github("https://github.com/minyee2913/beomgeun_rushv2")
             .Description("학교 친구를 등장인물로 내세운 엽기적인 감성의 러닝 아케이드 게임."),
         Pj.$("escape-the-music", "ESCAPE THE MUSIC")
             .Platform("PC")
@@ -88,6 +70,28 @@ PrCategory.$("unity", "게임 개발", "img/unity.png")
             .Video("https://youtu.be/TaHivs_WtP8?si=7QDLd0qb6IpfMDti"),
     );
 
+PrCategory.$("minecraft", "마인크래프트 개발", "img/minecraft.png")
+    .Projects(
+        Pj.$("luminous", "Luminous RPG")
+            .Platform("MCBE SERVER")
+            .Images("img/games/luminous/lumi0.gif", "img/games/luminous/lumi1.png", "img/games/luminous/lumi2.png")
+            .Description("2020년부터 개발 중인 마인크래프트 BE 서버 기반의 액션, 스토리, RPG, 반오픈월드 프로젝트.")
+            .Docs("https://luminous-rpg.notion.site/146ab655c564453c8ce716dc37aabda6")
+            .Video("https://youtu.be/noaMwGSlYFY?si=EQtuC2ofYlXHsWvw"),
+        Pj.$("valorant", "Valorant Addon")
+            .Platform("MCBE ADDON")
+            .Description("마인크래프트에서 발로란트의 캐릭터와 총기 시스템을 구현한 마인크래프트 BE 애드온 프로젝트.")
+            .Github("https://github.com/minyee2913/valorant-addon")
+            .Video("https://youtu.be/27_Dz3ObTzc"),
+        Pj.$("video-particle", "Video Particle")
+            .Platform("STANDALONE PROGRAM")
+            .Description("영상 파일 데이터를 추출해서 마인크래프트 내 파티클로 영상을 그대로 구현하고 재생하는 별도 프로그램."),
+        Pj.$("blockbeat", "Block Beat")
+            .Platform("MCBE MAP")
+            .Description("키 입력이 아닌 마우스로 에임을 돌려 노트를 치는 마인크래프트 BE 맵 기반 리듬게임.")
+            .Video("https://youtu.be/ndHBnaODyos?si=-V5IA7Lzn82Enl7G"),
+    );
+
 function Project() {
     const [projectItem, SetProjectItem] = useState<JSX.Element>();
     const [categoryItem, SetCategoryItem] = useState<JSX.Element[]>([]);
@@ -95,7 +99,7 @@ function Project() {
     const [isModal, SetModal] = useState(false);
     const [imgPage, SetImagePage] = useState(1);
 
-    let category = "minecraft";
+    let category = "unity";
     let pjCode = 0;
 
     const [query, setQuery ] = useSearchParams();
@@ -198,6 +202,9 @@ function Project() {
                             </a> : <></>}
                             {currentProject.youtube ? <a href={currentProject.youtube} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="플레이 영상">
                                 <img src="img/youtube.png"></img>
+                            </a> : <></>}
+                            {currentProject.playstore ? <a href={currentProject.playstore} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="스토어">
+                                <img src="img/playstore.png"></img>
                             </a> : <></>}
                             {currentProject.github ? <a href={currentProject.github} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="GitHub">
                                 <img src="img/github.png"></img>

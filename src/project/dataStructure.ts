@@ -30,6 +30,7 @@ export class Pj {
     img: string[] = [];
     platform?: string;
     github?: string;
+    playstore?: string;
     youtube?: string;
     description?: string;
     links: link[] = [];
@@ -66,6 +67,11 @@ export class Pj {
 
     Github(url: string): Pj {
         this.github = url;
+        return this;
+    }
+
+    Playstore(url: string): Pj {
+        this.playstore = url;
         return this;
     }
 
