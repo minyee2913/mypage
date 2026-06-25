@@ -4,6 +4,7 @@ import Main from './main';
 import Project from './project';
 import Error404 from './404';
 import Repos from './repo';
+import Downloads from './downloads';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path='/' element = {<Main />}/>
         <Route path='/project' element = {<Project />}/>
         <Route path='/repositories' element = {<Repos />}/>
+        <Route path='/downloads' element = {<Downloads />}/>
         <Route path='/404' element = {<Error404 />}/>
         <Route path='/*' element = {<Error404 />}/>
       </Routes>
