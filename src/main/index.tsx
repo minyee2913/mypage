@@ -92,7 +92,7 @@ function Main() {
             <a href='https://github.com/minyee2913' target='blank'><span className='hover-text'>깃허브</span><GitHubIcon sx={{ color: 'white', fontSize: 36 }} /></a>
             <a href='https://www.youtube.com/channel/UCZQUWTcP51kOFG0TWeHnr_g' target='blank'><span className='hover-text'>유튜브</span><YouTubeIcon sx={{ color: 'white', fontSize: 36 }} /></a>
         </div>
-        <div>
+        <div id='main-content'>
             <p id='title'>{title}</p>
             <p id='description' className={'description ' + show}>Game Developer</p>
             <p id='tagline' className={show}>Building action systems, roguelike loops, and multiplayer gameplay.</p>
@@ -120,26 +120,26 @@ function Main() {
                 <span className='terminal-cursor'>_</span>
               </div>
             </div>
-            <div className='menu menu-always-open'>
-              <Link className="menu-link" to='/project' style={{ textDecoration: "none"}}>
-                <div id='project' className='menu-sec'>
-                  <AccountTreeIcon sx={{ color: 'white', fontSize: 44 }}></AccountTreeIcon>
-                  <span>Projects</span>
-                </div>
-              </Link>
-              <Link className="menu-link" to='/repositories' style={{ textDecoration: "none"}}>
-                <div id='repo' className='menu-sec'>
-                  <FlagIcon sx={{ color: 'white', fontSize: 44 }}></FlagIcon>
-                  <span>Repositories</span>
-                </div>
-              </Link>
-              <a className="menu-link" href='https://particle.minyee2913.net' target='blank' rel='noreferrer'>
-                <div id='particle' className='menu-sec'>
-                  <img className='menu-icon-img' src='img/vfx.png' alt='Editor' />
-                  <span>Editor</span>
-                </div>
-              </a>
+        </div>
+        <div className='menu menu-always-open'>
+          <Link className="menu-link" to='/project' style={{ textDecoration: "none"}}>
+            <div id='project' className='menu-sec'>
+              <AccountTreeIcon sx={{ color: 'white', fontSize: 44 }}></AccountTreeIcon>
+              <span>Projects</span>
             </div>
+          </Link>
+          <Link className="menu-link" to='/repositories' style={{ textDecoration: "none"}}>
+            <div id='repo' className='menu-sec'>
+              <FlagIcon sx={{ color: 'white', fontSize: 44 }}></FlagIcon>
+              <span>Repositories</span>
+            </div>
+          </Link>
+          <a className="menu-link" href='https://particle.minyee2913.net' target='blank' rel='noreferrer'>
+            <div id='particle' className='menu-sec'>
+              <img className='menu-icon-img' src='img/vfx.png' alt='Editor' />
+              <span>Editor</span>
+            </div>
+          </a>
         </div>
 
         {featuredProject ? (

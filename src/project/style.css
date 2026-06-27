@@ -245,6 +245,57 @@
     height: 100%;
 }
 
+/* ===== Release downloads ===== */
+.pj-release {
+    padding: 0 5% 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pj-release-meta {
+    margin: 0;
+    font-size: calc(9px + 0.28vw);
+    color: #555;
+}
+
+.pj-release-assets {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pj-asset-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 14px;
+    background-color: rgba(30, 30, 30, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.pj-asset-btn:hover {
+    background-color: rgba(50, 50, 50, 0.95);
+    border-color: rgba(255, 200, 80, 0.4);
+}
+
+.pj-asset-name {
+    color: #d8d8d8;
+    font-size: calc(10px + 0.28vw);
+    word-break: break-all;
+}
+
+.pj-asset-size {
+    color: #666;
+    font-size: calc(9px + 0.22vw);
+    white-space: nowrap;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
 /* ===== Description ===== */
 .descrip {
     color: rgba(255, 255, 255, 0.88);

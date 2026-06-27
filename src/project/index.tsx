@@ -1,11 +1,36 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { PrCategory } from "./dataStructure";
+import { PrCategory, Pj } from "./dataStructure";
 import "./style.css";
 import { Link, useSearchParams } from "react-router-dom";
 import Modal from "react-modal";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import "./data";
+
+interface ReleaseAsset {
+    id: number;
+    name: string;
+    size: number;
+    browser_download_url: string;
+}
+
+interface Release {
+    tag_name: string;
+    published_at: string;
+    assets: ReleaseAsset[];
+    html_url: string;
+}
+
+function formatBytes(bytes: number): string {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function formatDate(iso: string): string {
+    const d = new Date(iso);
+    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+}
 
 function extractYouTubeId(url: string): string | null {
     const m = url.match(/(?:youtu\.be\/|[?&]v=)([A-Za-z0-9_-]{11})/);
@@ -35,7 +60,6 @@ function MediaSlider({
     const wrapRef = useRef<HTMLDivElement>(null);
     const total = slides.length;
 
-    // 컨테이너 너비를 픽셀로 측정 (퍼센트 기준 모호성 제거)
     useLayoutEffect(() => {
         const el = wrapRef.current;
         if (!el) return;
@@ -56,7 +80,6 @@ function MediaSlider({
 
     const go = (dir: 1 | -1) => setIdx(i => (i + dir + total) % total);
 
-    // 좌우 20% peek, 슬라이드 60%, 슬라이드 간 2% gap
     const peekPx  = wrapW * 0.20;
     const gapPx   = wrapW * 0.02;
     const slidePx = wrapW * 0.60;
@@ -114,138 +137,170 @@ function MediaSlider({
     );
 }
 
+function ProjectDetail({
+    pj,
+    pjCode,
+    sectLen,
+    sectionId,
+    navigate,
+    onImageClick,
+}: {
+    pj: Pj;
+    pjCode: number;
+    sectLen: number;
+    sectionId: string;
+    navigate: (dir: 1 | -1) => void;
+    onImageClick: (src: string) => void;
+}) {
+    const [release, setRelease] = useState<Release | null>(null);
+
+    useEffect(() => {
+        if (!pj.github) { setRelease(null); return; }
+        fetch('/releases.json')
+            .then(r => r.ok ? r.json() : {})
+            .then((map: Record<string, Release>) => setRelease(map[pj.id] ?? null))
+            .catch(() => setRelease(null));
+    }, [pj.id, pj.github]);
+
+    const projectImages = pj.img.filter(Boolean);
+    const hasReleaseAssets = release && release.assets.length > 0;
+
+    return (
+        <div className="project_sec">
+            <div className="project-scroll">
+                <div className="pj-header">
+                    <p className="title">{pj.name}</p>
+                    <p className="platform">{pj.platform}</p>
+                    <CopyToClipboard
+                        text={`https://human.minyee2913.net/project?pj=${pj.id}&sec=${sectionId}`}
+                        onCopy={() => alert("클립보드에 복사되었습니다.")}
+                    >
+                        <div className="share_btn hovertext pointer" data-hover="공유">
+                            <img src="img/import.png" alt="share" />
+                        </div>
+                    </CopyToClipboard>
+                </div>
+
+                <MediaSlider
+                    key={`${sectionId}-${pjCode}`}
+                    images={projectImages}
+                    youtubeUrl={pj.youtube}
+                    onImageClick={onImageClick}
+                />
+
+                <div className="buttons">
+                    {pj.docs && <a href={pj.docs} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="기획 / 문서"><img src="img/docs.png" alt="docs" /></a>}
+                    {pj.youtube && <a href={pj.youtube} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="플레이 영상"><img src="img/youtube.png" alt="youtube" /></a>}
+                    {pj.playstore && <a href={pj.playstore} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="스토어"><img src="img/playstore.png" alt="playstore" /></a>}
+                    {pj.github && <a href={pj.github} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="GitHub"><img src="img/github.png" alt="github" /></a>}
+                    {pj.download && !hasReleaseAssets && <a href={pj.download} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="다운로드"><img src="img/download.png" alt="download" /></a>}
+                </div>
+
+                {hasReleaseAssets && (
+                    <div className="pj-release">
+                        <p className="pj-release-meta">{release!.tag_name} · {formatDate(release!.published_at)}</p>
+                        <div className="pj-release-assets">
+                            {release!.assets.map(asset => (
+                                <a
+                                    key={asset.id}
+                                    href={asset.browser_download_url}
+                                    className="pj-asset-btn"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <span className="pj-asset-name">{asset.name}</span>
+                                    <span className="pj-asset-size">{formatBytes(asset.size)}</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                <p className="descrip">{pj.description}</p>
+            </div>
+
+            <div className="project-arrows">
+                {pjCode > 0 && (
+                    <img src="img/up_arrow.png" className="pj-nav-arrow pointer" alt="prev" onClick={() => navigate(-1)} />
+                )}
+                {pjCode + 1 < sectLen && (
+                    <img src="img/down_arrow.png" className="pj-nav-arrow pointer" alt="next" onClick={() => navigate(1)} />
+                )}
+            </div>
+        </div>
+    );
+}
+
 function Project() {
-    const [projectItem, SetProjectItem] = useState<JSX.Element>();
-    const [categoryItem, SetCategoryItem] = useState<JSX.Element[]>([]);
-    const [modalImg, setImg] = useState("");
-    const [isModal, SetModal] = useState(false);
-
-    let category = "unity";
-    let pjCode = 0;
-
     const [query, setQuery] = useSearchParams();
-    const section = query.get("sec");
-    const project = query.get("pj");
+    const [modalImg, setImg] = useState("");
+    const [isModal, setModal] = useState(false);
 
-    if (section) category = section;
+    const sectionId = query.get("sec") ?? "unity";
+    const projectParam = query.get("pj");
 
-    const pn = Number(project);
-    if (!isNaN(pn)) {
-        pjCode = pn;
-    } else {
-        const sect = PrCategory.data.find(v => v.id === category);
-        if (sect) {
-            const f = sect.projects.find(v => v.id === project);
+    const sect = PrCategory.data.find(v => v.id === sectionId);
+    let pjCode = 0;
+    if (sect) {
+        const pn = Number(projectParam);
+        if (!isNaN(pn) && projectParam !== null) {
+            pjCode = Math.max(0, Math.min(pn, sect.projects.length - 1));
+        } else if (projectParam) {
+            const f = sect.projects.find(v => v.id === projectParam);
             if (f) pjCode = sect.projects.indexOf(f);
         }
     }
 
-    if (project === null) {
-        query.set("pj", pjCode.toString());
-        setQuery(query);
-    }
-
-    const SetSection = (sec: string) => {
-        query.set("sec", sec);
-        setQuery(query);
+    const navigate = (dir: 1 | -1) => {
+        setQuery(prev => {
+            const next = new URLSearchParams(prev);
+            next.set("pj", (pjCode + dir).toString());
+            return next;
+        });
     };
 
-    const OpenModal = () => SetModal(true);
-    const CloseModal = () => SetModal(false);
-
-    const Update = () => {
-        SetSection(category);
-
-        const itms = PrCategory.data.map(v =>
-            <div
-                className="category-item pointer hovertext"
-                data-hover={v.name}
-                id={"category-" + v.id}
-                key={"category-" + v.id}
-                onClick={() => { category = v.id; Update(); }}
-            >
-                <img src={v.img} alt={v.name} />
-                {category === v.id ? <div className="category-selected" /> : null}
-            </div>
-        );
-
-        const sect = PrCategory.data.find(v => v.id === category);
-        if (sect) {
-            const currentProject = sect.projects[pjCode];
-            const projectImages = currentProject.img.filter(Boolean);
-            const shareSection = section ?? category;
-
-            const navigate = (dir: 1 | -1) => {
-                pjCode += dir;
-                query.set("pj", pjCode.toString());
-                setQuery(query);
-                SetProjectItem(<></>);
-                setTimeout(Update, 200);
-            };
-
-            SetProjectItem(
-                <div className="project_sec">
-                    <div className="project-scroll">
-                        <div className="pj-header">
-                            <p className="title">{currentProject.name}</p>
-                            <p className="platform">{currentProject.platform}</p>
-                            <CopyToClipboard
-                                text={`https://human.minyee2913.net/project?pj=${currentProject.id}&sec=${shareSection}`}
-                                onCopy={() => alert("클립보드에 복사되었습니다.")}
-                            >
-                                <div className="share_btn hovertext pointer" data-hover="공유">
-                                    <img src="img/import.png" alt="share" />
-                                </div>
-                            </CopyToClipboard>
-                        </div>
-
-                        <MediaSlider
-                            key={`${category}-${pjCode}`}
-                            images={projectImages}
-                            youtubeUrl={currentProject.youtube}
-                            onImageClick={src => { setImg(src); OpenModal(); }}
-                        />
-
-                        <div className="buttons">
-                            {currentProject.docs && <a href={currentProject.docs} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="기획 / 문서"><img src="img/docs.png" alt="docs" /></a>}
-                            {currentProject.youtube && <a href={currentProject.youtube} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="플레이 영상"><img src="img/youtube.png" alt="youtube" /></a>}
-                            {currentProject.playstore && <a href={currentProject.playstore} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="스토어"><img src="img/playstore.png" alt="playstore" /></a>}
-                            {currentProject.github && <a href={currentProject.github} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="GitHub"><img src="img/github.png" alt="github" /></a>}
-                            {currentProject.download && <a href={currentProject.download} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="다운로드"><img src="img/download.png" alt="download" /></a>}
-                        </div>
-
-                        <p className="descrip">{currentProject.description}</p>
-                    </div>
-
-                    <div className="project-arrows">
-                        {pjCode > 0 && (
-                            <img src="img/up_arrow.png" className="pj-nav-arrow pointer" alt="prev" onClick={() => navigate(-1)} />
-                        )}
-                        {pjCode + 1 < sect.projects.length && (
-                            <img src="img/down_arrow.png" className="pj-nav-arrow pointer" alt="next" onClick={() => navigate(1)} />
-                        )}
-                    </div>
-                </div>
-            );
-        } else {
-            SetProjectItem(<></>);
-        }
-
-        SetCategoryItem(itms);
+    const setSection = (sec: string) => {
+        setQuery(prev => {
+            const next = new URLSearchParams(prev);
+            next.set("sec", sec);
+            next.delete("pj");
+            return next;
+        });
     };
 
-    useEffect(() => { Update(); }, []);
+    const currentProject = sect?.projects[pjCode];
 
     return (
         <>
             <div className="category">
                 <Link to="/" className="back-home-btn pointer">{'<'} Main</Link>
-                {categoryItem}
+                {PrCategory.data.map(v => (
+                    <div
+                        key={v.id}
+                        className="category-item pointer hovertext"
+                        data-hover={v.name}
+                        id={"category-" + v.id}
+                        onClick={() => setSection(v.id)}
+                    >
+                        <img src={v.img} alt={v.name} />
+                        {sectionId === v.id && <div className="category-selected" />}
+                    </div>
+                ))}
             </div>
             <div style={{ textAlign: "center" }}>
-                {projectItem}
+                {currentProject && sect && (
+                    <ProjectDetail
+                        key={`${sectionId}-${pjCode}`}
+                        pj={currentProject}
+                        pjCode={pjCode}
+                        sectLen={sect.projects.length}
+                        sectionId={sectionId}
+                        navigate={navigate}
+                        onImageClick={src => { setImg(src); setModal(true); }}
+                    />
+                )}
             </div>
-            <Modal isOpen={isModal} onRequestClose={CloseModal} style={{
+            <Modal isOpen={isModal} onRequestClose={() => setModal(false)} style={{
                 overlay: { zIndex: 9, backgroundColor: "rgba(0, 0, 0, 0.5)" },
                 content: {
                     width: "80vw",

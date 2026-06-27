@@ -32,6 +32,7 @@ interface ProjectEntry {
     release: Release | null;
     loading: boolean;
     directLinks: DirectLink[];
+    noBuild: boolean;
 }
 
 // github.com/{owner}/{repo}
@@ -57,8 +58,7 @@ function getGithubRepo(pj: Pj): { owner: string; repo: string } | null {
 function getDirectLinks(pj: Pj): DirectLink[] {
     const links: DirectLink[] = [];
     if (pj.playstore) links.push({ label: 'Google Play', url: pj.playstore });
-    // 깃허브 릴리즈 URL이 아닌 download만 직접 링크로
-    if (pj.download && !parseGithubReleaseUrl(pj.download)) {
+    if (pj.download) {
         const filename = pj.download.split('/').pop() ?? '다운로드';
         links.push({ label: filename, url: pj.download });
     }
@@ -86,8 +86,7 @@ function Downloads() {
             for (const pj of category.projects) {
                 const repo = getGithubRepo(pj);
                 const directLinks = getDirectLinks(pj);
-
-                if (!repo && directLinks.length === 0) continue;
+                const noBuild = !repo && directLinks.length === 0;
 
                 entries.push({
                     projectName: pj.name,
@@ -96,6 +95,7 @@ function Downloads() {
                     release: null,
                     loading: repo !== null,
                     directLinks,
+                    noBuild,
                 });
             }
         }
@@ -117,7 +117,7 @@ function Downloads() {
                         if (!release || release.assets.length === 0) {
                             return item.directLinks.length > 0
                                 ? [{ ...item, loading: false, release: null }]
-                                : [];
+                                : [{ ...item, loading: false, release: null, noBuild: true }];
                         }
                         return [{ ...item, loading: false, release }];
                     })
@@ -129,7 +129,7 @@ function Downloads() {
                         if (!item.loading) return [item];
                         return item.directLinks.length > 0
                             ? [{ ...item, loading: false }]
-                            : [];
+                            : [{ ...item, loading: false, noBuild: true }];
                     })
                 );
             });
@@ -143,72 +143,90 @@ function Downloads() {
                     <p id='dl-sub'>각 프로젝트의 최신 빌드 파일을 받아보세요.</p>
                 </div>
                 <div id='dl-list'>
-                    {items.map(item => {
-                        const hasAssets = item.release && item.release.assets.length > 0;
+                    {projectCategories.map(category => {
+                        const categoryItems = items.filter(item => item.secId === category.id);
+                        if (categoryItems.length === 0) return null;
 
                         return (
-                            <div key={item.projectId} className='dl-card'>
-                                <div className='dl-card-top'>
-                                    <span className='dl-proj-name'>{item.projectName}</span>
-                                    {item.release && (
-                                        <span className='dl-tag'>{item.release.tag_name}</span>
-                                    )}
-                                    <Link
-                                        to={`/project?sec=${encodeURIComponent(item.secId)}&pj=${encodeURIComponent(item.projectId)}`}
-                                        className='dl-proj-link'
-                                        target='_blank'
-                                        rel='noreferrer'
-                                    >
-                                        프로젝트 →
-                                    </Link>
+                            <div key={category.id} className='dl-section'>
+                                <div className='dl-section-header'>
+                                    <img src={category.img} className='dl-section-icon' alt={category.name} />
+                                    <span className='dl-section-name'>{category.name}</span>
                                 </div>
+                                <div className='dl-section-cards'>
+                                    {categoryItems.map(item => {
+                                        const hasAssets = item.release && item.release.assets.length > 0;
 
-                                {item.loading ? (
-                                    <p className='dl-status'>불러오는 중...</p>
-                                ) : (
-                                    <>
-                                        {item.release && (
-                                            <p className='dl-date'>{formatDate(item.release.published_at)}</p>
-                                        )}
+                                        return (
+                                            <div key={item.projectId} className='dl-card'>
+                                                <div className='dl-card-top'>
+                                                    <span className='dl-proj-name'>{item.projectName}</span>
+                                                    {item.release && (
+                                                        <span className='dl-tag'>{item.release.tag_name}</span>
+                                                    )}
+                                                    {!item.loading && item.noBuild && (
+                                                        <span className='dl-no-build'>빌드 없음</span>
+                                                    )}
+                                                    <Link
+                                                        to={`/project?sec=${encodeURIComponent(item.secId)}&pj=${encodeURIComponent(item.projectId)}`}
+                                                        className='dl-proj-link'
+                                                        target='_blank'
+                                                        rel='noreferrer'
+                                                    >
+                                                        프로젝트 →
+                                                    </Link>
+                                                </div>
 
-                                        <div className='dl-assets'>
-                                            {hasAssets && item.release!.assets.map(asset => (
-                                                <a
-                                                    key={asset.id}
-                                                    href={asset.browser_download_url}
-                                                    className='dl-asset-btn'
-                                                    target='_blank'
-                                                    rel='noreferrer'
-                                                >
-                                                    <span className='dl-asset-name'>{asset.name}</span>
-                                                    <span className='dl-asset-size'>{formatBytes(asset.size)}</span>
-                                                </a>
-                                            ))}
-                                            {!hasAssets && item.directLinks.map(link => (
-                                                <a
-                                                    key={link.url}
-                                                    href={link.url}
-                                                    className='dl-asset-btn'
-                                                    target='_blank'
-                                                    rel='noreferrer'
-                                                >
-                                                    <span className='dl-asset-name'>{link.label}</span>
-                                                </a>
-                                            ))}
-                                        </div>
+                                                {item.loading ? (
+                                                    <p className='dl-status'>불러오는 중...</p>
+                                                ) : !item.noBuild && (
+                                                    <>
+                                                        {item.release && (
+                                                            <p className='dl-date'>{formatDate(item.release.published_at)}</p>
+                                                        )}
 
-                                        {item.release && (
-                                            <a
-                                                href={item.release.html_url}
-                                                className='dl-release-link'
-                                                target='_blank'
-                                                rel='noreferrer'
-                                            >
-                                                릴리즈 페이지 →
-                                            </a>
-                                        )}
-                                    </>
-                                )}
+                                                        <div className='dl-assets'>
+                                                            {hasAssets && item.release!.assets.map(asset => (
+                                                                <a
+                                                                    key={asset.id}
+                                                                    href={asset.browser_download_url}
+                                                                    className='dl-asset-btn'
+                                                                    target='_blank'
+                                                                    rel='noreferrer'
+                                                                >
+                                                                    <span className='dl-asset-name'>{asset.name}</span>
+                                                                    <span className='dl-asset-size'>{formatBytes(asset.size)}</span>
+                                                                </a>
+                                                            ))}
+                                                            {!hasAssets && item.directLinks.map(link => (
+                                                                <a
+                                                                    key={link.url}
+                                                                    href={link.url}
+                                                                    className='dl-asset-btn'
+                                                                    target='_blank'
+                                                                    rel='noreferrer'
+                                                                >
+                                                                    <span className='dl-asset-name'>{link.label}</span>
+                                                                </a>
+                                                            ))}
+                                                        </div>
+
+                                                        {item.release && (
+                                                            <a
+                                                                href={item.release.html_url}
+                                                                className='dl-release-link'
+                                                                target='_blank'
+                                                                rel='noreferrer'
+                                                            >
+                                                                릴리즈 페이지 →
+                                                            </a>
+                                                        )}
+                                                    </>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         );
                     })}
