@@ -1,0 +1,2829 @@
+{
+  "site": "https://human.minyee2913.net/",
+  "author": "minyee2913",
+  "description": "Unity·C# 게임 클라이언트 개발자 minyee2913의 포트폴리오. PC·모바일로 2027년 상반기 출시 예정인 IGNOTUS, Google Play에 출시한 발!도!!, 2020년부터 개발 중인 Minecraft Bedrock RPG 서버 Luminous Wanderlust(구 Luminous RPG) 등 프로젝트별 구현 기능과 기술 기록을 정리했습니다.",
+  "source": "Generated at build time from the same data that renders the HTML pages.",
+  "categories": [
+    {
+      "id": "unity",
+      "name": "게임 개발"
+    },
+    {
+      "id": "minecraft",
+      "name": "마인크래프트 개발"
+    }
+  ],
+  "projects": [
+    {
+      "id": "ignotus",
+      "category": "unity",
+      "title": "IGNOTUS",
+      "tagline": "액션 속에서, 잠시 멈춰 생각하라",
+      "subtitle": "실시간 액션과 타일 전략 전투를 결합한 로그라이크 덱빌딩 액션 RPG",
+      "description": "실시간 액션과 전략적인 타일 전투가 결합된 로그라이크 덱빌딩 액션 RPG. 전투 도중 시간을 멈추고 [영역]을 전개해 스킬을 타일에 배치한다. PC(Steam)와 모바일로 2027년 상반기 출시 예정.",
+      "hero": "/img/games/ignotus/steam-keyart.jpg",
+      "logo": "/img/games/ignotus/logo.png",
+      "cover": "/img/games/ignotus/steam-header.jpg",
+      "accent": "#e8343f",
+      "intro": "embers",
+      "reveal": "burn",
+      "overview": [
+        "실시간 게임과 턴제 게임의 융합을 연구하면서 2025년 3월에 시작한 **1인 개발** 게임이다. 첫 커밋 다음 날 [영역](시간 정지) 시스템을 만들었고, 이후 카드·보드·멀티플레이·크로스플랫폼을 차례로 붙여 **PC(Steam)와 모바일(Android) 출시**를 준비하고 있다. 목표 출시 시기는 2027년 상반기다.",
+        "2D 픽셀 캐릭터가 코드로 조립한 3D 픽셀 지형 위에서 싸우는 2.5D 구성이다. 전투 중 [영역]을 펼치면 시간이 멈추고 플레이어 주변에 **7×7 타일**이 깔린다. 획득한 스킬을 원하는 타일에 배치하고 범위와 적 위치를 확인한 뒤 다시 실시간 전투로 돌아간다.",
+        "두 왕국 사이의 전쟁에서 패해 포로가 된 기사가 가까스로 탈출해 고향으로 돌아오지만, 왕국은 정체불명의 저주에 잠식되어 거대한 미궁이 되어 있다. 주인공은 미궁을 내려가며 저주의 원인과 남겨진 인물들의 이야기를 마주한다.",
+        "2026년 6월부터는 **Claude Code 같은 AI 코딩 에이전트**를 개발 과정에 적극적으로 활용하고 있다."
+      ],
+      "gameplay": [
+        "에너지가 초당 10씩 차고, 100을 넘길 때마다 [영역] 전개 횟수가 1 쌓인다. 전투 중 [영역]을 펼치면 시간이 멈추고, 스킬을 타일에 끌어다 놓거나(또는 눌러서 추천 위치에 자동 배치) 발동한다.",
+        "무기 슬롯은 4개다. 슬롯마다 무기, 스크롤(영역 밖에서 쓰는 무기 능력), 스킬 목록이 묶여 있고, 무기를 바꾸면 대시와 강제 공격, 짧은 슬로 모션이 이어진다.",
+        "공격, 대시(대시 중 피격 시 피해를 무효화하는 회피, 쿨다운 10초), 방어(성공 시 반격 넉백)로 실시간 전투를 한다.",
+        "층에 들어갈 때마다 장점과 대가가 함께 붙은 저주 카드 3장 중 하나를 고른다(5층마다는 스킬을 주는 마녀 이벤트). 필드에 오래 머물면 미궁이 카드를 강제로 하나 더 붙인다.",
+        "층마다 보드에서 다음 방을 고르며 내려간다. 방 종류는 전투, 강적 전투, 이벤트, 보상, 상점, 휴식, 모루(스킬을 스크롤로 강화), 보스다.",
+        "층 구간은 하층(1~5층), 중층(6~10층), 상층(11~15층), 최상층(16~20층)으로 나뉜다. 구간을 끝까지 돌파한 무기 구성은 '낙인'으로 저장되어 다음 도전에 들고 갈 수 있다."
+      ],
+      "highlights": [
+        "실시간 액션 + 타일 기반 전략 전투",
+        "전투의 시간을 멈추는 핵심 시스템 [영역]",
+        "원하는 위치에 직접 배치하는 다양한 스킬",
+        "스킬과 키워드의 상호작용을 활용하는 로그라이크 덱빌딩",
+        "무기 공격과 스킬을 연결하는 실시간 전투",
+        "플레이할 때마다 달라지는 스킬 조합과 빌드",
+        "저주에 잠식된 왕국과 그 안에 남겨진 인물들의 이야기",
+        "평상시와 전투 돌입 후 분위기가 변화하는 인카운터 연출"
+      ],
+      "genres": [
+        "로그라이크",
+        "덱빌딩",
+        "액션 RPG"
+      ],
+      "status": "in-development",
+      "releaseTarget": "2027-H1",
+      "startDate": "2025-03",
+      "platform": "PC (Steam), Mobile",
+      "teamSize": 1,
+      "engine": "Unity 6 (URP)",
+      "languages": [
+        "C#",
+        "HLSL",
+        "Python (개발 도구)"
+      ],
+      "frameworks": [
+        "Netcode for GameObjects",
+        "Unity Transport",
+        "Steamworks.NET",
+        "Google Play Games",
+        "Cinemachine",
+        "Input System",
+        "AI Navigation (NavMesh)",
+        "DOTween",
+        "UnityUtils (직접 만든 라이브러리)"
+      ],
+      "technologies": [
+        "시간 정지 중 동작하는 타일 선택·연출",
+        "ScriptableObject 기반 아이템 데이터",
+        "ASCII 레이아웃 기반 절차적 방 조립",
+        "런타임 NavMesh 베이크",
+        "커스텀 URP 지형 셰이더",
+        "LAN / 전용 서버 / Steam P2P 멀티플레이",
+        "Steam Cloud · Google Play 저장 게임",
+        "픽셀 VFX 베이킹 에디터 도구",
+        "AI 코딩 에이전트(Claude Code 등) 활용 개발"
+      ],
+      "architecture": [
+        "아이템: Item(ScriptableObject) → SkillItem / ScrollItem / WeaponItem 상속 구조, 공통 팩토리 에셋에 등록",
+        "전투 상태: Field / Fight / Converting 상태로 필드와 전투 전환 관리",
+        "스킬 훅: 선택·발동과 피격·대시·처치·필드 전환 등의 패시브 훅을 스킬이 재정의",
+        "퀘스트: 게임 이벤트를 보고(Report)받아 누적/최고 기록으로 진행하는 이벤트 기반 구조",
+        "멀티플레이: 이동은 소유자 권한, 적 AI·전투 진행은 서버 권한",
+        "플랫폼 분기: 저장·리더보드는 Android(Google Play Games)와 PC(Steam) 구현을 컴파일 조건으로 나눔"
+      ],
+      "history": [
+        {
+          "date": "2025-03",
+          "text": "[영역] 시간 정지 시스템 첫 구현, 모바일 조작"
+        },
+        {
+          "date": "2025-04",
+          "text": "Android 빌드로 전환"
+        },
+        {
+          "date": "2025-06",
+          "text": "카드 시스템"
+        },
+        {
+          "date": "2025-08",
+          "text": "URP로 렌더 파이프라인 전환"
+        },
+        {
+          "date": "2025-10",
+          "text": "보드(방 선택) 시스템, LAN 멀티플레이 테스트"
+        },
+        {
+          "date": "2025-11",
+          "text": "Google Play Games 연동"
+        },
+        {
+          "date": "2026-04",
+          "text": "PC·모바일 크로스플랫폼 구조로 전환"
+        },
+        {
+          "date": "2026-05",
+          "text": "쿼터뷰 시점 작업, 헤드리스 전용 서버"
+        },
+        {
+          "date": "2026-06",
+          "text": "Claude Code 등 AI 코딩 에이전트를 개발에 본격 도입"
+        },
+        {
+          "date": "2026-10",
+          "text": "Steam 연동 (친구 로비, P2P, Cloud 저장, 리더보드)"
+        }
+      ],
+      "features": [
+        {
+          "name": "[영역] 시간 정지 타일 스킬 시스템",
+          "summary": "실시간 전투 중 시간을 멈추고 7×7 타일 위에 스킬을 배치해 발동하는 핵심 전투 시스템.",
+          "purpose": "실시간 액션 안에 턴제·SRPG식 판단을 넣기 위해 만든 시스템으로, 프로젝트 시작 직후부터 게임의 중심이다.",
+          "how": [
+            "전투 상태에서 [영역] 전개 횟수가 있으면 전개할 수 있다. 전개하면 **전역 시간 배율(Time.timeScale)을 0으로** 만들고, 애니메이터와 [영역] 카메라는 시간 배율의 영향을 받지 않게 바꾼다.",
+            "플레이어 주변에 4유닛 간격의 7×7 타일을 맵 보드 방향에 맞춰 깔고, 칸마다 아래로 레이를 쏴서 **지형 높이에 맞춘다**. 바닥이 없는 칸은 비활성화한다.",
+            "스킬을 타일에 끌어다 놓으면 스킬이 유효 칸 조건과 범위를 표시하고, 발동 시 에너지를 쓰고 효과를 실행한다. 누르기만 하면 스킬이 추천하는 칸에 자동 배치한다.",
+            "[영역]을 닫으면 카메라와 시간을 되돌리고 실시간 전투로 돌아간다. 대시를 해도 [영역]이 닫힌다.",
+            "멀티플레이에서는 [영역]이 **최대 6초**로 제한되고, **다른 플레이어도 함께 멈춘다**. 일부 적과 보스도 자신의 [영역]을 펼친다."
+          ],
+          "technologies": [
+            "Time.timeScale",
+            "Cinemachine",
+            "Raycast 지형 정렬",
+            "Netcode RPC"
+          ]
+        },
+        {
+          "name": "무기·스킬·스크롤 아이템 구조",
+          "summary": "ScriptableObject 상속 구조로 **스킬 108종, 스크롤 108종, 무기 19종**을 관리한다.",
+          "how": [
+            "추상 Item(ScriptableObject) 아래에 SkillItem, ScrollItem, WeaponItem이 있고, 개별 아이템이 이를 상속해 동작을 채운다. 모든 아이템 에셋은 하나의 팩토리 데이터에 등록된다.",
+            "스킬은 등급, 비용, 쿨다운, 배치 가능 조건, 선택·발동 로직을 정의하고, 피격·대시·처치·필드 전환 같은 상황에 반응하는 패시브 훅을 가진다.",
+            "스크롤은 무기가 [영역] 밖에서 쓰는 능력이다. 스크롤마다 원본 스킬이 연결되어 있어 모루 방에서 스킬을 스크롤로 바꿀 수 있다.",
+            "공격 범위는 이름 붙은 범위(오프셋·크기·박스/구 형태)를 재사용하고 배율만 바꿔 쓴다. 적 공격은 바닥 경고 표시로 미리 알린다.",
+            "상태이상은 기절(치명타 확률 증가), 에어본(받는 피해 1.5배), 빙결(게이지 누적, 해제 시 저장된 피해 폭발), 화상이 있고 넉백과 8종의 가드 유형, 14종의 키워드가 있다."
+          ],
+          "technologies": [
+            "ScriptableObject",
+            "추상 클래스 / override",
+            "코루틴"
+          ]
+        },
+        {
+          "name": "저주 카드와 런 구조",
+          "summary": "장점과 대가가 함께 있는 저주 카드, 층 구간, 방 선택 보드, 런 사이 성장으로 이어지는 로그라이크 루프.",
+          "how": [
+            "저주 카드는 플레이어 강화와 적 강화를 함께 적용하는 클래스로, **일반 카드 49종과 해금형 카드 16종**이 있다. 가중치에 따라 3장을 뽑아 하나를 고른다.",
+            "해금형 카드는 기본 가중치가 0이고, 로비의 저주 메뉴에서 재화(골드바)로 해금하거나 카드 등장 가중치를 조절한다.",
+            "층마다 방 후보를 보드로 보여 주고, 방 가중치·등장 층 범위·최근 3개 방 제외 규칙으로 후보를 고른다.",
+            "런 사이에는 낙인(돌파한 무기 구성), 저주, 도감, 퀘스트(14종, 이벤트 기반 진행), 출석 보상이 이어진다. 층 구간별 최고 기록은 리더보드에 올라간다.",
+            "튜토리얼은 감옥 탈출부터 [영역] 전개, 마녀, 상점, 방 선택까지 단계별 입력 제한과 스포트라이트 안내로 진행하고, 컷신은 레터박스·타자기 자막을 쓰는 인게임 연출로 만들었다. 행사 시연용 데모 모드도 있다."
+          ],
+          "technologies": [
+            "가중치 랜덤",
+            "PlayerPrefs / JSON 저장"
+          ]
+        },
+        {
+          "name": "ASCII 레이아웃 기반 절차적 방 조립",
+          "summary": "텍스트로 그린 방 레이아웃, 지역 테마, 시드로 지형 메시·충돌·소품을 코드로 조립한다.",
+          "how": [
+            "방 레이아웃은 높이·바닥 재질·계단과 입구/출구/스폰/소품 표시를 문자 격자로 적은 텍스트다. 에디터 도구가 텍스트를 레이아웃 에셋으로 가져오고, 인스펙터에서 높이를 색으로 미리 본다.",
+            "레이아웃과 지역 테마, 시드로 **지형 메시와 충돌 메시, 소품을 한 번에** 만들고, 레이아웃을 무작위로 좌우 반전해 변화를 준다.",
+            "조립이 끝나면 **런타임에 NavMesh를 구워** 적 AI가 바로 길을 찾게 한다.",
+            "시드를 네트워크 오브젝트 ID에서 뽑아 **멀티플레이의 모든 참가자가 같은 방을 조립**한다.",
+            "원하는 방에서 바로 게임을 시작하는 방 테스트 창을 만들어 반복 작업을 줄였다."
+          ],
+          "technologies": [
+            "Mesh 생성",
+            "NavMeshBuilder",
+            "Custom Editor"
+          ]
+        },
+        {
+          "name": "인카운터 연출과 저주 셰이더",
+          "summary": "전투가 시작되면 평온하던 방이 저주에 잠식되는 연출을 셰이더와 조명으로 만든다.",
+          "how": [
+            "전투에 들어가면 필드 음악을 멈추고 시간을 0.1배로 늦춘 뒤 글리치 효과와 층 구간별 색 효과를 서서히 켠다.",
+            "**전역 셰이더 값 하나**를 올리면 커스텀 URP 지형 셰이더가 노이즈 경계를 따라 '평온' 텍스처 아틀라스 위로 '저주' 아틀라스를 번지게 하고, 경계에 빛나는 줄기를 그린다.",
+            "같은 값으로 횃불 색, 환경광, 카메라 배경색도 함께 바꾸고, 전투가 끝나면 모두 되돌린다.",
+            "지형 셰이더는 SPUM 캐릭터의 픽셀 크기에 맞춘 텍셀 밀도로 포인트 샘플링하고, 정점 색 AO와 단계형 조명을 쓴다. URP Forward+를 지원한다."
+          ],
+          "technologies": [
+            "HLSL",
+            "URP Forward+",
+            "Volume / 포스트 프로세싱"
+          ]
+        },
+        {
+          "name": "협동 멀티플레이 (개발 중)",
+          "summary": "Netcode for GameObjects로 LAN, 전용 서버, Steam 친구 접속을 모두 지원하는 협동 파티 플레이.",
+          "how": [
+            "파티가 함께 낙인을 고르고 출발한다. 서버는 게임이 시작되면 참가자 명단을 잠그고, 명단에 있는 플레이어만 재접속을 허용한다.",
+            "접속 방식은 세 가지다: LAN 호스트(UDP 브로드캐스트로 방 검색), IP 직접 접속, 헤드리스 전용 서버(서버 빌드에서 카메라·화면 효과·터치 조작을 끔).",
+            "Steam 친구 플레이를 위해 LAN(Unity Transport)과 Steam P2P(Steam Datagram Relay)를 한 방에서 동시에 받는 **복합 트랜스포트를 직접 만들었다**. 친구 전용 로비, 초대, Rich Presence 참가를 지원한다.",
+            "**이동은 소유자 권한, 적 AI와 전투 진행은 서버 권한**으로 처리한다. 로딩·층·파티 준비·전투 상태 등은 NetworkVariable과 RPC로 동기화한다."
+          ],
+          "considerations": [
+            "온라인·LAN 통합 테스트는 아직 진행 중이다."
+          ],
+          "technologies": [
+            "Netcode for GameObjects",
+            "Unity Transport",
+            "Steamworks.NET",
+            "Dedicated Server"
+          ]
+        },
+        {
+          "name": "PC·모바일 크로스플랫폼과 클라우드 저장",
+          "summary": "**하나의 코드베이스**에서 PC(Steam)와 Android(Google Play Games)를 함께 지원한다.",
+          "how": [
+            "Input System에 키보드·마우스, 게임패드, 터치 조작 체계를 두고, 모바일은 직접 만든 가상 조이스틱과 화면 버튼을 쓴다.",
+            "저장과 리더보드는 Android에서 Google Play Games(로그인, 저장 게임, 리더보드), PC에서 Steam(Cloud 저장, 리더보드)을 쓰도록 컴파일 조건으로 나눴다.",
+            "로컬 저장은 JSON을 백업 키부터 쓰는 이중 기록으로 남기고, 로컬과 클라우드 저장이 다르면 진행도 점수가 높은 쪽을 고른다.",
+            "모바일에서는 MSAA·SSAO·실시간 그림자를 끄고 해상도 긴 변을 1920으로 제한하며, 파티클 밀도를 낮춘다. 쓰지 않는 전체 화면 효과는 모든 플랫폼에서 꺼 둔다."
+          ],
+          "technologies": [
+            "Input System",
+            "Google Play Games",
+            "Steamworks.NET",
+            "URP 설정 튜닝"
+          ]
+        },
+        {
+          "name": "픽셀 VFX 파이프라인",
+          "summary": "일반 파티클 이펙트를 게임의 픽셀 아트 톤에 맞추는 도구와 런타임 처리.",
+          "how": [
+            "런타임에 파티클 텍스처를 저해상도·포인트 필터·단계 색으로 바꾼 사본을 만들어 픽셀 느낌을 낸다.",
+            "에디터 도구로 파티클 이펙트를 게임 카메라와 같은 40° 시점에서 픽셀 스프라이트 시트로 굽는다. **검은 배경과 흰 배경에 각각 렌더링해 알파를 복원**한다.",
+            "이펙트마다 오브젝트를 만들지 않고 방출만 하는 파티클 시스템을 쓰며, 프레임당 타격 수를 제한하고 데미지 숫자는 풀링한다."
+          ],
+          "technologies": [
+            "ParticleSystem",
+            "RenderTexture",
+            "Editor 도구",
+            "Object Pooling"
+          ]
+        },
+        {
+          "name": "UnityUtils 공통 모듈 활용",
+          "summary": "직접 만든 Unity 공용 라이브러리를 서브모듈로 넣어 사용한다.",
+          "how": [
+            "체력, 스탯(문자열 키 기반 버프 계산), 카메라 연출, 사운드, 데미지 표시, 싱글톤 같은 공통 기능을 UnityUtils에서 가져온다.",
+            "UnityUtils는 여러 프로젝트에서 반복되는 기능을 모은 라이브러리로, GitHub에 공개되어 있다."
+          ],
+          "links": [
+            {
+              "type": "github",
+              "url": "https://github.com/minyee2913/unityUtils",
+              "label": "UnityUtils 저장소"
+            }
+          ]
+        }
+      ],
+      "technicalChallenges": [
+        {
+          "title": "시간 정지 중 타일 선택이 엉뚱한 칸을 잡는 문제",
+          "status": "solved",
+          "problem": "[영역]을 펼친 상태에서 마우스로 타일을 고르면 실제와 다른 칸이 선택됐다.",
+          "cause": "[영역] 중에는 시간 배율이 0이라 물리 갱신이 없고 Transform 자동 동기화도 꺼져 있어서, **타일을 옮긴 뒤에도 충돌체가 이전 위치에 남아 있었다**.",
+          "process": [
+            "**타일 선택을 물리 레이캐스트에 의존하지 않도록** 바꿨다.",
+            "타일마다 그 타일 높이의 수평면과 마우스 광선의 교점을 구하고, 교점이 칸 안에 드는 타일 중 카메라에 가장 가까운 것을 고른다.",
+            "범위 미리보기용 판정이 필요한 곳에서는 Transform 동기화를 직접 호출한다."
+          ],
+          "result": "단차가 있는 지형에서도 **시간이 멈춘 상태로 정확한 칸**을 고를 수 있게 됐다."
+        },
+        {
+          "title": "시간이 멈춘 동안 연출과 연속 발사가 멈추는 문제",
+          "status": "solved",
+          "problem": "[영역] 중에 나온 타일 연출 파티클이 멈춰 보이고, 연속 발사 스킬의 간격 대기가 시간 복귀 후 불안정했다.",
+          "cause": "파티클과 WaitForSeconds가 모두 시간 배율의 영향을 받는데, [영역]은 시간 배율을 0으로 만든다.",
+          "process": [
+            "파티클 시스템을 **시간 영향을 받는 것과 받지 않는 것 두 벌**로 두고, 시간이 멈춘 동안 나온 연출은 영향을 받지 않는 쪽으로 보낸다.",
+            "연속 발사 간격은 직접 만든 타이머로 재고, 시간 정지 중에는 멈췄다가 풀리면 남은 시간을 이어서 쓴다."
+          ],
+          "result": "시간 정지 중에도 연출이 자연스럽게 재생되고, 정지 전후로 연속 발사 간격이 유지된다."
+        },
+        {
+          "title": "모바일에서 지형이 통째로 사라지는 셰이더 문제",
+          "status": "solved",
+          "problem": "PC에서는 정상인 커스텀 지형 셰이더가 모바일 기기에서 지형 전체를 그리지 못했다.",
+          "cause": "GLES3·Vulkan에서 **half(최소 정밀도) 값이 정수 연산에 섞이면 셰이더 컴파일이 실패**했다.",
+          "process": [
+            "셰이더의 정밀도를 **전부 float로 통일**했다."
+          ],
+          "approach": [
+            "HLSL",
+            "URP"
+          ],
+          "result": "모바일에서도 지형이 정상적으로 그려진다."
+        },
+        {
+          "title": "지형이 분홍색으로 바뀌며 UI 위에 그려지는 문제",
+          "status": "solved",
+          "problem": "카메라와 캐릭터 사이를 가리는 물체를 반투명하게 만드는 가림 페이드 기능이 동작하면 방 전체가 분홍색으로 변해 UI 위에 그려졌다.",
+          "cause": "방 지형 전체가 메시 하나라서 페이드 대상이 되면 방 전체가 **URP에서 지원하지 않는 레거시 투명 셰이더**로 바뀌고 투명 렌더 큐로 들어갔다.",
+          "process": [
+            "방을 조립할 때 지형 메시에 페이드 제외 옵션(최종 알파 1 고정)을 붙였다."
+          ],
+          "result": "벽·소품은 계속 페이드되고 지형은 정상 셰이더를 유지한다."
+        },
+        {
+          "title": "LAN과 Steam P2P를 동시에 받을 때 연결 ID 충돌",
+          "status": "partial",
+          "problem": "한 방에서 LAN 플레이어와 Steam 친구를 함께 받으려면 두 전송 계층의 연결 ID가 하나의 네트워크 세션 안에서 겹치지 않아야 했다.",
+          "cause": "**Unity Transport가 내부에서 Netcode의 ID 매핑을 직접 조회**하기 때문에, LAN 쪽 ID를 바꾸면 전송이 막힌다.",
+          "process": [
+            "LAN 쪽 ID는 그대로 넘기고, **Steam 쪽 ID만 LAN과 겹치지 않는 별도 범위**(하위 32비트를 모두 1로 채운 값)를 쓰도록 했다.",
+            "호스트는 두 전송 계층을 동시에 열고, 클라이언트는 둘 중 하나로만 접속하는 복합 트랜스포트로 묶었다. Steam을 쓸 수 없는 환경에서는 기존 트랜스포트만 쓴다."
+          ],
+          "approach": [
+            "Netcode for GameObjects",
+            "Unity Transport",
+            "SteamNetworkingSockets"
+          ],
+          "result": "LAN과 Steam P2P 접속을 한 세션에서 받는 구조를 구현했다.",
+          "remaining": "온라인·LAN 통합 테스트 항목은 아직 확인 중이다."
+        },
+        {
+          "title": "클라우드 저장이 빈 데이터로 덮어써질 위험",
+          "status": "solved",
+          "problem": "게임 시작 직후 아이템 데이터가 준비되기 전에 저장이 일어나면 빈 무기 목록이 저장되어 기존 진행이 사라질 수 있었다.",
+          "process": [
+            "**아이템 팩토리가 준비될 때까지(최대 15초) 저장을 막고**, 준비에 실패하면 계속 막아 둔다.",
+            "로컬 저장은 백업 키부터 쓰는 이중 기록으로 남긴다.",
+            "로컬과 클라우드(Steam Cloud, Google Play 저장 게임) 데이터가 다르면 무기 수·재화·최고 층으로 계산한 진행도 점수가 높은 쪽을 고른다."
+          ],
+          "result": "로드가 끝나기 전의 저장 시도는 무시되고, 기기 간 저장 충돌도 진행도가 큰 쪽으로 정리된다."
+        }
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/lFor-bfjdXk",
+          "caption": "IGNOTUS 게임플레이 트레일러 (개발 진행 중 버전)"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-area-skill.jpg",
+          "caption": "[영역]을 펼쳐 스킬 범위를 타일에 지정하는 전투 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-dungeon.jpg",
+          "caption": "미궁 탐사 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-equipment.jpg",
+          "caption": "장비와 스탯 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-weapon-slot.jpg",
+          "caption": "무기 슬롯 교체 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-shop.jpg",
+          "caption": "상점 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-floor-select.jpg",
+          "caption": "층 선택 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-encounter.jpg",
+          "caption": "인카운터 연출"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/steam-skill-dex.jpg",
+          "caption": "스킬 도감"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/1.jpg",
+          "caption": "모바일 버전(이전 빌드): 시간이 멈춘 상태에서 타일로 스킬 범위를 지정하는 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/2.jpg",
+          "caption": "모바일 버전: 보스 '해골 기마대장' 전투. 가상 조이스틱과 공격·특수·회피·스킬 버튼"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/ignotus/3.jpg",
+          "caption": "모바일 버전: 인트로 컷씬"
+        },
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/knDdXG--Q_w",
+          "caption": "IGNOTUS 2차 시연 영상"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "steam",
+          "url": "https://store.steampowered.com/app/5281610/IGNOTUS/",
+          "label": "Steam 스토어 페이지"
+        },
+        {
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=com.minyee2913.ignotus",
+          "label": "Google Play 스토어 페이지"
+        },
+        {
+          "type": "discord",
+          "url": "https://discord.gg/Qyp2xqrczE",
+          "label": "공식 Discord"
+        },
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/lFor-bfjdXk",
+          "label": "게임플레이 트레일러"
+        },
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/knDdXG--Q_w",
+          "label": "2차 시연 영상"
+        }
+      ],
+      "featured": true,
+      "displayOrder": 1,
+      "slug": "ignotus",
+      "url": "https://human.minyee2913.net/projects/ignotus",
+      "markdown": "https://human.minyee2913.net/projects/ignotus.md",
+      "period": "2025.03 ~ 현재",
+      "statusLabel": "개발 중",
+      "releaseTargetLabel": "2027년 상반기 출시 예정"
+    },
+    {
+      "id": "baldo",
+      "category": "unity",
+      "accent": "#e9a23b",
+      "intro": "slash",
+      "reveal": "slash",
+      "title": "발!도!!",
+      "tagline": "Slash!!",
+      "subtitle": "한 번의 발도로 이동과 공격을 함께 하는 1000층 액션 퍼즐 (Google Play 출시)",
+      "description": "검을 발도하면 그 방향 끝까지 돌진하며 스친 적을 모두 벤다. 정해진 발도 횟수 안에 층의 모든 적을 처치하며 지하 1000층까지 내려가는 모바일 액션 퍼즐 게임.",
+      "overview": [
+        "**1인 개발**로 만들어 Google Play에 출시한 모바일 액션 퍼즐 게임이다(현재 버전 1.7). '발도 한 번 = 이동 + 공격'이라는 규칙 하나로, 남은 횟수 안에 모든 적을 벨 경로를 찾는 퍼즐을 만들었다.",
+        "퍼즐 규칙은 Unity에 의존하지 않는 **순수 C# 코어**로 분리했고, 실제 플레이·조준 미리보기·힌트·자동 풀이·검증이 모두 **같은 시뮬레이터 하나**를 호출한다.",
+        "지하 1000층은 손으로 그린 튜토리얼 4층을 빼고 모두 **에디터 도구로 생성한 뒤 솔버로 최소 풀이를 검증**했고, 층마다 허용 발도 횟수를 그 최소값에 맞춰 정했다."
+      ],
+      "gameplay": [
+        "방향을 한 번 탭하면 돌진 경로가 점선으로 미리 보이고, 같은 방향을 한 번 더 탭하면 발도한다. 8방향(대각선 포함)으로 벨 수 있다.",
+        "발도하면 벽이나 보드 끝, 정면 방패, 버튼에 막힐 때까지 돌진하고, 경로 위의 몬스터에게 피해를 준다.",
+        "부서지는 벽, 경로를 꺾는 거울, 같은 방향으로 이어지는 포탈, 닿으면 죽는 가시, 발도 횟수를 1 돌려주는 충전 아이템, 연결된 폭탄을 터뜨리는 버튼(3×3 범위) 같은 기믹이 층이 내려갈수록 하나씩 등장한다.",
+        "몬스터는 일반(체력 1), 정면을 막는 방패, 체력 2의 중갑, 발도할 때마다 정해진 길을 따라 움직이는 이동형, 2×2 크기의 대형이 있다.",
+        "모든 몬스터를 처치하면 클리어, 발도 횟수를 다 쓰거나 가시에 닿으면 실패다. 막히면 광고를 보고 지금 상태에서의 힌트를 받을 수 있다."
+      ],
+      "genres": [
+        "액션",
+        "퍼즐"
+      ],
+      "status": "released",
+      "startDate": "2026-08",
+      "platform": "Mobile (Android)",
+      "teamSize": 1,
+      "engine": "Unity 6 (URP 2D, Pixel Perfect)",
+      "languages": [
+        "C#"
+      ],
+      "frameworks": [
+        "Google Mobile Ads (AdMob)",
+        "Input System",
+        "NUnit (Unity Test Framework)"
+      ],
+      "technologies": [
+        "엔진 독립 순수 C# 규칙 코어",
+        "IDDFS 최소 풀이 솔버",
+        "솔버 검증형 절차적 레벨 생성 (1000층)",
+        "상태 기반 실시간 힌트",
+        "히트스톱·화면 흔들림 타격감",
+        "보상형·전면 광고 연동"
+      ],
+      "architecture": [
+        "어셈블리 분리: Core(엔진 참조 없는 순수 C# 규칙·솔버) / Runtime(화면·입력·저장·설정) / Editor(층 생성기·검증 도구) / Tests",
+        "규칙 단일화: 발도 시뮬레이터 하나를 실제 플레이, 조준 미리보기, 힌트, 솔버, 검증기가 모두 공유한다",
+        "상태 표현: 층 상태를 비트마스크와 상태 키로 표현해 탐색 중 빠르게 복사·비교한다",
+        "데이터: 층 1000개를 ScriptableObject 에셋으로 두고 층 데이터베이스에서 불러온다",
+        "장면 구성: 씬과 UI를 코드(빌더)로 만들어 수동 배치 없이 재현할 수 있게 했다"
+      ],
+      "features": [
+        {
+          "name": "하나의 시뮬레이터로 통일한 발도 규칙",
+          "summary": "돌진·피해·기믹 판정을 한 곳에만 구현하고, 게임의 모든 기능이 그것을 호출한다.",
+          "purpose": "플레이 화면, 조준 미리보기, 힌트, 자동 풀이가 서로 다른 규칙으로 계산하면 '힌트대로 했는데 안 풀리는' 버그가 생긴다. 규칙을 한 곳에만 두어 이런 불일치를 원천적으로 막았다.",
+          "how": [
+            "발도 시뮬레이터가 돌진 경로, 벽·방패·버튼에서의 정지, 거울 반사, 포탈 이동, 가시 사망, 충전 아이템, 폭탄 폭발, 대형 몬스터의 1회 피격을 모두 처리한다.",
+            "규칙 코어는 **Unity를 참조하지 않는 순수 C# 어셈블리**라서 에디터 도구와 단위 테스트에서 그대로 돌릴 수 있다.",
+            "무한 반복을 막기 위해 이동 단계 상한과 반복 감지를 두었다."
+          ],
+          "technologies": [
+            "C#",
+            "Assembly Definition",
+            "비트마스크 상태"
+          ]
+        },
+        {
+          "name": "1000층 절차적 생성 파이프라인",
+          "summary": "'정답 경로를 먼저 만들고 그 위에 퍼즐을 채우는' 방식으로 지하 1000층을 생성하고 솔버로 검증한다.",
+          "how": [
+            "층 번호에 따라 보드 크기(7×7 → 최대 11×13), 목표 최소 발도 횟수(2 → 9), 몬스터 수(3 → 최대 30), 벽 비율, 특수 몬스터 비율이 커지는 난이도 곡선을 만들었다.",
+            "벽과 기믹을 놓고, 8방향 발도를 무작위로 이어 기준 경로를 만든 뒤 **그 경로가 지나는 칸에만 몬스터를 배치**한다.",
+            "기준 경로로 다시 재생해 살아남는 특수 몬스터는 일반 몬스터로 바꾸고, **솔버로 실제 최소 발도 횟수를 구해** 목표보다 너무 쉬운 배치는 버린다.",
+            "허용 발도 횟수는 최소값에 여유 1회를 더하고, 10층마다는 여유 없이 딱 맞춘다. 층마다 시드를 바꿔 최대 200번까지 다시 시도한다.",
+            "중갑(16층), 방패(28층), 충전(36층), 이동형(45층), 포탈(55층), 대형(64층), 버튼·폭탄(72층), 거울(80층) 순서로 새 요소를 소개하고, 소개 구간에서는 다른 기믹과 겹치지 않게 해 규칙이 또렷이 보이게 했다."
+          ],
+          "technologies": [
+            "Procedural Generation",
+            "Seeded Random",
+            "Editor 도구"
+          ]
+        },
+        {
+          "name": "IDDFS 최소 풀이 솔버",
+          "summary": "반복 심화 깊이 우선 탐색으로 층의 최소 발도 횟수와 그 순서를 찾는다.",
+          "how": [
+            "깊이를 1회씩 늘려 가며 탐색하므로 처음 찾은 답이 곧 **최소 발도 횟수**다.",
+            "한 상태에서 모든 방향을 먼저 시뮬레이션해 바로 끝나는 수가 있으면 즉시 답으로 쓰고, 나머지는 **많이 베는 수부터** 파고든다.",
+            "한 번의 발도로 줄 수 있는 최대 피해량으로 남은 체력을 나눠, 남은 횟수로 절대 깰 수 없는 가지를 잘라낸다.",
+            "이미 풀 수 없다고 증명된 상태를 상태 키로 기억해 다시 탐색하지 않고, 노드 예산을 넘으면 '판정 불가'로 구분해 멈춘다."
+          ],
+          "technologies": [
+            "IDDFS",
+            "가지치기 (Pruning)",
+            "메모이제이션"
+          ]
+        },
+        {
+          "name": "지금 상태에서 다시 푸는 힌트",
+          "summary": "힌트는 미리 저장한 정답이 아니라, 플레이어가 지금까지 둔 수를 반영해 그 자리에서 다시 푼다.",
+          "how": [
+            "현재 상태에서 솔버를 돌려 다음 발도 방향과 '남은 발도 N회로 클리어 가능' 정보를 보여 주고, 경로를 금색으로 미리 그린다.",
+            "**광고를 보여 주기 전에 먼저 풀어 보고**, 풀 수 없는 상태면 광고를 띄우지 않는다.",
+            "광고 전후로 상태가 바뀌었는지 확인해, 바뀌었으면 다시 풀어서 틀린 힌트를 주지 않는다."
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/baldo/2.jpg",
+              "fit": "contain",
+              "caption": "힌트 표시: '오른쪽으로 발도해보세요. (남은 발도 5회로 클리어 가능)'"
+            }
+          ]
+        },
+        {
+          "name": "타격감 연출",
+          "summary": "짧은 퍼즐 한 수에도 손맛이 느껴지도록 베기 순간을 강조했다.",
+          "how": [
+            "처치 수에 비례해 길어지는 히트스톱(기본 0.035초 + 처치당 0.028초, 최대 0.16초)을 넣었다.",
+            "픽셀 단위로 맞춘 화면 흔들림, 돌진 전 예비 동작과 잔상, 칼날 궤적·불꽃·충격 링·폭발 섬광·파편을 풀링해서 재사용한다.",
+            "Android 진동으로 상황별 짧은 피드백(20~60ms)을 준다."
+          ],
+          "technologies": [
+            "Hit-stop",
+            "Object Pooling",
+            "Pixel Perfect Camera"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/baldo/aim.jpg",
+              "fit": "contain",
+              "caption": "대각선 조준 미리보기 (점선이 돌진 경로)"
+            }
+          ]
+        },
+        {
+          "name": "출시와 운영 기능",
+          "summary": "Google Play 출시에 필요한 광고·저장·설정·현지화를 갖췄다.",
+          "how": [
+            "힌트는 보상형 광고, 20층마다 클리어 후 전면 광고(준비되지 않았으면 건너뜀)를 보여 준다.",
+            "진행 상황은 JSON으로 저장하되 임시 파일과 백업 파일을 거쳐 써서 저장 중 손상을 막는다. 층별 최소 발도 기록, 클리어 횟수, 힌트 사용 여부를 남긴다.",
+            "기기 언어에 따라 한국어·영어를 고르고, 음악·효과음 볼륨과 진동을 설정할 수 있다.",
+            "Android 대상 API 36으로 빌드한다."
+          ],
+          "technologies": [
+            "AdMob",
+            "JSON 저장",
+            "현지화"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/baldo/settings.jpg",
+              "fit": "contain",
+              "caption": "설정 화면 (음악·효과음·진동·언어)"
+            }
+          ]
+        }
+      ],
+      "technicalChallenges": [
+        {
+          "title": "1000개 층이 모두 풀린다는 보장",
+          "status": "solved",
+          "problem": "층을 자동으로 1000개 만들면, 사람이 하나하나 풀어 보지 않고도 모든 층이 정해진 횟수 안에 풀린다는 것을 보장해야 했다.",
+          "process": [
+            "생성 단계에서 모든 층을 솔버로 풀어 최소 발도 횟수를 구하고, 허용 횟수를 그 값에 맞춰 정했다.",
+            "에디터에 층 검증 창을 만들어 데이터 오류와 풀이 가능 여부를 확인한다.",
+            "자동 테스트에서 층을 표본으로 골라 솔버가 찾은 답을 실제 게임 세션에 그대로 재생해 클리어되는지 확인한다."
+          ],
+          "approach": [
+            "IDDFS 솔버",
+            "NUnit 테스트",
+            "Editor 검증 도구"
+          ],
+          "result": "규칙 테스트·기믹 테스트·솔버 일치 테스트·광고 흐름 테스트 등 29개 테스트 케이스로 규칙과 생성 결과를 검증한다."
+        },
+        {
+          "title": "광고를 봤는데 힌트를 줄 수 없는 상황",
+          "status": "solved",
+          "problem": "보상형 광고를 다 본 뒤에야 풀 수 없는 상태라는 걸 알게 되거나, 광고를 보는 사이 상태가 바뀌어 틀린 힌트를 줄 위험이 있었다.",
+          "process": [
+            "광고를 띄우기 전에 현재 상태에서 먼저 풀이를 계산하고, 답이 없으면 광고를 띄우지 않는다.",
+            "광고 전에 상태 서명을 저장해 두고 광고 후 비교해, 달라졌으면 다시 푼다."
+          ],
+          "result": "광고를 본 플레이어는 항상 지금 상태에 맞는 힌트를 받는다."
+        }
+      ],
+      "achievements": [
+        {
+          "type": "release",
+          "title": "Google Play 출시",
+          "url": "https://play.google.com/store/apps/details?id=com.minyee2913.baldo",
+          "description": "Android 무료 게임으로 공개되어 있다 (버전 1.7)."
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/baldo/aim.jpg",
+          "fit": "contain",
+          "caption": "대각선 조준 미리보기 (점선이 돌진 경로)"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/baldo/1.jpg",
+          "fit": "contain",
+          "caption": "지하 63층. 발도 경로가 점으로 표시된 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/baldo/gimmicks.jpg",
+          "fit": "contain",
+          "caption": "거울·폭탄·방패 몬스터가 섞인 후반 층"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/baldo/2.jpg",
+          "fit": "contain",
+          "caption": "지하 41층. 힌트를 사용한 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/baldo/3.jpg",
+          "fit": "contain",
+          "caption": "지하 15층. 발도 동작"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/baldo/tutorial.jpg",
+          "fit": "contain",
+          "caption": "튜토리얼 1층"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/baldo/settings.jpg",
+          "fit": "contain",
+          "caption": "설정 화면"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=com.minyee2913.baldo"
+        }
+      ],
+      "featured": true,
+      "displayOrder": 2,
+      "slug": "baldo",
+      "url": "https://human.minyee2913.net/projects/baldo",
+      "markdown": "https://human.minyee2913.net/projects/baldo.md",
+      "period": "2026.08",
+      "statusLabel": "출시"
+    },
+    {
+      "id": "goaway-knight",
+      "category": "unity",
+      "accent": "#c86bd8",
+      "intro": "magic",
+      "reveal": "cards",
+      "title": "제발 꺼져 용사야!",
+      "tagline": "RAISE YOUR LEGION. DEFEND YOUR CITADEL.",
+      "subtitle": "마왕이 되어 카드로 몬스터를 소환해 용사를 막는 세로형 모바일 역(逆) 타워 디펜스",
+      "description": "마왕이 되어 카드 덱으로 몬스터를 소환하고, 마을을 점령해 보급선을 넓히며 끝없이 강해지는 용사로부터 마왕성을 지키는 모바일 역 타워 디펜스 게임.",
+      "overview": [
+        "용사가 고향에서 출발해 마을 세 곳을 지나 마왕성으로 쳐들어오고, 플레이어는 마왕이 되어 몬스터 카드로 그 길을 막는다. 전투는 자동으로 진행되고 플레이어는 **어떤 카드를 언제, 어디에 쓸지**만 고른다.",
+        "용사는 쓰러뜨려도 더 강해져서 다시 살아나기 때문에 승리 조건이 없고, 마왕성이 버틴 시간과 성과로 점수를 겨룬다. 한국어와 영어를 지원하며, Android 빌드를 기준으로 만들었다.",
+        "**1인 개발**로 약 나흘 만에 Android 빌드까지 만들었고, Unity MCP로 에디터와 연결한 **AI 코딩 에이전트를 적극 활용**했다."
+      ],
+      "gameplay": [
+        "슬라임 6장으로 시작하는 덱에서 4장을 손에 들고, 카드를 누르면 마나를 써서 가장 앞쪽 거점에 몬스터를 소환한다. 마나는 초당 1씩 차고, 몬스터가 죽으면 비용을 돌려받는다.",
+        "용사 레벨이 오를수록 해골, 해골 검사, 유령 카드가 차례로 열린다. 카드는 끌어서 버릴 수 있다.",
+        "마을을 점령하면 소환 거점이 되지만, **마왕성까지 이어진 마을만** 보급선으로 쓸 수 있다.",
+        "영혼을 모으면 강화 3개 중 하나를 고른다. 용사는 베기·처형·돌진·방어·흡혈·광폭화·성검 같은 스킬과 장비로 점점 강해진다.",
+        "점수는 생존 시간, 용사 처치, 마을 점령, 강화 획득으로 쌓이고 최고 기록 5개와 최근 기록 5개를 저장한다."
+      ],
+      "genres": [
+        "역 타워 디펜스",
+        "카드",
+        "전략"
+      ],
+      "status": "prototype",
+      "startDate": "2026-09",
+      "platform": "Mobile (Android)",
+      "teamSize": 1,
+      "engine": "Unity 6",
+      "languages": [
+        "C#"
+      ],
+      "frameworks": [
+        "Input System",
+        "ScriptableObject 데이터"
+      ],
+      "technologies": [
+        "AI 코딩 에이전트 활용 개발 (Unity MCP)",
+        "자동 전투 시뮬레이션",
+        "보급선(연결된 거점) 판정",
+        "JSON 이어하기 저장",
+        "한국어/영어 현지화",
+        "Android 진동(JNI)",
+        "에디터 자동 검사·빌드 도구"
+      ],
+      "features": [
+        {
+          "name": "카드 소환과 보급선 규칙",
+          "summary": "마나로 몬스터 카드를 쓰고, 마왕성과 이어진 점령 마을에서만 소환할 수 있게 한 핵심 규칙.",
+          "how": [
+            "덱에서 4장을 손패로 유지하고, 카드를 쓰면 마나를 차감해 가장 앞쪽의 연결된 거점에 몬스터를 소환한다.",
+            "점령한 마을 중 **마왕성까지 끊기지 않고 이어진 마을만** 보급선으로 인정해, 마을을 어디까지 지킬지가 전략이 되게 했다.",
+            "몬스터가 죽으면 소환 비용을 돌려받아 공격적인 소환을 부담 없이 시도할 수 있다."
+          ],
+          "technologies": [
+            "ScriptableObject (카드·몬스터 데이터)"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/goaway-knight/card-draw.jpg",
+              "caption": "카드를 뽑아 몬스터를 소환하는 화면",
+              "fit": "contain"
+            }
+          ]
+        },
+        {
+          "name": "성장하는 용사와 강화 선택",
+          "summary": "쓰러뜨릴수록 강해지는 용사와, 영혼을 모아 고르는 강화로 끝없는 생존 구조를 만든다.",
+          "how": [
+            "용사는 레벨에 따라 스킬과 장비를 얻고, 쓰러지면 더 강해진 상태로 부활한다.",
+            "영혼을 모으면 약 37종의 강화 효과 중 3개가 제시되고 하나를 고른다.",
+            "마왕성 근처에서는 4초마다 포격이 떨어져 마지막 방어선 역할을 한다."
+          ]
+        },
+        {
+          "name": "데이터 기반 구성과 에디터 도구",
+          "summary": "카드·몬스터·마을·강화·용사 스킬과 장비를 ScriptableObject 데이터로 분리하고, 검사·빌드를 에디터 도구로 자동화했다.",
+          "how": [
+            "게임 설정, 카드, 몬스터, 강화, 마을, 용사 장비와 스킬을 각각 데이터 에셋으로 두어 코드 수정 없이 밸런스를 바꿀 수 있다.",
+            "덱·마나·보급선·부활·번역 키를 한 번에 검사하는 에디터 메뉴를 만들었다.",
+            "장면과 데이터를 코드로 생성하는 도구와, 그래픽 없이 Android 빌드를 만드는 빌드 스크립트를 두었다."
+          ],
+          "technologies": [
+            "Custom Editor",
+            "Headless Build"
+          ]
+        },
+        {
+          "name": "모바일 대응",
+          "summary": "세로 화면, 터치 조작, 짧은 진동 피드백, 자동 저장으로 모바일 플레이에 맞췄다.",
+          "how": [
+            "세로 고정 화면에 카드 손패를 아래에 두고, 전투 장면은 카메라 확대·히트스톱·흔들림으로 타격감을 준다.",
+            "Android 진동 API를 JNI로 직접 호출해 14~46ms의 짧은 진동을 상황별로 낸다.",
+            "진행 상황을 JSON으로 자동 저장해 앱을 다시 열어도 이어서 할 수 있다.",
+            "241개 문구를 한국어·영어로 현지화하고, 설정에서 언어를 바꿀 수 있다."
+          ],
+          "technologies": [
+            "JNI",
+            "JSON 저장",
+            "현지화"
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/goaway-knight/title.jpg",
+          "caption": "타이틀 화면",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/goaway-knight/gameplay.jpg",
+          "caption": "플레이 화면: 용사가 마을을 지나 마왕성으로 진격한다",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/goaway-knight/card-draw.jpg",
+          "caption": "카드로 몬스터를 소환하는 화면",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/goaway-knight/result.jpg",
+          "caption": "마왕성 함락 후 점수 결과 화면",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/goaway-knight/gameplay-en.jpg",
+          "caption": "영어 설정 플레이 화면",
+          "fit": "contain"
+        }
+      ],
+      "displayOrder": 3,
+      "slug": "goaway-knight",
+      "url": "https://human.minyee2913.net/projects/goaway-knight",
+      "markdown": "https://human.minyee2913.net/projects/goaway-knight.md",
+      "period": "2026.09",
+      "statusLabel": "프로토타입"
+    },
+    {
+      "id": "haneul-oreum",
+      "category": "unity",
+      "accent": "#7fb4ff",
+      "intro": "stars",
+      "reveal": "warp",
+      "title": "하늘오름",
+      "subtitle": "베는 반동으로만 하늘을 오르는 2D 원버튼 상승 게임 (2026 대전 인디 게임잼)",
+      "description": "멈추지 않는 캐릭터가 적과 발판을 베어 생기는 반동만으로 우주까지 올라가는 2D 원버튼 스코어 어택 게임.",
+      "logo": "/img/games/haneul-oreum/logo.png",
+      "hero": "/img/games/haneul-oreum/title-bg.jpg",
+      "overview": [
+        "2026 대전 인디 게임잼에서 4인 팀으로 사흘 동안 만든 게임이다. 기획서 이름은 INFINITY MOVE였고, 최종 타이틀은 '하늘오름'이다.",
+        "캐릭터는 멈추지 않고 움직이며, 플레이어는 **벨 방향만 정한다**. 베면 반대 방향으로 튕겨 나가는 반동으로 이동하기 때문에, 무엇을 어느 각도로 벨지가 곧 조작이다.",
+        "팀에서 **플레이어 이동·조작의 핵심 시스템**을 맡았고, 이를 위해 엔진 작업 전에 HTML 프로토타입으로 조작감을 먼저 검증했다."
+      ],
+      "gameplay": [
+        "왼쪽 버튼을 누른 채 끌어 120도 부채꼴 베기 방향을 정하고, 놓으면 벤다. 조준하는 동안에는 시간이 느려진다.",
+        "적이나 고정 발판을 베면 강한 반동, 벽만 베면 약한 반동이 생긴다. 벽이나 몸통에 부딪히면 방향이 바뀌고, 곧게 날아가면 속도가 붙는다. 중력은 없다.",
+        "목표물을 벨 때만 콤보가 오르고, 콤보 게이지는 시간이 지나면 줄어든다. 벽이나 몸통에 부딪히면 콤보가 끊기고 게이지가 깎인다.",
+        "게이지가 0이 되거나 바닥으로 떨어지면 끝난다. 목표는 우주를 포함한 세 구간을 지나 100,000m까지 오르는 것이다."
+      ],
+      "genres": [
+        "액션",
+        "스코어 어택",
+        "원버튼",
+        "게임잼"
+      ],
+      "status": "completed",
+      "startDate": "2026-08",
+      "endDate": "2026-08",
+      "platform": "PC",
+      "teamSize": 4,
+      "teamComposition": "커밋 기록 기준 분담: 플레이어·연출·사운드 / 타이틀·HUD·콤보 / 적·발판 / 프로젝트 설정",
+      "roles": [
+        "플레이어 이동·조작 시스템",
+        "HTML 프로토타입",
+        "연출·사운드·포스트 프로세싱",
+        "구간별 난이도·스폰",
+        "튜토리얼",
+        "빌드·통합"
+      ],
+      "contribution": "커밋 125개 중 51개",
+      "engine": "Unity 6 (URP 2D)",
+      "languages": [
+        "C#",
+        "JavaScript (프로토타입)"
+      ],
+      "frameworks": [
+        "Input System",
+        "Cinemachine",
+        "DOTween",
+        "UnityUtils (직접 만든 라이브러리)"
+      ],
+      "technologies": [
+        "반동 기반 물리 이동",
+        "HTML5 Canvas 프로토타입",
+        "고도별 볼륨·BGM 블렌딩",
+        "구간별 스폰 가중치"
+      ],
+      "features": [
+        {
+          "name": "베기 반동 이동 시스템",
+          "summary": "조준한 방향의 반대로 튕겨 나가는 반동만으로 움직이는 플레이어 핵심 시스템.",
+          "purpose": "중력도 점프도 없이 '베는 행동' 하나로 이동·전투·생존을 모두 하게 만드는 게임의 중심 규칙이다.",
+          "how": [
+            "누른 채 끌어 베기 방향을 정하는 동안 시간을 느리게 하고, 조준선으로 120도 베기 범위를 보여 준다.",
+            "벤 대상(적·고정 발판·벽)에 따라 반동 세기를 다르게 주고, 벽과 몸통 충돌에서는 튕김으로 방향을 바꾼다.",
+            "곧게 날아가는 동안 속도를 조금씩 올려, 반동을 이어 갈수록 빨라지게 했다.",
+            "프로토타입에서 맞춘 수치와 조준선 표현을 그대로 Unity로 옮겼다."
+          ],
+          "technologies": [
+            "Rigidbody2D",
+            "Input System",
+            "Time Scale"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/haneul-oreum/guide.jpg",
+              "caption": "베기(ATTACK)와 반동(RECOIL), 속도 방향을 설명하는 튜토리얼 그림",
+              "fit": "contain"
+            }
+          ]
+        },
+        {
+          "name": "HTML 프로토타입으로 조작감 먼저 검증",
+          "summary": "잼 초반에 브라우저에서 바로 돌아가는 프로토타입을 만들어 반동 조작감을 팀과 함께 맞췄다.",
+          "how": [
+            "HTML5 Canvas와 JavaScript로 베기·반동·적 부활·벽 반사를 구현하고, 반동 세기 같은 수치를 한곳에 모아 바로 바꿔 볼 수 있게 했다.",
+            "디버그 표시와 즉시 재시작으로 수치를 빠르게 반복 조정했다.",
+            "검증한 수치를 Unity 플레이어 물리와 조준선에 옮겨, 엔진 구현 전에 핵심 재미를 확인했다."
+          ],
+          "technologies": [
+            "HTML5 Canvas",
+            "JavaScript"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/haneul-oreum/prototype.jpg",
+              "caption": "직접 만든 HTML 프로토타입: 조준 중 화면 (속도·시간·베기 횟수 표시)"
+            }
+          ]
+        },
+        {
+          "name": "고도에 따라 바뀌는 연출과 난이도",
+          "summary": "높이 올라갈수록 화면 분위기, 음악, 적 구성이 바뀐다.",
+          "how": [
+            "구간별 배경 음악을 나누고, 고도에 따라 포스트 프로세싱 볼륨을 섞어 하늘에서 우주로 넘어가는 분위기를 만들었다.",
+            "팀원이 만든 적 스폰 시스템에 난이도 곡선과 구간별 스폰 가중치를 더해, 올라갈수록 적 구성이 바뀌게 했다.",
+            "콤보 궤적, 목표물 강조, 피격 이펙트와 데미지 표시, 베기 애니메이션과 카메라 흔들림으로 타격감을 더했다."
+          ],
+          "technologies": [
+            "URP Volume",
+            "Cinemachine"
+          ]
+        },
+        {
+          "name": "튜토리얼과 통합·빌드",
+          "summary": "첫 플레이를 위한 튜토리얼 흐름을 만들고, 게임 씬을 조립해 최종 빌드까지 맡았다.",
+          "how": [
+            "튜토리얼 흐름과 게임 오버 낙하 연출을 구현했다.",
+            "팀원들의 작업을 게임 씬에 합치고 다수의 Pull Request를 병합해 최종 빌드를 만들었다.",
+            "공용 유틸리티(싱글톤, 사운드, 카메라 연출, 데미지 표시 등)를 프로젝트 초기에 넣어 팀이 함께 썼다."
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/PxXznDr4lW0",
+          "caption": "하늘오름 플레이 영상"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/haneul-oreum/title-bg.jpg",
+          "caption": "타이틀 배경 아트"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/haneul-oreum/prototype.jpg",
+          "caption": "HTML 프로토타입 플레이 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/haneul-oreum/guide.jpg",
+          "caption": "튜토리얼 조작 안내 그림",
+          "fit": "contain"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/PxXznDr4lW0",
+          "label": "플레이 영상"
+        }
+      ],
+      "displayOrder": 4,
+      "slug": "haneul-oreum",
+      "url": "https://human.minyee2913.net/projects/haneul-oreum",
+      "markdown": "https://human.minyee2913.net/projects/haneul-oreum.md",
+      "period": "2026.08",
+      "statusLabel": "개발 완료"
+    },
+    {
+      "id": "i-am-cup",
+      "category": "unity",
+      "accent": "#d9a35b",
+      "intro": "steam",
+      "reveal": "drain",
+      "title": "내가 찻잔이라니!",
+      "subtitle": "찻잔이 되어 카페 주문을 처리하는 2.5D 액션 게임 (2026 하제 게임잼 1등)",
+      "description": "어느 날 찻잔이 되어 버린 주인공이 3D 카페 안을 뛰어다니며 재료를 모아 음료를 완성하고, 시간 안에 손님의 주문을 처리하는 2.5D 액션 게임.",
+      "logo": "/img/games/i-am-cup/logo.png",
+      "hero": "/img/games/i-am-cup/cafe-inside.jpg",
+      "cover": "/img/games/i-am-cup/title.jpg",
+      "overview": [
+        "2026 하제 게임잼에서 4인 팀으로 사흘 동안 만들어 **1등**을 한 게임이다. 2D 스프라이트 찻잔이 3D 카페 공간을 평면처럼 이동하고, 회전 지점에서 이동 평면을 90도씩 돌려 카페 구석구석을 오간다.",
+        "팀에서 **게임플레이 프로그래밍 전반**을 맡아 플레이어, 주문·제조 루프, 상호작용, 보스전, 연출을 구현했다."
+      ],
+      "gameplay": [
+        "손님이 들어와 무작위 메뉴를 주문하면 제한 시간이 시작된다. 제한 시간은 120초에서 주문마다 10초씩 줄어 최소 30초까지 짧아진다.",
+        "찻잔이 재료와 기계 단계를 순서대로 모으면 음료가 완성된다. 레시피는 에스프레소, 라테, 에이드, 스무디, 차 등 16종이다.",
+        "카운터의 벨을 울려 음료를 내면, 맞으면 손님이 마시고 틀리면 찻잔을 던진다. 시간이 다 되면 손님이 카운터를 내리쳐 피해를 입는다.",
+        "높은 곳에서 떨어지면 높이만큼 피해를 입고, 개수대에서 씻으면 회복하지만 모은 재료가 사라진다. 로프와 로켓으로 이동할 수도 있다.",
+        "부엌칼을 들고 빈손으로 벨을 울리면 손님과의 보스전이 시작된다. 손님은 조준 공격과 찻잔 던지기를 쓰고, 몸에 생기는 약점을 부숴야 한다."
+      ],
+      "genres": [
+        "액션",
+        "2.5D",
+        "게임잼"
+      ],
+      "status": "completed",
+      "startDate": "2026-04",
+      "endDate": "2026-05",
+      "platform": "PC",
+      "teamSize": 4,
+      "teamComposition": "커밋 기록 기준 분담: 게임플레이 프로그래밍 / UI·데이터·스토리 / 맵 제작 / 초기 프로토타입",
+      "roles": [
+        "게임플레이 프로그래밍 전반",
+        "보스전",
+        "연출",
+        "공용 유틸리티"
+      ],
+      "contribution": "커밋 64개 중 37개",
+      "engine": "Unity 6 (URP)",
+      "languages": [
+        "C#"
+      ],
+      "frameworks": [
+        "Cinemachine",
+        "Input System",
+        "DOTween",
+        "UnityUtils (직접 만든 라이브러리)"
+      ],
+      "technologies": [
+        "2.5D 평면 이동과 평면 회전",
+        "ScriptableObject 레시피 데이터",
+        "LineRenderer 절차적 로프",
+        "보스 패턴 상태 머신"
+      ],
+      "features": [
+        {
+          "name": "주문·제조 루프",
+          "summary": "손님 주문, 제한 시간, 재료 수집, 음료 판정, 제출 연출로 이어지는 게임의 기본 흐름.",
+          "how": [
+            "재료·기계·주문을 ScriptableObject로 정의하고, 찻잔이 모은 순서가 레시피와 맞으면 음료로 바꾼다.",
+            "주문마다 제한 시간이 10초씩 줄어 점점 바빠지도록 했다.",
+            "정답이면 손님이 찻잔을 들어 마시고, 오답이면 찻잔을 던지는 장면을 DOTween으로 연출했다.",
+            "상황에 따라 번호가 붙은 상호작용 안내를 동적으로 띄워, 숫자 키로 고르게 했다."
+          ],
+          "technologies": [
+            "ScriptableObject",
+            "DOTween"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/i-am-cup/order.jpg",
+              "caption": "주문 화면: 주문 번호와 메뉴, 남은 시간, 레시피 버튼"
+            }
+          ]
+        },
+        {
+          "name": "2.5D 이동과 카메라",
+          "summary": "3D 공간 안에서 2D 찻잔이 평면 이동하고, 회전 지점에서 이동 평면을 돌린다.",
+          "how": [
+            "찻잔은 자신의 오른쪽 축을 따라 좌우로 움직이고, 회전 지점이나 비누 버프로 이동 평면을 90도 회전한다.",
+            "점프, 대시, 낙하 높이에 비례한 피해를 구현했다.",
+            "Cinemachine 카메라가 레이캐스트로 벽을 피해 찻잔을 따라간다."
+          ],
+          "technologies": [
+            "Cinemachine",
+            "Raycast"
+          ]
+        },
+        {
+          "name": "절차적 로프",
+          "summary": "마우스로 조준해 쏘는 로프를 여러 가닥의 LineRenderer로 그렸다.",
+          "how": [
+            "로프를 여러 가닥으로 나눠 나선형으로 꼬고 Perlin 노이즈로 흔들어 살아 있는 느낌을 냈다.",
+            "마우스 광선을 플레이어의 이동 평면에 투영해 2.5D 공간에서도 정확히 조준한다."
+          ],
+          "technologies": [
+            "LineRenderer",
+            "Perlin Noise"
+          ]
+        },
+        {
+          "name": "손님 보스전",
+          "summary": "쿨다운 기반 패턴과 예고 공격, 약점 파괴로 진행되는 보스전.",
+          "how": [
+            "손님이 쿨다운에 따라 조준 공격과 찻잔 던지기를 고르고, 공격 전에 예고 표시를 띄운다.",
+            "손님 몸에 약점이 생기고, 약점을 부술 때마다 체력 100 중 10씩 깎인다.",
+            "피격을 이벤트로 알리고 상황에 따라 취소할 수 있는 체력 컴포넌트(직접 만든 공용 라이브러리)를 썼다."
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/i-am-cup/boss.jpg",
+              "caption": "손님 보스전: 식칼을 들고 손님의 공격 예고 범위를 피하는 화면"
+            }
+          ]
+        }
+      ],
+      "achievements": [
+        {
+          "type": "award",
+          "title": "2026 하제 게임잼 1등"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "itch",
+          "url": "https://minyee2913.itch.io/i-am-cup",
+          "label": "itch.io 페이지 (브라우저에서 플레이)"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/i-am-cup/title.jpg",
+          "caption": "타이틀 화면"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/i-am-cup/order.jpg",
+          "caption": "주문 화면: 찻잔이 된 주인공과 손님의 주문"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/i-am-cup/boss.jpg",
+          "caption": "손님 보스전"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/i-am-cup/cafe-front.jpg",
+          "caption": "스토리 컷신 아트: 카페 외관"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/i-am-cup/counter.jpg",
+          "caption": "스토리 컷신 아트: 카운터"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/i-am-cup/cafe-inside.jpg",
+          "caption": "스토리 컷신 아트: 카페 내부"
+        }
+      ],
+      "displayOrder": 5,
+      "slug": "i-am-cup",
+      "url": "https://human.minyee2913.net/projects/i-am-cup",
+      "markdown": "https://human.minyee2913.net/projects/i-am-cup.md",
+      "period": "2026.04 ~ 2026.05",
+      "statusLabel": "개발 완료"
+    },
+    {
+      "id": "survival-strategy",
+      "accent": "#e0443a",
+      "intro": "embers",
+      "reveal": "clock",
+      "category": "unity",
+      "title": "생존 전략!",
+      "tagline": "죽어도, 강해져서 다시 깨어난다",
+      "subtitle": "타이머가 끝나면 불꽃의 거인이 나타나는 3회차 루프 3D 액션 게임 (1인 개발)",
+      "description": "모션 그래픽을 이용한 스토리 전개와 플레이어의 행동이 다음 회차 스탯에 반영되는 액션 게임.",
+      "highlights": [
+        "**1인 개발** 3D 액션, 기획·코드·캐릭터·연출 전부",
+        "죽어도 스탯이 이어지는 **3회차 루프** 구조",
+        "카툰 렌더링과 **SDF 얼굴 라이팅** 셰이더 구현",
+        "콤보·대시를 데이터로 조합하는 **ScriptableObject 무기**",
+        "걷는 애니메이션에 맞춰 밟는 **보스 발구르기 판정**"
+      ],
+      "overview": [
+        "넓은 방에서 깨어난 소녀가 타이머가 끝나면 나타나는 불꽃의 거인 이프리트에게 쓰러지고, 다시 같은 자리에서 깨어나는 회차 반복 구조의 액션 게임이다.",
+        "1·2회차는 이프리트를 쓰러뜨려도 결국 죽게 되어 있고, **3회차에서 지난 죽음의 흔적을 찾아야** 진짜 결전이 시작된다. 쓰러진 자리에는 해골이 남아 다음 회차의 단서와 무기가 된다.",
+        "만화 같은 캐릭터 표현을 위해 카툰 렌더링과 SDF 기반 얼굴 라이팅을 적용했다."
+      ],
+      "gameplay": [
+        "매 회차 시작 시 캐릭터가 깨어나는 컷씬이 나온다.",
+        "맵의 타이머(1·2회차 60초)가 끝나면 보스가 나타난다. 3회차는 지난번에 쓰러진 자리를 찾아가면 컷씬과 함께 40초 타이머가 시작된다.",
+        "타이머가 끝나기 전 플레이어의 행동에 따라 스탯이 오르고, 이 스탯은 회차가 넘어가도 유지된다. 때리면 공격력, 점프로 물건을 차면 방어력, 여러 해골에서 무기를 주우면 민첩이 오른다.",
+        "2회차부터 해골 유해에 놓인 무기를 F로 주워 쓸 수 있다. 좌클릭은 콤보 공격, 우클릭을 누르고 있으면 힘을 모아 들고 있는 무기를 던진다.",
+        "Shift 구르기로 공격을 피하면 잠깐 슬로 모션이 걸린다."
+      ],
+      "genres": [
+        "스토리",
+        "액션"
+      ],
+      "status": "completed",
+      "startDate": "2025-03",
+      "endDate": "2025-06",
+      "platform": "PC",
+      "teamSize": 1,
+      "engine": "Unity 6 (URP)",
+      "languages": [
+        "C#"
+      ],
+      "frameworks": [
+        "UnityUtils (직접 만든 라이브러리)",
+        "NiloToon 예제 셰이더",
+        "ShaderGraph",
+        "UnityChan SpringBone",
+        "Cinemachine",
+        "AI Navigation",
+        "DOTween",
+        "UniVRM"
+      ],
+      "technologies": [
+        "카툰 렌더링",
+        "SDF 얼굴 라이팅",
+        "Blend Tree",
+        "코루틴 컷씬",
+        "ScriptableObject",
+        "NavMesh",
+        "VRoid Studio",
+        "Blender"
+      ],
+      "architecture": [
+        "Singleton: 제네릭 Singleton<T>로 매니저 클래스 관리",
+        "상태 머신: 회차 진행(준비·전투·사망·승리·탐색)을 상태 값으로 관리",
+        "Observer: 체력 오브젝트의 피격·가해·사망 이벤트를 구독하고, 이벤트 안에서 피해를 취소하거나 줄인다",
+        "모듈화: ScriptableObject 데이터만으로 다양한 무기 제작",
+        "Component: 플레이어 기능(입력·이동·애니메이션·카메라·전투·장비)을 컴포넌트 단위로 분리"
+      ],
+      "history": [
+        {
+          "date": "2025-03",
+          "text": "개발 시작"
+        },
+        {
+          "date": "2025-05",
+          "text": "SDF 얼굴 셰이더 구현"
+        },
+        {
+          "date": "2025-06",
+          "text": "3회차 결전과 엔딩 완성"
+        },
+        {
+          "date": "2025-11",
+          "text": "Unity 6 최신 버전으로 업데이트"
+        }
+      ],
+      "features": [
+        {
+          "name": "죽어도 이어지는 회차 루프와 스탯",
+          "summary": "죽음이 실패가 아니라 다음 회차를 위한 준비가 되도록 만든 게임 흐름.",
+          "how": [
+            "죽으면 화면이 지지직거리는 글리치 효과와 함께 암전되고, 깨어나는 컷씬으로 다음 회차가 시작된다. 쓰러진 자리에는 해골이 남는다.",
+            "스탯은 기본값과 버프(더하기·퍼센트 증가)로 계산한다. 공격이 맞을 때마다 공격력 +25%, 점프 착지로 새 물건을 찰 때마다 방어력 +0.2, 다른 해골에서 무기를 주울 때마다 민첩 +1이 붙는다.",
+            "스탯은 게임을 시작할 때 한 번만 초기화해서 회차가 바뀌어도 유지된다. 민첩이 오르면 무기를 줍는 동작이 빨라진다.",
+            "승리 화면에는 플레이 시간과 죽은 횟수가 나온다."
+          ]
+        },
+        {
+          "name": "ScriptableObject로 조합하는 무기",
+          "summary": "코드를 고치지 않고 데이터만으로 새 무기와 콤보를 만든다.",
+          "how": [
+            "무기는 이름·모델·공격력을 가진 ScriptableObject이고, 콤보 단계마다 대기·쿨타임·슬로·화면 흔들림·피해 배율·애니메이션·범위·대시 세기와 방향·추가타를 설정한다.",
+            "해골에 놓일 무기는 확률 가중치가 있는 무기 세트에서 고른다. 검 5종을 만들었다.",
+            "우클릭을 누르고 있던 시간만큼(최대 1.5배) 피해가 커지는 무기 던지기는 무기를 잃는 대신 회전하며 날아가 맞힌다."
+          ],
+          "technologies": [
+            "ScriptableObject",
+            "Coroutine"
+          ]
+        },
+        {
+          "name": "보스 이프리트",
+          "how": [
+            "NavMesh로 플레이어를 쫓고, 걷는 애니메이션의 진행도에 맞춰 왼발·오른발이 땅에 닿는 순간마다 발구르기 피해와 넉백을 준다.",
+            "가까이 있으면 일정 간격으로 발차기를 해 더 큰 피해를 준다.",
+            "타이머가 0이 되면 타이머 자리에서 폭발과 함께 나타나고 화면이 흔들린다."
+          ],
+          "technologies": [
+            "NavMeshAgent",
+            "Animator normalizedTime"
+          ]
+        },
+        {
+          "name": "카툰 렌더링과 SDF 얼굴 라이팅",
+          "summary": "만화 같은 캐릭터 표현을 위한 렌더링 구성.",
+          "how": [
+            "캐릭터 재질에는 NiloToon의 공개 예제 셰이더를 써서 카툰 렌더링과 외곽선을 적용했다.",
+            "얼굴의 명암 경계는 SDF(Signed Distance Field) 텍스처와 머리 방향·빛 방향의 각도를 비교해 정하도록 ShaderGraph로 구현했고, 머리 방향은 스크립트로 셰이더에 넘긴다."
+          ],
+          "technologies": [
+            "NiloToon",
+            "ShaderGraph",
+            "SDF"
+          ]
+        },
+        {
+          "name": "캐릭터 제작 파이프라인과 컷씬",
+          "how": [
+            "시간이 부족해 캐릭터 기초 모델은 VRoid Studio로 만들고 Unity에서 추가 조정했다. 필요한 모션(기상, 던지기 등)은 Blender로 제작했다.",
+            "머리카락 물리는 Unity Japan이 공개한 UnityChanToon 프로젝트의 SpringBone을 사용했다.",
+            "모션이 끊기는 느낌을 없애기 위해 이동·구르기 모션을 세분화하고 Blend Tree로 전환을 처리했다.",
+            "컷씬은 코루틴으로 Cinemachine 카메라 전환, 표정(눈 깜빡임·슬픔·놀람) 변경, 대사, 효과음을 한 곳에서 순서대로 처리했다."
+          ]
+        }
+      ],
+      "technicalChallenges": [
+        {
+          "title": "카툰 렌더링에서 얼굴 명암이 부자연스러운 문제",
+          "status": "solved",
+          "problem": "카툰 렌더링에 일반적인 빛 처리를 적용하면 얼굴 명암이 부자연스럽거나 계단 현상이 생긴다.",
+          "cause": "카툰 렌더링은 빛을 밝음과 어두움 두 단계로 나누기 때문에, 얼굴처럼 곡면이 복잡한 부위에서 경계가 거칠게 나타난다.",
+          "process": [
+            "SDF(공간의 각 점이 경계까지 얼마나 떨어져 있는지를 거리로 표현하는 방법)를 이용한 카툰 얼굴 라이팅 기법을 조사했다.",
+            "국내 자료를 찾지 못해 중국어 자료를 번역기로 읽으며 학습했다.",
+            "학습한 내용을 일반 셰이더 코드보다 이해하기 쉬운 ShaderGraph로 구현했다."
+          ],
+          "approach": [
+            "SDF 기반 거리 보정",
+            "ShaderGraph"
+          ],
+          "result": "명암 경계선이 매끄러워지고, 빛이 닿는 경계를 자유롭게 조정할 수 있게 되었다. 최종 빌드에서는 얼굴 재질도 몸과 같은 NiloToon 셰이더로 맞췄다."
+        },
+        {
+          "title": "보스 발구르기 피해가 엉뚱하게 들어가던 문제",
+          "status": "solved",
+          "problem": "이프리트가 멈춰 있을 때도 발구르기 피해가 나거나, 한 걸음에 피해가 두 번 들어갔다.",
+          "cause": "걷는 애니메이션의 진행도만 보고 판정해서, 실제로 움직이는지와 상관없이 판정이 났고 반 바퀴 지점 검사가 여러 프레임에 걸쳐 겹쳤다.",
+          "process": [
+            "실제로 이동 중일 때만 판정하고, 멈추면 걸음 카운터를 초기화했다.",
+            "반 바퀴 지점 검사를 좁은 구간으로 제한해 한 걸음에 한 번만 판정되게 했다.",
+            "발차기를 발구르기 판정에서 떼어 내 거리 조건을 따로 두었다."
+          ],
+          "result": "발이 땅에 닿는 순간에만 한 번씩 피해가 들어간다."
+        }
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/qY3b2b_TLA0",
+          "caption": "플레이 영상"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/survival_strategy/1.png",
+          "alt": "생존 전략! 스크린샷 1"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/survival_strategy/2.png",
+          "alt": "생존 전략! 스크린샷 2"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/survival_strategy/3.png",
+          "alt": "생존 전략! 스크린샷 3"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "github",
+          "url": "https://github.com/minyee2913/survival_strategy"
+        },
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/qY3b2b_TLA0"
+        }
+      ],
+      "featured": true,
+      "displayOrder": 6,
+      "slug": "survival-strategy",
+      "url": "https://human.minyee2913.net/projects/survival-strategy",
+      "markdown": "https://human.minyee2913.net/projects/survival-strategy.md",
+      "period": "2025.03 ~ 2025.06",
+      "statusLabel": "개발 완료"
+    },
+    {
+      "id": "albedo",
+      "accent": "#6fd3ff",
+      "intro": "stars",
+      "reveal": "scan",
+      "category": "unity",
+      "title": "Albedo",
+      "subtitle": "빛 효과와 로봇 동료로 싸우는 탈출 액션 게임 (선린톤 11th)",
+      "description": "빛 효과로 스타일을 강조하고, 플레이어가 직접 스킬을 쓰지 않고 다른 주체에게 맡기는 방식으로 전투가 진행되는 탈출 액션 게임.",
+      "overview": [
+        "추락해 미지의 행성에 고립된 주인공이 괴물 사이에서 광물을 캐 본함에 에너지를 보내고, 그 지원으로 탈출선을 찾는 게임이다.",
+        "선린톤 11th에서 '담다'라는 주제에 맞춰 팀으로 제작했다."
+      ],
+      "gameplay": [
+        "로봇이 플레이어를 따라다니고, 플레이어는 계속 오른쪽으로 나아가야 한다.",
+        "광물 근처에서 우클릭을 연타해 캐고, E로 들어 로봇에게 가져가 F로 로봇 에너지를 충전한다.",
+        "좌클릭으로 공격하고, 로봇과 상호작용하면 로봇 에너지를 써서 우주선에 스킬을 요청한다. 요청한 스킬은 주문 대기열에 담겼다가 발동된다."
+      ],
+      "genres": [
+        "액션",
+        "탈출"
+      ],
+      "startDate": "2025",
+      "platform": "PC",
+      "teamSize": 4,
+      "teamComposition": "개발 3인, 아트 1인",
+      "roles": [
+        "팀장",
+        "광원 효과",
+        "플레이어",
+        "상호작용",
+        "로봇",
+        "맵 시스템"
+      ],
+      "contribution": "75%",
+      "engine": "Unity",
+      "languages": [
+        "C#"
+      ],
+      "frameworks": [
+        "UnityUtils (직접 만든 라이브러리)"
+      ],
+      "architecture": [
+        "Singleton: 매니저 클래스 관리",
+        "Observer: 상황에 대응하는 이벤트 시스템",
+        "Component: 플레이어 기능을 컴포넌트 단위로 분리"
+      ],
+      "features": [
+        {
+          "name": "대각선 지면 이동 보정",
+          "summary": "기울어진 지면을 따라 자연스럽게 이동하도록 입력 벡터를 보정했다.",
+          "purpose": "단순한 좌우 이동이 아닌 입체적인 느낌을 주기 위해 지면을 약간 대각선으로 만들었고, 플레이어 이동 경로를 지면과 맞춰야 했다.",
+          "how": [
+            "입력 축 값에 보정값을 더해 이동 방향을 지면 기울기에 맞춘다.",
+            "보정 수치는 직접 반복 테스트하며 맞췄다."
+          ],
+          "code": {
+            "language": "csharp",
+            "caption": "포트폴리오에 실은 코드 캡처를 옮겨 적음",
+            "code": "public void Move(Vector2 axis)\n{\n    if (stopMove > 0) return;\n\n    moveDelta = axis;\n    moveDelta.y += axis.x * 0.08f;\n    moveDelta.x -= axis.y * 0.1f;\n\n    transform.Translate(moveDelta.normalized * stat.GetResultValue(\"moveSpeed\") * Time.deltaTime);\n}"
+          }
+        },
+        {
+          "name": "로봇을 통한 스킬 요청과 대기열",
+          "how": [
+            "로봇 에너지를 소모해 우주선에 스킬을 요청하고, 요청된 스킬은 대기열에 담겼다가 순서대로 발동된다."
+          ]
+        },
+        {
+          "name": "UnityUtils 기반 공격 처리",
+          "how": [
+            "직접 만든 UnityUtils의 HealthObject로 대상에게 데미지를 주는 방식으로 공격 코드를 간결하게 처리했다."
+          ],
+          "links": [
+            {
+              "type": "github",
+              "url": "https://github.com/minyee2913/unityUtils",
+              "label": "UnityUtils 저장소"
+            }
+          ]
+        }
+      ],
+      "technicalChallenges": [
+        {
+          "title": "대각선 지면에서 무작위 좌표 구하기",
+          "status": "solved",
+          "problem": "지면이 대각선이라 x, y를 각각 무작위로 뽑으면 맵 밖의 좌표가 나온다.",
+          "cause": "맵의 유효 범위가 축에 평행한 사각형이 아니라 기울어진 형태라서 x와 y의 범위가 서로 종속된다.",
+          "process": [
+            "먼저 전체 맵 범위 안에서 무작위 X 좌표를 구한다.",
+            "그 X 좌표를 넣어 해당 위치에서 맵 범위 안에 있는 무작위 Y 좌표를 구하는 함수를 만들었다."
+          ],
+          "approach": [
+            "맵 X 범위 계산(GetXBoundsOfMaps)",
+            "X 기준 맵 내부 좌표 계산(GetPosInMap)"
+          ],
+          "result": "기울어진 맵 안에서 무작위 위치를 얻을 수 있게 되었다."
+        }
+      ],
+      "achievements": [
+        {
+          "type": "event",
+          "title": "선린톤 11th 출품작",
+          "description": "주제 '담다'에 맞춰 제작"
+        }
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/eC4HczYUfWA",
+          "caption": "플레이 영상"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/albedo/1.png",
+          "alt": "Albedo 스크린샷 1"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/albedo/2.png",
+          "alt": "Albedo 스크린샷 2"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/albedo/3.png",
+          "alt": "Albedo 스크린샷 3"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/eC4HczYUfWA"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/sunrinton2025/amazing_something"
+        },
+        {
+          "type": "download",
+          "url": "https://github.com/sunrinton2025/amazing_something/releases/download/dd/albedo.zip"
+        }
+      ],
+      "slug": "albedo",
+      "url": "https://human.minyee2913.net/projects/albedo",
+      "markdown": "https://human.minyee2913.net/projects/albedo.md",
+      "period": "2025"
+    },
+    {
+      "id": "koroshite",
+      "accent": "#ff5a5f",
+      "intro": "slash",
+      "reveal": "shatter",
+      "category": "unity",
+      "title": "KOROSHITE",
+      "tagline": "잊혀진 영웅들의 난투",
+      "subtitle": "8인 대전과 보스전을 지원하는 PC 멀티플레이 액션 게임 (2024 디지털콘텐츠개발대회 금상)",
+      "description": "서로 다른 스킬을 가진 캐릭터로 8인 대전과 보스전을 즐길 수 있는 PC 액션 게임.",
+      "highlights": [
+        "**1인 개발**, 2024 디지털콘텐츠개발대회 **금상**",
+        "Photon PUN 기반 **최대 8인** 실시간 대전",
+        "스킬 구성이 모두 다른 **캐릭터 5종**",
+        "2페이즈 보스와 슬로 모션 반격 연출",
+        "온·오프라인 분기로 **싱글플레이도 같은 네트워크 코드**를 사용"
+      ],
+      "overview": [
+        "여러 세계에서 죽음을 맞이한 영웅들이 불가사의한 장소에 모여 사명을 잊고 싸운다는 설정의 멀티플레이 액션 게임이다.",
+        "컷씬과 다이얼로그로 스토리를 전개하고, 모두 다른 스킬을 가진 캐릭터로 8명이 함께하는 대전 모드와 혼자서도 할 수 있는 보스전을 제공한다.",
+        "기획부터 네트워크, 캐릭터·보스, UI까지 **혼자 개발**했고, 개발 도중 Unity 6로 프로젝트를 옮겼다."
+      ],
+      "gameplay": [
+        "로그인 또는 회원가입(게스트 로그인 지원) 후 첫 시작 시 스토리 컷씬과 싱글플레이 튜토리얼이 진행된다. 튜토리얼은 건너뛸 수 있다.",
+        "로비에서는 캐릭터들이 NPC로 돌아다니고, 클릭하면 캐릭터와 스킬 정보를 볼 수 있다. 멀티플레이 방 목록과 싱글플레이 스테이지도 여기서 고른다.",
+        "J 공격, K 스킬(누르고 있기), L 궁극기(에너지 소모), Shift 대시, 2단 점프로 싸운다.",
+        "데스매치는 5분 동안 처치 수로 순위를 매기고(동률이면 처치당한 수), 처치되면 5초 뒤 무작위 위치에서 부활한다. 게임 중 F로 캐릭터를 바꿀 수 있고, 남은 시간이 150초가 되면 서든 데스가 시작되어 에너지가 매초 차오른다.",
+        "1:1 듀얼은 2분 동안 체력 1.5배로 겨루며, 먼저 처치한 쪽이 이긴다."
+      ],
+      "genres": [
+        "대전",
+        "멀티플레이",
+        "액션",
+        "스토리"
+      ],
+      "startDate": "2024-02",
+      "platform": "PC",
+      "teamSize": 1,
+      "engine": "Unity 6 (URP)",
+      "languages": [
+        "C#"
+      ],
+      "frameworks": [
+        "Photon PUN 2",
+        "PlayFab",
+        "Cinemachine",
+        "DOTween"
+      ],
+      "technologies": [
+        "RPC",
+        "OnPhotonSerializeView",
+        "PlayFab 사용자 데이터",
+        "코루틴 컷씬"
+      ],
+      "architecture": [
+        "Singleton: 매니저 클래스 관리",
+        "Observer: RPC를 이용한 이벤트 기반 네트워크 동기화",
+        "Strategy: 추상 Character 클래스를 상속해 캐릭터별 기능 구현",
+        "Proxy: 온라인이면 RPC로, 오프라인이면 로컬로 호출하는 래퍼로 싱글플레이와 코드 공유",
+        "Template Method: 추상 Monster 클래스로 몬스터 기본 행동(이동·피격·사망·넉백) 정의",
+        "Builder: 체이닝으로 대사를 쌓는 다이얼로그 API",
+        "캐릭터 id 문자열로 프리팹을 불러와 생성"
+      ],
+      "history": [
+        {
+          "date": "2024-02",
+          "text": "개발 시작"
+        },
+        {
+          "date": "2024-10",
+          "text": "Unity 6로 프로젝트 이전, 맵 동기화 수정"
+        },
+        {
+          "date": "2024-11",
+          "text": "보스 '기억의 환영' 패턴 작업"
+        }
+      ],
+      "features": [
+        {
+          "name": "PlayFab 계정과 캐릭터 보유 정보",
+          "purpose": "별도 서버를 구축할 시간과 비용이 없어 PlayFab API로 계정 정보를 저장하고 불러왔다.",
+          "how": [
+            "이메일·비밀번호 로그인(LoginWithEmailAddress), 표시 이름을 포함한 회원가입(RegisterPlayFabUser), 게스트 로그인을 지원한다. 첫 로그인 때 표시 이름을 정하게 한다.",
+            "요청 전에 빈 칸을 검사하고, 성공·실패 콜백으로 결과를 처리한다.",
+            "튜토리얼 완료 여부와 보유 캐릭터를 PlayFab 사용자 데이터에 저장해, 로그인하면 튜토리얼 또는 로비로 보낸다. 사무라이와 파이터는 기본 제공한다."
+          ],
+          "technologies": [
+            "PlayFab Client API"
+          ]
+        },
+        {
+          "name": "Photon 기반 멀티플레이 동기화",
+          "purpose": "많이 써 봐서 익숙하고 빠르게 구현할 수 있는 Photon 네트워크로 멀티플레이를 구현했다.",
+          "how": [
+            "로그인 → Photon 로비 → 방 목록 → 방 만들기(최대 8명)로 이어지고, 모드 선택과 시작은 방장만 할 수 있다. 경기마다 5초 카운트다운 후 시작 위치를 섞는다.",
+            "OnPhotonSerializeView로 이름, 체력, 실드, 킬·데스, 바라보는 방향, 이동·달리기·착지·대시 상태를 주고받고, 위치는 PhotonTransformView로 맞춘다.",
+            "피해·회복·넉백·애니메이션 트리거처럼 한 번만 일어나는 일은 RPC로 전달한다.",
+            "공격 판정은 공격한 쪽 클라이언트에서 하고, 가드·무적 같은 피격 처리는 각 클라이언트가 맞은 캐릭터 기준으로 한다.",
+            "방장 권한으로 채팅 차단·강퇴·방장 넘기기를 할 수 있고, 관전 모드가 있다."
+          ],
+          "technologies": [
+            "Photon PUN",
+            "RPC",
+            "OnPhotonSerializeView"
+          ]
+        },
+        {
+          "name": "캐릭터 5종",
+          "summary": "체력과 스킬 구성이 모두 다른 캐릭터를 추상 클래스 하나로 구현했다.",
+          "how": [
+            "**사무라이**(체력 800): 2연속 돌진 베기, 정면 공격을 막는 가드와 타이밍을 맞추면 발동하는 반격, 넓은 범위를 연속으로 베는 궁극기.",
+            "**파이터**(체력 1000): 빠른 잽, 자세를 잡고 버티며 힘을 모아 차는 킥(모은 만큼 피해와 회복), 궁극기 동안 킥을 바로 쓸 수 있는 스택 8개.",
+            "**시노비**(체력 650): 앞뒤를 연달아 베는 공격, 은신 돌진, 맞은 직후 잠깐 무적이 되는 회피.",
+            "**뱀파이어 걸**(체력 1200): 자기 체력을 쓰며 공격하고, 연속 공격으로 강화된 할퀴기로 체력과 에너지를 빼앗는다. 궁극기는 적 하나를 삼켜 연속 피해를 준다.",
+            "**뱀파이어 맨**(체력 600): 공격으로 실드를 쌓고, 실드를 써서 질주하며 적에게 표식을 남긴 뒤 표식을 터뜨린다.",
+            "Player 오브젝트가 입력과 판정을, Character 오브젝트가 스킬과 애니메이션을 맡는다. 각 Character는 소유자의 Photon UserId로 자기 Player 밑에 붙는다."
+          ]
+        },
+        {
+          "name": "보스 '기억의 환영'과 스토리 스테이지",
+          "how": [
+            "튜토리얼 → 로비 튜토리얼 → 스테이지 → 보스전 순서로 진행되고, 컷씬은 코루틴으로 카메라 확대·말풍선·트윈을 순서대로 실행한다.",
+            "다이얼로그는 대사를 체이닝으로 쌓는 API로 만들었고, 타자 치듯 글자가 나오며 좌우에 초상화를 띄운다.",
+            "보스는 체력 40%에서 회복을 시전한 뒤 붉게 변해 2페이즈로 넘어가고, 표창·돌진, 멀리 떨어진 대상에게 순간이동하는 패턴을 쓴다.",
+            "보스는 무작위로 가드하고, 2페이즈 후반에는 가드에 성공하면 **슬로 모션(시간 배율 0.6)**과 함께 반격한다.",
+            "몬스터 AI는 소유자 클라이언트에서만 돌고 체력·방향·이동을 동기화한다."
+          ],
+          "technologies": [
+            "Coroutine",
+            "DOTween",
+            "Time.timeScale"
+          ]
+        },
+        {
+          "name": "타격감 연출",
+          "how": [
+            "카메라 흔들림, 넉백, 피격 시 하얗게 번쩍이는 효과, 대시 잔상을 조합해 타격감을 강조했다.",
+            "효과음은 내 캐릭터와 일정 거리(15) 안에서 난 소리만 재생해, 8명이 싸워도 멀리서 난 소리가 섞이지 않게 했다.",
+            "사무라이의 가드 반격은 공격자의 동작을 취소하고 밀쳐 내며 공격 쿨타임을 준 뒤, 카메라 흔들림·사운드·넉백과 회복을 코루틴으로 순서대로 실행한다."
+          ]
+        }
+      ],
+      "technicalChallenges": [
+        {
+          "title": "캐릭터가 엉뚱한 플레이어에게 붙던 문제",
+          "status": "solved",
+          "problem": "멀티플레이에서 캐릭터 오브젝트가 다른 플레이어 밑에 붙는 경우가 있었다.",
+          "cause": "캐릭터가 자기 주인을 이름과 클라이언트마다 따로 만든 난수로 찾고 있어서, 클라이언트끼리 같은 플레이어를 가리킨다는 보장이 없었다.",
+          "process": [
+            "방을 만들 때 Photon UserId를 공개하도록 설정하고, 캐릭터 생성 데이터에 소유자의 UserId를 실어 각 클라이언트가 같은 기준으로 주인을 찾게 했다."
+          ],
+          "approach": [
+            "Photon UserId",
+            "PublishUserId"
+          ],
+          "result": "모든 클라이언트에서 캐릭터가 같은 플레이어에게 붙는다."
+        },
+        {
+          "title": "클라이언트마다 맵이 다르게 나오던 문제",
+          "status": "solved",
+          "problem": "같은 방에 있는 플레이어들이 서로 다른 맵에서 경기를 시작했다.",
+          "cause": "맵을 각 클라이언트가 로컬에서 무작위로 고르고 있었다.",
+          "process": [
+            "맵 관리자를 네트워크 오브젝트로 바꾸고, 정해진 맵 번호를 RPC로 모두에게 보내 같은 맵을 켜게 했다."
+          ],
+          "approach": [
+            "PhotonView",
+            "RPC"
+          ],
+          "result": "같은 방의 플레이어들이 RPC로 받은 같은 맵 번호로 시작한다."
+        },
+        {
+          "title": "싱글플레이에서도 네트워크 코드를 그대로 쓰기",
+          "status": "solved",
+          "problem": "스킬·피해 처리가 모두 RPC로 짜여 있어, 서버에 연결하지 않는 싱글플레이 스테이지에서는 그대로 쓸 수 없었다.",
+          "process": [
+            "RPC 호출을 래퍼 함수로 감싸, Photon에 연결되어 있으면 RPC를 보내고 아니면 같은 함수를 로컬에서 바로 부르게 했다."
+          ],
+          "approach": [
+            "Proxy 패턴"
+          ],
+          "result": "캐릭터·보스 코드를 멀티플레이와 싱글플레이가 함께 쓴다."
+        }
+      ],
+      "achievements": [
+        {
+          "type": "award",
+          "title": "2024 디지털콘텐츠개발대회 금상",
+          "date": "2024"
+        }
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/Q3kyJ8awLgo",
+          "caption": "플레이 영상"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/koroshite/koro0.png",
+          "alt": "KOROSHITE 스크린샷 1"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/koroshite/koro1.png",
+          "alt": "KOROSHITE 스크린샷 2"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/koroshite/koro2.png",
+          "alt": "KOROSHITE 스크린샷 3"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "docs",
+          "url": "https://heady-whitefish-4a4.notion.site/KOROSHITE-9ff743039ac14d0d82d8bc23cca036e7",
+          "label": "기획 문서 (Notion)"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/minyee2913/koroshite"
+        },
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/Q3kyJ8awLgo?si=BF6WCymrgMlv2S9o"
+        }
+      ],
+      "slug": "koroshite",
+      "url": "https://human.minyee2913.net/projects/koroshite",
+      "markdown": "https://human.minyee2913.net/projects/koroshite.md",
+      "period": "2024.02"
+    },
+    {
+      "id": "isekai-button",
+      "accent": "#b48cff",
+      "intro": "magic",
+      "reveal": "portal",
+      "category": "unity",
+      "title": "버튼을 눌렀더니 판타지 게임속 주인공이 되어버린 건에 대하여",
+      "description": "이전 회차 플레이어의 행동이 그림자가 되어 다음 플레이에 영향을 주는 다회차 기반 로그라이크 액션 게임.",
+      "overview": [
+        "버튼을 누르면 다른 세상에서 5억 년을 살고 기억을 잃은 채 돌아와 돈을 받는다는 제안을 받아들인 소녀가, 판타지 세계에서 5억 년 동안 던전을 도는 이야기다."
+      ],
+      "gameplay": [
+        "게임 시작 시 앞에 무기가 떨어져 있다.",
+        "좌클릭을 홀드하면 공격 범위가 보이고 놓으면 공격한다.",
+        "숫자 키로 스킬을 사용한다."
+      ],
+      "genres": [
+        "로그라이크",
+        "액션"
+      ],
+      "startDate": "2024",
+      "platform": "PC",
+      "teamSize": 4,
+      "teamComposition": "개발 3인, 아트 1인",
+      "roles": [
+        "전투 시스템",
+        "플레이어",
+        "무기 시스템",
+        "몬스터"
+      ],
+      "contribution": "50%",
+      "engine": "Unity",
+      "languages": [
+        "C#"
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/XC09-MKsyCw",
+          "caption": "플레이 영상"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/XC09-MKsyCw"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/counterSpellkuku/something"
+        }
+      ],
+      "slug": "isekai-button",
+      "url": "https://human.minyee2913.net/projects/isekai-button",
+      "markdown": "https://human.minyee2913.net/projects/isekai-button.md",
+      "period": "2024"
+    },
+    {
+      "id": "deliver-homez",
+      "accent": "#ff8a3d",
+      "intro": "wind",
+      "reveal": "toss",
+      "category": "unity",
+      "title": "구해줘 홈즈 김배달의 우당탕탕 대모험",
+      "tagline": "던져라, 배달부!",
+      "subtitle": "점프 대신 드래그로 몸을 던지는 3분 배달 플랫포머 (5인 팀, 팀장)",
+      "description": "점프 버튼 대신 마우스 드래그로 캐릭터를 던지는 방식으로 진행되는 아케이드 플랫포머 게임.",
+      "logo": "/img/games/deliver-homez/logo.png",
+      "hero": "/img/games/deliver-homez/hero.jpg",
+      "highlights": [
+        "5인 팀(개발 4·아트 1)의 **팀장**, UI·시스템 개발",
+        "드래그 세기·방향으로 던지는 **포물선 궤적 점프**",
+        "제한 시간 3분 동안 **배달·점수·보급** 루프",
+        "아이템 버프·디버프를 공통 **Effect 클래스**로 구조화",
+        "이름 기반 **로컬 랭킹**과 결과 화면"
+      ],
+      "overview": [
+        "월세 납부일이 다가온 피자 배달부 김배달 씨가 배달 단가가 높은 협곡 마을에서 배달하는 이야기다.",
+        "선린인터넷고 게임 동아리 C,Real에서 5인 팀(개발 4·아트 1)으로 만들었고, **팀장이자 UI·시스템 개발**을 맡았다.",
+        "점프 버튼이 없다. 마우스를 끌어 당긴 방향과 세기로 김배달 씨를 던지고, 거칠게 착지하면 피자를 떨어뜨린다. **조작 자체가 웃음 포인트가 되도록** 설계한 아케이드 게임이다."
+      ],
+      "gameplay": [
+        "A·D로 걷고, 땅에 서 있을 때 마우스 왼쪽 버튼이나 Space를 누른 채 끌었다 놓으면 당긴 반대 방향으로 몸을 던진다. 당긴 거리가 짧으면 점프하지 않는다.",
+        "날아가는 동안 A·D로 방향을 더해 더 멀리 갈 수 있다. 점프 직후 바로 누르면 '초가속' 문구가 뜬다.",
+        "피자 가게에서 피자 3판을 받아 화살표가 가리키는 배달지에 착지하면 배달 성공이다. 다음 배달지는 무작위로 정해진다.",
+        "높은 곳에서 세게 떨어지면 들고 있던 피자를 한 판 떨어뜨린다. 떨어진 피자는 다시 주울 수 있다.",
+        "피자가 떨어지면 가게로 돌아가 다시 받고, 이때 남은 시간이 40초 늘어난다. 제한 시간 3분이 끝나면 점수와 순위가 나온다.",
+        "맵 곳곳의 아이템 상자는 속도 증가·속도 감소·점프 강화·좌우 반전 중 하나를 10초 동안 건다."
+      ],
+      "genres": [
+        "아케이드",
+        "플랫포머"
+      ],
+      "status": "completed",
+      "startDate": "2024-07",
+      "endDate": "2024-09",
+      "platform": "PC",
+      "teamSize": 5,
+      "teamComposition": "개발 4인, 아트 1인",
+      "roles": [
+        "팀장",
+        "UI·시스템 개발",
+        "배달·점수·보급 흐름",
+        "아이템 효과 시스템",
+        "오프닝 연출",
+        "랭킹·결과 화면"
+      ],
+      "contribution": "60% (커밋 81개 중 43개)",
+      "engine": "Unity 2022.3",
+      "languages": [
+        "C#"
+      ],
+      "frameworks": [
+        "Cinemachine",
+        "LeanTween",
+        "TextMeshPro"
+      ],
+      "technologies": [
+        "Rigidbody2D 임펄스",
+        "포물선 궤적 예측",
+        "Tilemap",
+        "PlayerPrefs 랭킹",
+        "코루틴 컷신"
+      ],
+      "history": [
+        {
+          "date": "2024-07",
+          "text": "저장소 생성, 시작 씬과 엔딩 크레딧 제작"
+        },
+        {
+          "date": "2024-08",
+          "text": "드래그 점프·이동, 협곡 맵 타일, UI, 아이템 통합"
+        },
+        {
+          "date": "2024-09",
+          "text": "배달지 화살표, 말풍선, 랭킹, 효과음 추가 후 1.0 → 1.1 빌드"
+        }
+      ],
+      "features": [
+        {
+          "name": "드래그로 던지는 포물선 점프",
+          "summary": "당긴 거리와 방향이 곧 점프 세기와 방향이 되는, 이 게임의 핵심 조작.",
+          "purpose": "점프 버튼 하나로 끝나는 플랫포머 대신, 힘 조절에 실패하는 것까지 재미가 되는 조작을 만들고 싶었다.",
+          "how": [
+            "누른 지점과 현재 커서 사이의 거리를 최대값으로 자르고, 반대 방향 벡터에 곱해 던질 힘을 구한다.",
+            "끄는 동안 **15개 점으로 포물선 궤적을 미리 보여 준다**. 시간 간격마다 위치 = 시작점 + 힘×t − ½·g·t² 로 계산한다.",
+            "많이 당길수록 카메라가 조금씩 확대되고, 놓으면 원래대로 돌아와 힘을 모으는 느낌을 준다.",
+            "놓을 때 Rigidbody2D에 임펄스로 힘을 주고, 당긴 거리가 최대의 20% 이하이면 점프를 취소한다.",
+            "점프 직후 0.2초 안에 방향키를 누르면 '초가속' 문구를 띄워 숨은 조작을 알려 준다."
+          ],
+          "technologies": [
+            "Rigidbody2D",
+            "ForceMode2D.Impulse",
+            "Cinemachine"
+          ]
+        },
+        {
+          "name": "배달·점수·보급 루프",
+          "summary": "3분 안에 최대한 많이, 최대한 빨리 배달하게 만드는 게임 흐름.",
+          "how": [
+            "배달지마다 가게에서 떨어진 거리에 비례해 기본 점수를 주고, 직전 배달 이후 걸린 시간만큼 깎는다. 성공한 배달마다 30점을 더한다.",
+            "모든 배달지를 한 번씩 돌면 목록을 다시 채우고, 남은 곳 중 하나를 무작위로 켠다.",
+            "피자를 다 쓰면 목표가 가게로 바뀌고, 가게에 착지하면 컷신과 함께 피자 3판과 추가 시간 40초를 준다.",
+            "세게 착지하면(세로 충돌 속도 기준) 피자를 떨어뜨리고, 남은 개수에 따라 다른 말풍선 대사를 띄운다.",
+            "60초 동안 아무 조작이 없으면 경고 후 시작 화면으로 돌아간다."
+          ]
+        },
+        {
+          "name": "화면 밖 목표를 가리키는 화살표",
+          "summary": "배달지가 화면 밖에 있으면 화면 가장자리에 방향 화살표를 띄우고, 화면 안이면 목표 위에 표시한다.",
+          "how": [
+            "플레이어에서 목표로 향하는 각도를 화면 대각선 각도와 비교해 위·아래·왼쪽·오른쪽 중 어느 가장자리에 붙일지 정한다.",
+            "가장자리 안에서의 위치는 비례식으로 구하고, 화면 밖으로 넘어가지 않게 잘라 낸다.",
+            "HUD에 목표까지 남은 거리(m)를 함께 보여 준다."
+          ]
+        },
+        {
+          "name": "아이템 효과 시스템",
+          "summary": "버프·디버프를 공통 Effect 추상 클래스로 묶어, 새 효과를 클래스 하나로 추가할 수 있게 했다.",
+          "how": [
+            "Effect는 지속 시간과 경과 시간을 관리하고, 시작·종료 시 하위 클래스의 OnStart·OnEnd를 부른다.",
+            "효과마다 HUD 아이콘을 만들어 남은 시간을 원형 게이지로 보여 주고, 캐릭터 색으로도 상태를 알린다.",
+            "속도 증가(1.3배)·감소(0.5배), 점프 강화(최대 당김 거리 1.3배), 좌우 반전 효과를 구현했다. 좌우 반전은 이동 방향과 스프라이트 방향을 함께 뒤집는다.",
+            "같은 효과를 다시 얻으면 기존 효과를 끝내고 지속 시간을 더한 새 효과로 바꾼다."
+          ],
+          "technologies": [
+            "추상 클래스",
+            "Image.fillAmount"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "src": "https://human.minyee2913.net/img/games/deliver-homez/tuto-air.jpg",
+              "caption": "튜토리얼: 점프 중 방향키 입력",
+              "fit": "contain"
+            }
+          ]
+        },
+        {
+          "name": "오프닝 컷신과 말풍선",
+          "how": [
+            "게임 시작 시 코루틴으로 카메라 확대, 피자가 하나씩 떨어지는 연출, 무작위 대사, 튜토리얼, 'GO! GO!'를 순서대로 진행한다.",
+            "캐릭터 머리 위 말풍선이 몇 초 뒤 서서히 사라지고, 캐릭터가 돌아서도 글자가 뒤집히지 않게 했다."
+          ],
+          "technologies": [
+            "Coroutine",
+            "LeanTween"
+          ]
+        },
+        {
+          "name": "이름 기반 랭킹과 결과 화면",
+          "how": [
+            "시작할 때 이름을 입력받고, 게임이 끝나면 같은 이름의 기록이 있으면 최고 점수만 갱신하고 없으면 새로 추가한다.",
+            "랭킹은 PlayerPrefs에 저장하고, 결과 화면에서 배달 수·점수·내 최고 기록·현재 순위와 '신기록!'·'첫기록!' 문구를 보여 준다."
+          ],
+          "technologies": [
+            "PlayerPrefs"
+          ]
+        }
+      ],
+      "technicalChallenges": [
+        {
+          "title": "같은 이름으로 다시 하면 랭킹이 갱신되지 않고 중복되던 문제",
+          "status": "solved",
+          "problem": "같은 이름으로 여러 번 플레이하면 기록이 줄마다 새로 쌓여, 한 사람이 랭킹을 여러 칸 차지했다.",
+          "cause": "게임이 끝날 때마다 무조건 새 기록을 추가했고, 기록 타입이 값 타입(struct)이라 찾아낸 기록을 고쳐도 목록 안의 원본이 바뀌지 않았다.",
+          "process": [
+            "기록 타입을 참조 타입(class)으로 바꿔 찾은 기록을 직접 고칠 수 있게 했다.",
+            "같은 이름이 있으면 점수가 더 높을 때만 점수와 배달 수를 갱신하고, 없을 때만 새로 추가하게 바꿨다."
+          ],
+          "result": "이름마다 최고 기록 한 줄만 남고, 결과 화면에서 신기록과 첫 기록을 구분해 보여 줄 수 있게 되었다."
+        },
+        {
+          "title": "같은 아이템을 연속으로 먹으면 오류가 나던 문제",
+          "status": "solved",
+          "problem": "효과가 남아 있는 상태에서 같은 아이템을 또 먹으면 오류가 발생했다.",
+          "cause": "기존 효과를 새 효과로 바꿀 때 HUD 아이콘을 먼저 지웠는데, 기존 효과의 갱신·종료 처리가 이미 지워진 아이콘에 다시 접근했다.",
+          "process": [
+            "아이콘을 지운 뒤 참조를 비우고, 갱신·종료 처리에서는 아이콘이 남아 있을 때만 접근하도록 고쳤다."
+          ],
+          "result": "같은 효과를 이어서 얻어도 오류 없이 새 효과로 교체된다."
+        }
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/KInJwl4cEj0",
+          "caption": "플레이 영상"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/deliver-homez/hero.jpg",
+          "caption": "시작 화면 일러스트"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/deliver-homez/tuto-jump.jpg",
+          "caption": "튜토리얼: 클릭 또는 Space를 누른 채 끌어 점프",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/deliver-homez/tuto-move.jpg",
+          "caption": "튜토리얼: A·D로 이동",
+          "fit": "contain"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/deliver-homez/game-over.jpg",
+          "caption": "엔딩 화면: \"집값을 다 벌지 못했어...\""
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/KInJwl4cEj0",
+          "label": "플레이 영상"
+        }
+      ],
+      "slug": "deliver-homez",
+      "url": "https://human.minyee2913.net/projects/deliver-homez",
+      "markdown": "https://human.minyee2913.net/projects/deliver-homez.md",
+      "period": "2024.07 ~ 2024.09",
+      "statusLabel": "개발 완료"
+    },
+    {
+      "id": "echo",
+      "accent": "#4fd1c5",
+      "intro": "motes",
+      "reveal": "ripple",
+      "category": "unity",
+      "title": "ECHO",
+      "description": "집에 들어온 NPC들이 벌이는 돌발 행동을 아이템으로 막아내는 아케이드 시뮬레이션 전략 게임.",
+      "overview": [
+        "복지센터를 연 플레이어가 찾아오는 진상 NPC들의 돌발 행동을 아이템으로 막아내는 게임이다."
+      ],
+      "genres": [
+        "아케이드",
+        "시뮬레이션",
+        "전략"
+      ],
+      "startDate": "2024",
+      "platform": "PC",
+      "teamSize": 3,
+      "teamComposition": "개발 3인",
+      "roles": [
+        "상호작용 시스템",
+        "아이템 시스템"
+      ],
+      "contribution": "60%",
+      "engine": "Unity",
+      "languages": [
+        "C#"
+      ],
+      "slug": "echo",
+      "url": "https://human.minyee2913.net/projects/echo",
+      "markdown": "https://human.minyee2913.net/projects/echo.md",
+      "period": "2024"
+    },
+    {
+      "id": "bumgeun-rush",
+      "accent": "#ffd23f",
+      "intro": "speed",
+      "reveal": "dash",
+      "category": "unity",
+      "title": "범근러쉬",
+      "description": "학교 친구를 등장인물로 내세운 엽기적인 감성의 러닝 아케이드 게임.",
+      "genres": [
+        "러닝",
+        "아케이드"
+      ],
+      "startDate": "2023",
+      "platform": "PC",
+      "teamSize": 1,
+      "engine": "Unity",
+      "languages": [
+        "C#"
+      ],
+      "externalLinks": [
+        {
+          "type": "github",
+          "url": "https://github.com/minyee2913/beomgeun_rushv2"
+        }
+      ],
+      "slug": "bumgeun-rush",
+      "url": "https://human.minyee2913.net/projects/bumgeun-rush",
+      "markdown": "https://human.minyee2913.net/projects/bumgeun-rush.md",
+      "period": "2023"
+    },
+    {
+      "id": "escape-the-music",
+      "accent": "#ff5fa2",
+      "intro": "notes",
+      "reveal": "beat",
+      "category": "unity",
+      "title": "ESCAPE THE MUSIC",
+      "description": "노트 상호작용에 따라 뒤의 플랫포머 캐릭터가 반응하는 구조의 플랫포머 리듬 게임.",
+      "overview": [
+        "판정과 노트 외에는 변수가 없는 리듬 게임에 플랫포머를 결합해 다양한 변수를 만들고 보는 재미를 높이려 했다."
+      ],
+      "genres": [
+        "플랫포머",
+        "리듬"
+      ],
+      "startDate": "2023",
+      "platform": "PC",
+      "teamSize": 4,
+      "teamComposition": "개발 3인, 아트 1인",
+      "roles": [
+        "노트 저장·출력·인식 시스템",
+        "플레이어"
+      ],
+      "contribution": "80%",
+      "engine": "Unity",
+      "languages": [
+        "C#"
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/hjJWSH370Qw",
+          "caption": "플레이 영상"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "github",
+          "url": "https://github.com/zerOpen-is-on-RG/escape_the_music"
+        },
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/hjJWSH370Qw"
+        }
+      ],
+      "slug": "escape-the-music",
+      "url": "https://human.minyee2913.net/projects/escape-the-music",
+      "markdown": "https://human.minyee2913.net/projects/escape-the-music.md",
+      "period": "2023"
+    },
+    {
+      "id": "eucliwood",
+      "accent": "#8be36b",
+      "intro": "smog",
+      "reveal": "purify",
+      "category": "unity",
+      "title": "유클리우드 Edge",
+      "description": "전투마다 두더지 잡기 같은 퍼즐을 진행하고, 퍼즐 성취도에 따른 버프를 받은 뒤 실시간 전투가 이어지는 퍼즐 액션 로그라이크.",
+      "overview": [
+        "대기업의 탐욕으로 오염된 땅을 정화하며 기업에 맞서 싸우는 이야기다."
+      ],
+      "genres": [
+        "퍼즐",
+        "액션",
+        "로그라이크"
+      ],
+      "startDate": "2023",
+      "platform": "PC",
+      "teamSize": 1,
+      "engine": "Unity",
+      "languages": [
+        "C#"
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/qeY9_LM9LVc",
+          "caption": "플레이 영상"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/qeY9_LM9LVc?si=74Ngadrt-ges73ge"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/minyee2913/eucliwood"
+        }
+      ],
+      "slug": "eucliwood",
+      "url": "https://human.minyee2913.net/projects/eucliwood",
+      "markdown": "https://human.minyee2913.net/projects/eucliwood.md",
+      "period": "2023"
+    },
+    {
+      "id": "farmer-happy-life",
+      "accent": "#7ccf5a",
+      "intro": "smog",
+      "reveal": "purify",
+      "category": "unity",
+      "title": "파머의 해피 라이프",
+      "description": "오염되어 가는 타일을 빠르게 이동하며 중화시켜 땅을 지키는 아케이드 퍼즐 게임.",
+      "overview": [
+        "마을에 들어선 공장의 오염 물질로 오염되어 가는 농장 땅을 빠르게 중화해 지키는 게임이다."
+      ],
+      "genres": [
+        "아케이드",
+        "퍼즐"
+      ],
+      "startDate": "2023",
+      "platform": "PC",
+      "teamSize": 1,
+      "engine": "Unity",
+      "languages": [
+        "C#"
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/TaHivs_WtP8",
+          "caption": "플레이 영상"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/TaHivs_WtP8?si=7QDLd0qb6IpfMDti"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/minyee2913/unity-project1"
+        }
+      ],
+      "slug": "farmer-happy-life",
+      "url": "https://human.minyee2913.net/projects/farmer-happy-life",
+      "markdown": "https://human.minyee2913.net/projects/farmer-happy-life.md",
+      "period": "2023"
+    },
+    {
+      "id": "luminous",
+      "slug": "luminous-wanderlust",
+      "aliases": [
+        "luminous-rpg"
+      ],
+      "category": "minecraft",
+      "accent": "#5cc8ff",
+      "intro": "motes",
+      "reveal": "light",
+      "title": "Luminous Wanderlust",
+      "tagline": "루미너스 : 원더러스트",
+      "subtitle": "Go로 직접 만든 Minecraft 서버 위의 반오픈월드 액션 RPG (구 Luminous RPG)",
+      "description": "유물·장비·직업 특성을 조합해 나만의 전투 스타일을 만드는 반오픈월드 액션 RPG. Go 기반 서버 엔진 Dragonfly를 포크해 게임 서버와 전용 클라이언트, 게이트웨이까지 직접 개발하고 운영한다.",
+      "overview": [
+        "2020년에 시작한 장기 프로젝트로, 2023년 12월부터 Go로 작성된 Minecraft Bedrock 서버 엔진 **Dragonfly를 포크해 게임 서버를 처음부터 다시 만들었다**. 이전 이름은 Luminous RPG다.",
+        "구르기·발차기·패링과 연출이 붙은 궁극기로 싸우는 액션 전투에, 4개 계열의 직업, 유물·장비 성장, 스토리 퀘스트, 던전과 협동 던전, 생활 콘텐츠와 길드까지 갖춘 RPG를 **서버 쪽 코드로 구현**했다.",
+        "Bedrock 클라이언트뿐 아니라 직접 만든 전용 클라이언트(Windows·macOS·Android)와 **Java Edition 접속 게이트웨이**, Discord 안에서 보는 관전 모드까지 붙여 여러 경로로 같은 세계에 들어올 수 있다.",
+        "실제 플레이어가 접속하는 라이브 서버로 운영하고 있으며, 운영 공지(2026년 10월) 기준 공개 후 약 3개월 동안 누적 이용자는 약 800명이다.",
+        "지금의 Dragonfly 기반 서버는 게임 코드를 사실상 전부 직접 작성했고(게임 패키지 커밋 1,028개 중 1,025개), 2026년 6월부터는 AI 코딩 에이전트와 함께 작업하면서 에이전트용 검증 규칙을 따로 두고 개발하고 있다."
+      ],
+      "gameplay": [
+        "4개 계열(전사·수호자·저격수·지원가) 아래 48개의 직업이 있고, NPC에게 배운 직업을 같은 계열 안에서 바꿀 수 있다. 직업 레벨 3·4·5에 특성 칸이 열린다.",
+        "무기 45종, 유물 51종, 방어구 12종을 조합한다. 장비 레벨 상한은 기본 45이고 세계를 하나 클리어할 때마다 15씩 오른다. 15레벨마다 돌파 효과 3개 중 하나를 고르고, 같은 장비를 넣어 초월한다.",
+        "숲 지대, 언덕 마을, 차가운 동굴 지역을 오가며 필드 전투, 던전, 극한 도전, 층을 오르는 '절망의 탑'을 진행한다. 2~4인 협동 던전도 있다.",
+        "낚시·농사·채광·벌목·요리 같은 생활 콘텐츠와 길드, 플레이어 거래소와 떠돌이 상인이 있다.",
+        "스스로 플레이하며 성장하고 기억하는 모험가 NPC와, 욕구에 따라 생활하며 심부름과 개인 이야기를 주는 마을 주민이 함께 살아간다."
+      ],
+      "genres": [
+        "액션 RPG",
+        "반오픈월드",
+        "MMO 서버"
+      ],
+      "status": "in-development",
+      "startDate": "2020",
+      "platform": "Minecraft Bedrock / Java 서버 + 전용 클라이언트",
+      "languages": [
+        "Go",
+        "C# (Godot 클라이언트)",
+        "Java (Java Edition 게이트웨이)",
+        "Python (개발 도구)"
+      ],
+      "frameworks": [
+        "Dragonfly (포크해서 사용)",
+        "gophertunnel (Bedrock 프로토콜)",
+        "ent ORM + SQLite",
+        "Pion WebRTC",
+        "Godot 4 (.NET)",
+        "MCProtocolLib · ViaVersion",
+        "Discord Activity"
+      ],
+      "technologies": [
+        "서버 사이드 RPG 시스템",
+        "JSON 기반 퀘스트·스토리 저작",
+        "학습형 NPC 에이전트 (LLM 미사용)",
+        "자체 클라이언트 프로토콜 (WebRTC / WebSocket)",
+        "Bedrock 프로토콜 버전 업그레이드",
+        "월드 정지 감시와 자동 프로파일링",
+        "헤드리스 밸런스 시뮬레이션",
+        "AI 코딩 에이전트 협업 규칙"
+      ],
+      "architecture": [
+        "엔진/게임 분리: 포크한 Dragonfly 엔진 위에 약 90개 게임 패키지(전투·직업·아이템·던전·퀘스트·스토리·길드·거래소·주민 등)를 얹은 구조",
+        "전투: 입력을 이벤트 버스로 받아 아이템 스킬 훅을 실행하고, 하나의 공격 처리 경로에서 10단계 피해 계산을 거친다",
+        "데이터: 계정·프로필·길드·랭킹은 ent ORM으로 SQLite(WAL)에, 콘텐츠(던전 122·퀘스트 200·스토리 44)는 JSON 설정으로 분리",
+        "접속 경로: Bedrock 직접 접속, 전용 클라이언트 게이트웨이, Java Edition 게이트웨이가 모두 같은 서버 세션 경로로 들어온다",
+        "운영 안전장치: 라이브 서버에서는 에이전트가 재시작·접속 테스트를 하지 못하게 하는 규칙, 업스트림 병합 검증 절차"
+      ],
+      "history": [
+        {
+          "date": "2020",
+          "text": "Luminous RPG 프로젝트 시작"
+        },
+        {
+          "date": "2021-03",
+          "text": "Bedrock 서버 모딩 프레임워크 BDSX 오픈소스에 기능 기여 시작 (2022-03까지 PR 11건 병합)"
+        },
+        {
+          "date": "2021-05",
+          "text": "BDSX 기반 첫 서버 저장소 구성: 던전·퀘스트·길드·직업·낚시·상점·강화·스킬"
+        },
+        {
+          "date": "2021-07",
+          "text": "스토리 시스템, 인챈트"
+        },
+        {
+          "date": "2021-11",
+          "text": "던전 카운트다운, 스토리 시스템 개편, 몬스터 생성 비동기 처리"
+        },
+        {
+          "date": "2021-12",
+          "text": "새 서버 저장소로 이전, 자동 백업·우편·스토리 데이터"
+        },
+        {
+          "date": "2022-03",
+          "text": "상자 UI, 퀘스트·길드 개편"
+        },
+        {
+          "date": "2022-06",
+          "text": "레이드 보스와 기간 한정 도전"
+        },
+        {
+          "date": "2022-07",
+          "text": "유물·투사체 시스템, 벌목 채집"
+        },
+        {
+          "date": "2023-04",
+          "text": "웹 관리 페이지, 서버 렉 개선"
+        },
+        {
+          "date": "2023-05",
+          "text": "새 UI, 절망의 탑 첫 버전"
+        },
+        {
+          "date": "2023-08",
+          "text": "메인 퀘스트와 스토리 음악, 밸런스 패치"
+        },
+        {
+          "date": "2023-12",
+          "text": "Go 서버 엔진 Dragonfly를 포크해 새로 개발 시작, 멀티 월드"
+        },
+        {
+          "date": "2024-08",
+          "text": "프로토콜 업데이트 대응"
+        },
+        {
+          "date": "2025-01",
+          "text": "스토리 시스템"
+        },
+        {
+          "date": "2025-07",
+          "text": "직업 시스템"
+        },
+        {
+          "date": "2025-08",
+          "text": "틱 처리 성능 개선, 1.21.100 엔진 병합"
+        },
+        {
+          "date": "2026-01",
+          "text": "서버 성능 분석과 DB 개선"
+        },
+        {
+          "date": "2026-06",
+          "text": "AI 코딩 에이전트와 본격 협업 시작, 소환·거래소"
+        },
+        {
+          "date": "2026-07",
+          "text": "월드 정지 감시(워치독), 절망의 탑"
+        },
+        {
+          "date": "2026-08",
+          "text": "Bedrock 1.26.40 프로토콜 업그레이드, 에이전트 작업 규칙"
+        },
+        {
+          "date": "2026-09",
+          "text": "Discord 관전 모드, Godot 전용 클라이언트와 게이트웨이"
+        },
+        {
+          "date": "2026-10",
+          "text": "주민 NPC 에이전트, Java Edition 게이트웨이, 밸런스 시뮬레이터, 1.26.60 대응"
+        },
+        {
+          "date": "2026-11",
+          "text": "협동 던전"
+        }
+      ],
+      "features": [
+        {
+          "name": "전투와 빌드 시스템",
+          "summary": "무기·유물·방어구·직업 특성을 조합하는 빌드와, 10단계로 계산되는 피해 공식.",
+          "how": [
+            "플레이어 입력을 이벤트 버스로 받아 장착 아이템의 스킬 훅을 실행하고, 모든 피해는 하나의 공격 처리 경로를 지난다.",
+            "피해는 기본 피해 → 전체·속성 피해 보너스 → 속성 상성 → 피해 증가 → 치명타 → 방어(대상의 남은 체력 비율 반영) → 받는 피해 보정 → 속성 특수 효과 → 최종 증가 → 후처리 순서로 계산한다.",
+            "속성은 없음·빛·어둠·불·물·번개·대지 7종이고, 번개와 대지는 고유 규칙이 있다.",
+            "장비는 레벨, 인챈트(최대 6칸), 한계 돌파(I~V), 15레벨마다 고르는 돌파 효과, 같은 장비로 하는 초월로 성장한다. 계정 레벨(명성)은 기본 능력치를 올리지 않아 성장이 장비에 묶이게 했다."
+          ],
+          "technologies": [
+            "Go",
+            "이벤트 버스"
+          ]
+        },
+        {
+          "name": "퀘스트·스토리 저작 파이프라인",
+          "summary": "코드를 고치지 않고 JSON과 게임 안 도구로 퀘스트·스토리·던전·길 안내를 만든다.",
+          "how": [
+            "퀘스트(메인·사이드·일일·주간·랭크·월드·도전)와 스토리, 던전을 JSON 설정으로 정의한다. 현재 던전 122개, 퀘스트 200개, 스토리 44개다.",
+            "스토리는 컷신 상태 머신이다. 스토리가 태그를 붙이면 퀘스트 단계가 진행되고, 그 단계가 NPC와 던전을 열고, 던전 클리어가 다음 스토리를 시작한다.",
+            "전용 클라이언트 안에서 동작하는 스토리 장면 편집기와 던전 편집기를 만들었다.",
+            "게임 안에서 '경로 막대'로 길 그래프를, '구역 막대'로 다각형 구역을 그린다. 퀘스트 목표까지 **다익스트라로 경로를 찾아** 플레이어별 화살표 입자로 안내한다."
+          ],
+          "technologies": [
+            "JSON",
+            "Dijkstra",
+            "In-game 에디터"
+          ]
+        },
+        {
+          "name": "주민·모험가 NPC 에이전트",
+          "summary": "사람과 같은 방식으로 접속해 스스로 플레이하고 배우는 NPC. LLM을 쓰지 않는다.",
+          "how": [
+            "NPC가 전용 클라이언트 게이트웨이를 통해 **실제 플레이어 세션으로 접속**해, 사람과 같은 관찰과 입력으로 움직인다.",
+            "직접 짠 행동 계획에 더해, 빌드 연구에는 UCB 기반 문맥 다중 슬롯 밴딧을 쓰고 아이템을 직접 써 보고 결과를 보며 아이템의 의미를 배운다.",
+            "감정·성격·용량이 정해진 기억(망각 포함)과 세대가 이어지는 '환생'이 있고, 형태소 사전과 활용·조사 규칙으로 고정 문장 없이 한국어 문장을 만든다.",
+            "마을 주민은 욕구에 따라 생활하며 심부름, 생활 사건, 소문, 선택지가 갈리는 4단계 개인 이야기를 준다."
+          ],
+          "considerations": [
+            "설계 문서상 일부 기능은 단위 테스트까지만 확인했고 라이브 서버에서 관찰은 아직이다."
+          ],
+          "technologies": [
+            "Multi-armed Bandit (UCB)",
+            "규칙 기반 한국어 문장 생성"
+          ]
+        },
+        {
+          "name": "협동 던전과 콘텐츠",
+          "summary": "2~4인 협동 던전, 절망의 탑, 거래소 등 함께 즐기는 콘텐츠.",
+          "how": [
+            "협동 던전은 교회·벌집·소굴·농장·절벽 5종의 절차 생성 맵과 로비, 공유 목숨, 제한 시간, 계열별 파티 버프, 협동 토큰 상점으로 구성했다.",
+            "보스는 파괴수, 엔더 군주, 슬라임 왕, 여왕벌, 거대 워든, 트렌트, 예티 등 커스텀 엔티티로 구현했다.",
+            "떠돌이 상인의 가격은 전체 거래 평균과 최근 평균을 30:70으로 섞어 정하고, **NPC 판매는 가격 계산에서 빼서** 가격이 스스로를 끌어올리지 않게 했다."
+          ]
+        },
+        {
+          "name": "전용 클라이언트와 게이트웨이",
+          "summary": "Godot로 만든 전용 클라이언트가 서버에 내장된 게이트웨이로 접속한다.",
+          "how": [
+            "전용 클라이언트는 Godot 4(.NET)로 Windows·macOS·Android용으로 만들었고, 서버의 Bedrock 리소스 팩을 직접 읽어 렌더링한다. 이전의 Electron 클라이언트를 대체했다.",
+            "서버에 내장한 게이트웨이가 WebRTC 또는 WebSocket으로 자체 프로토콜을 말하고, Xbox 로그인을 거쳐 일반 Dragonfly 세션 경로로 연결한다. Bedrock 패킷 형식은 이 연결로 오가지 않는다.",
+            "Molang 의미 검사 하네스와 헤드리스 접속 테스트로 클라이언트를 검증한다."
+          ],
+          "technologies": [
+            "Godot 4 (.NET)",
+            "Pion WebRTC",
+            "WebSocket",
+            "Xbox Live 인증"
+          ]
+        },
+        {
+          "name": "Java Edition 접속 게이트웨이",
+          "summary": "수정하지 않은 Minecraft Java Edition 클라이언트로도 같은 서버에 접속한다.",
+          "how": [
+            "Go 서버가 MCProtocolLib 기반 JVM 프런트엔드를 띄우고 관리한다. ViaVersion으로 Java 1.21.6~26.3 클라이언트를 받는다.",
+            "Microsoft/Xbox 계정을 연결해 Bedrock과 같은 저장 데이터를 쓴다.",
+            "Bedrock 리소스를 버전별 Java 리소스 팩으로 변환하고, Bedrock 폼 UI는 대화창이나 상자 UI로 바꿔 보여 준다."
+          ],
+          "considerations": [
+            "Bedrock과의 기능 동등성은 아직 일부만 확인됐다."
+          ],
+          "technologies": [
+            "Java",
+            "MCProtocolLib",
+            "ViaVersion"
+          ]
+        },
+        {
+          "name": "Discord 관전 모드 (LUMINOUS LIVE)",
+          "summary": "Discord Activity 안에서 서버의 실제 세계를 실시간으로 보는 관전 모드.",
+          "how": [
+            "WebSocket 백엔드가 세계 영역을 스트리밍하고, 브라우저 렌더러가 서버의 실제 Bedrock 리소스 팩 구성을 읽어 그린다.",
+            "게임 서버에는 읽기 전용 접근자 세 개만 추가해 관전 기능이 게임 로직에 영향을 주지 않게 했다."
+          ],
+          "technologies": [
+            "Discord Activity",
+            "WebSocket"
+          ]
+        },
+        {
+          "name": "운영 자동화와 개발 도구",
+          "summary": "라이브 서버 운영과 대규모 개발을 받치는 도구들.",
+          "how": [
+            "월드마다 심장 박동 트랜잭션을 보내 10초 안에 처리되지 않으면 정지로 보고, CPU·블록·뮤텍스 프로파일과 고루틴 스택을 자동으로 남긴다.",
+            "네트워크 세션 없이 실제 플레이어 객체를 조종하는 헤드리스 밸런스 시뮬레이터로 전투 밸런스를 확인한다.",
+            "장비·유물·직업 데이터를 Notion으로 단방향 동기화하고, 리소스 팩을 6개로 나눠 빌드하며, 실제 플레이를 녹화해 영상을 편집하는 도구와 신규 유저 이탈 분석 도구를 만들었다.",
+            "테스트 파일 111개(그중 110개 직접 작성)로 메모리 월드 위 통합 테스트를 돌린다.",
+            "AI 코딩 에이전트를 위한 규칙을 문서로 두었다: 증거 없이 '고쳤다/검증했다'라고 쓰지 않기, 측정 수치는 조건과 함께 보고하기, 봇 결과를 사람 테스트로 내세우지 않기, 업스트림 병합 후 양쪽 부모 비교와 2인 접속 테스트."
+          ],
+          "technologies": [
+            "pprof",
+            "Go test",
+            "Notion API"
+          ]
+        }
+      ],
+      "technicalChallenges": [
+        {
+          "title": "Bedrock 1.26.40 업그레이드 후 접속이 끊기는 문제",
+          "status": "solved",
+          "problem": "Bedrock 1.26.30(프로토콜 1001)에서 1.26.40(프로토콜 2168)으로 올린 뒤 클라이언트가 접속 중 끊겼고, 일부 문제는 두 번째 플레이어가 들어올 때만 나타났다.",
+          "cause": "Dragonfly가 플레이어 목록 항목의 **빌드 플랫폼 값을 채우지 않았는데**, 1.26.40부터 클라이언트가 이를 거부했다. 플레이어 추가 패킷에도 같은 문제가 있어 2인 접속에서만 드러났다.",
+          "process": [
+            "경쟁하던 업스트림 PR 두 개 중 하나를 골라 그 위에서 작업했다.",
+            "Mojang의 프로토콜 스키마 문서와 패킷 추적·검증 도구로 패킷을 비교했다.",
+            "오래된 아이템 목록과 블록 팔레트도 고쳤지만 원인은 아니었고, 추측으로 넣었던 스킨 관련 수정 세 개는 되돌렸다.",
+            "세션의 플레이어 목록·추가 처리에 빌드 플랫폼 값을 넣어 해결하고, 빗나간 추측 네 가지를 회고 문서로 남겼다."
+          ],
+          "approach": [
+            "gophertunnel",
+            "패킷 추적",
+            "프로토콜 스키마 비교"
+          ],
+          "result": "1.26.40에 이어 1.26.45, 1.26.50, 1.26.60(프로토콜 2225)까지 버전을 따라 올렸다."
+        },
+        {
+          "title": "트랜잭션이 끝난 플레이어 객체로 인한 서버 패닉",
+          "status": "solved",
+          "problem": "던전을 클리어할 때 퀘스트 점수를 올리는 과정에서 서버가 패닉으로 멈췄다.",
+          "cause": "월드 트랜잭션 안에서 얻은 플레이어 객체를, 그 트랜잭션이 끝난 뒤 클리어 처리에서 다시 썼다. 퀘스트 점수 API에 새로 넣은 월드 확인이 이 낡은 객체에 접근했다.",
+          "process": [
+            "클리어와 보상 처리를 **새 트랜잭션 안에서** 다시 실행하도록 바꾸고, 접속이 끊긴 플레이어는 건너뛴다.",
+            "퀘스트 점수 API는 바뀌지 않는 엔티티 핸들로 플레이어를 찾아 단계마다 새 트랜잭션에서 실행하게 했다.",
+            "지연 실행되는 상태 이상 처리에도 같은 방식을 적용했다."
+          ],
+          "result": "트랜잭션이 끝난 뒤에 호출해도 안전한 API 계약을 지키면서 패닉이 사라졌다."
+        },
+        {
+          "title": "호위 NPC가 땅에 묻히고 점프가 초기화되는 문제",
+          "status": "solved",
+          "problem": "호위 퀘스트의 NPC가 시작할 때 땅속에 묻히고, 점프가 계속 초기화되어 길을 따라오지 못했다.",
+          "cause": "틱마다 엔티티 래퍼가 새로 만들어지는데 점프 속도를 래퍼에 저장해서 매번 사라졌다.",
+          "process": [
+            "속도를 엔티티 데이터 쪽으로 옮겼다.",
+            "발판 탐색을 위아래 3블록으로 제한하고, 수평은 길 그래프를 따르고 높이는 중력에 맡겼다.",
+            "3초 이상 막히면 몇 블록 앞으로 옮기고, 플레이어가 12블록 넘게 떨어지면 기다린다.",
+            "던전의 강제 경유 지점 대신 경로 30%·70% 지점에 조우 이벤트를 두었다."
+          ],
+          "result": "호위 NPC가 지면을 따라 길을 안정적으로 이동한다."
+        },
+        {
+          "title": "서버 정지와 DB 대기 병목",
+          "status": "partial",
+          "problem": "월드 처리가 막히면 서버가 통째로 종료되거나, 플레이어 저장이 줄줄이 밀렸다.",
+          "cause": "월드 처리가 10ms 넘게 막히면 프로세스를 강제 종료하는 코드가 있었고, 실행 시간 측정이 채널 전송 시간만 재고 있었다. SQLite 연결 하나에 동시 저장이 몰렸고, 사용자 조회가 동기식이었다.",
+          "process": [
+            "성능 분석 보고서로 원인을 정리하고 SQLite를 WAL 모드로 바꿨다.",
+            "강제 종료를 없애고, 월드 정지를 감지하면 프로파일과 고루틴 스택을 자동으로 남기는 워치독을 만들었다."
+          ],
+          "result": "정지가 생겨도 서버가 죽지 않고, 원인을 추적할 자료가 자동으로 쌓인다.",
+          "remaining": "워치독 보고서에 간헐적으로 긴 틱이 기록되어 계속 추적하고 있다."
+        },
+        {
+          "title": "전용 클라이언트의 지연과 메모리",
+          "status": "solved",
+          "problem": "전용 클라이언트에서 상태 응답이 한 프레임씩 늦게 적용되고, 메모리를 많이 썼다. 접속 직후 다른 엔티티 모델이 몇 초 동안 보이지 않았다.",
+          "cause": "엔티티 모델 준비가 리소스 팩 색인 작업 뒤에 한 줄로 서 있었고, 그 색인이 접속한 뒤에야 시작됐다. 지형 데이터와 상태 처리에도 불필요한 복사와 할당이 많았다.",
+          "process": [
+            "리소스를 준비하는 동안 엔티티 색인을 미리, 병렬로 만들어 두게 했다.",
+            "도착한 프레임에 바로 응답을 적용하고, 지형 배열과 섹션 인코딩 형식을 줄였다."
+          ],
+          "metrics": [
+            {
+              "label": "접속 후 첫 엔티티 모델 표시",
+              "before": "3.1 s",
+              "after": "중앙값 60~130 ms"
+            },
+            {
+              "label": "상태 왕복 RTT p50 (로컬 서버)",
+              "before": "12.3 ms",
+              "after": "6.0 ms"
+            },
+            {
+              "label": "클라이언트 관리 힙 (GC 후)",
+              "before": "643 MB",
+              "after": "191 MB"
+            },
+            {
+              "label": "서버 섹션 인코딩",
+              "before": "3.98 ms",
+              "after": "1.29 ms"
+            },
+            {
+              "label": "섹션 데이터 크기",
+              "before": "39.7 KB",
+              "after": "8.6 KB"
+            }
+          ],
+          "result": "개발 PC의 로컬 서버에 WebRTC로 접속해 같은 위치·입력으로 반복 측정한 결과다. 휴대폰에서는 따로 측정하지 않았다."
+        }
+      ],
+      "hero": "/img/games/luminous/woodland-combo.jpg",
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/KXWGr7WgbKQ",
+          "caption": "루미너스 원더러스트: 당신만의 조합으로 펼치는 모험"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/luminous/woodland-skill.jpg",
+          "caption": "우드랜드 수호자의 유산: 장비 스킬 '대지의 이름으로!'"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/luminous/woodland-combo.jpg",
+          "caption": "우드랜드 수호자의 유산: 추천 조합 연계"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/luminous/scythe-trait.jpg",
+          "caption": "투옥의 낫: 특성 '판결'"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/luminous/scythe-transcend.jpg",
+          "caption": "투옥의 낫: 초월 효과"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/luminous/staff-attack.jpg",
+          "caption": "레드스톤 흑마 스태프: 일반 공격 '폭렬을 다루는 자'"
+        },
+        {
+          "type": "image",
+          "src": "https://human.minyee2913.net/img/games/luminous/staff-combo.jpg",
+          "caption": "레드스톤 흑마 스태프: 추천 조합 연계 '영창 선언'"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/KXWGr7WgbKQ",
+          "label": "소개 영상"
+        },
+        {
+          "type": "playlist",
+          "url": "https://www.youtube.com/playlist?list=PL8M1DnGkh0qNDJc4cs4UIvycqQP5NVUkv",
+          "label": "개발 과정 재생목록"
+        },
+        {
+          "type": "docs",
+          "url": "https://luminous-rpg.notion.site/146ab655c564453c8ce716dc37aabda6",
+          "label": "기획 문서 (Notion)"
+        }
+      ],
+      "featured": true,
+      "displayOrder": 1,
+      "url": "https://human.minyee2913.net/projects/luminous-wanderlust",
+      "markdown": "https://human.minyee2913.net/projects/luminous-wanderlust.md",
+      "period": "2020 ~ 현재",
+      "statusLabel": "개발 중"
+    },
+    {
+      "id": "valorant",
+      "category": "minecraft",
+      "title": "Valorant Addon",
+      "description": "마인크래프트에서 발로란트의 캐릭터와 총기 시스템을 구현한 마인크래프트 BE 애드온 프로젝트.",
+      "startDate": "2023",
+      "platform": "MCBE ADDON",
+      "languages": [
+        "mcfunction"
+      ],
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/27_Dz3ObTzc",
+          "caption": "플레이 영상"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "github",
+          "url": "https://github.com/minyee2913/valorant-addon"
+        },
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/27_Dz3ObTzc"
+        }
+      ],
+      "slug": "valorant",
+      "url": "https://human.minyee2913.net/projects/valorant",
+      "markdown": "https://human.minyee2913.net/projects/valorant.md",
+      "period": "2023"
+    },
+    {
+      "id": "video-particle",
+      "accent": "#7fd1ff",
+      "intro": "motes",
+      "reveal": "pixels",
+      "category": "minecraft",
+      "kind": "software",
+      "title": "Video Particle",
+      "description": "영상 파일 데이터를 추출해서 마인크래프트 내 파티클로 영상을 그대로 구현하고 재생하는 외부 프로그램.",
+      "startDate": "2023",
+      "platform": "STANDALONE PROGRAM",
+      "languages": [
+        "TypeScript"
+      ],
+      "frameworks": [
+        "Node.js",
+        "fluent-ffmpeg (영상 프레임 추출)",
+        "Jimp (이미지 픽셀 읽기)"
+      ],
+      "externalLinks": [
+        {
+          "type": "github",
+          "url": "https://github.com/minyee2913/videoParticle"
+        }
+      ],
+      "slug": "video-particle",
+      "url": "https://human.minyee2913.net/projects/video-particle",
+      "markdown": "https://human.minyee2913.net/projects/video-particle.md",
+      "period": "2023"
+    },
+    {
+      "id": "blockbeat",
+      "accent": "#5ad1ff",
+      "intro": "notes",
+      "reveal": "beat",
+      "category": "minecraft",
+      "title": "Block Beat",
+      "description": "키 입력이 아닌 마우스로 에임을 돌려 노트를 치는 마인크래프트 BE 맵 기반 리듬게임.",
+      "genres": [
+        "리듬"
+      ],
+      "startDate": "2023",
+      "platform": "MCBE MAP",
+      "media": [
+        {
+          "type": "youtube",
+          "src": "https://youtu.be/ndHBnaODyos",
+          "caption": "플레이 영상"
+        }
+      ],
+      "externalLinks": [
+        {
+          "type": "youtube",
+          "url": "https://youtu.be/ndHBnaODyos?si=-V5IA7Lzn82Enl7G"
+        }
+      ],
+      "slug": "blockbeat",
+      "url": "https://human.minyee2913.net/projects/blockbeat",
+      "markdown": "https://human.minyee2913.net/projects/blockbeat.md",
+      "period": "2023"
+    }
+  ]
+}
