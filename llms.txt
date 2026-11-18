@@ -96,6 +96,7 @@ AI에게 코드를 맡기는 데서 그치지 않고, 에이전트가 게임 에
 
 ## 기계가 읽기 쉬운 자료
 
+- [전체 내용 한 파일 (llms-full.txt)](https://human.minyee2913.net/llms-full.txt): 프로필·수상·모든 프로젝트 상세를 한 문서로
 - [전체 프로젝트 JSON](https://human.minyee2913.net/projects.json): 화면과 같은 원본 데이터
 - 프로젝트별 Markdown: https://human.minyee2913.net/projects/<slug>.md (예: https://human.minyee2913.net/projects/ignotus.md)
 - [프로젝트 목록 페이지](https://human.minyee2913.net/projects/)
