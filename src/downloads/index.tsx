@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './style.css';
-import { projectCategories } from '../project/data';
-import { Pj } from '../project/dataStructure';
+import { CATEGORIES, getGithubRepo, getLink, getProjectsByCategory, projectPath } from '../content';
+import type { Project } from '../content';
 import { Link } from 'react-router-dom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
@@ -28,6 +28,7 @@ interface DirectLink {
 interface ProjectEntry {
     projectName: string;
     projectId: string;
+    projectPath: string;
     secId: string;
     release: Release | null;
     loading: boolean;
@@ -35,34 +36,40 @@ interface ProjectEntry {
     noBuild: boolean;
 }
 
-// github.com/{owner}/{repo}
-function parseGithubUrl(url: string): { owner: string; repo: string } | null {
-    const m = url.match(/github\.com\/([^/]+)\/([^/\s]+)/);
-    if (!m) return null;
-    return { owner: m[1], repo: m[2].replace(/\.git$/, '') };
-}
-
-// github.com/{owner}/{repo}/releases/download/...
-function parseGithubReleaseUrl(url: string): { owner: string; repo: string } | null {
-    const m = url.match(/github\.com\/([^/]+)\/([^/]+)\/releases\/download\//);
-    if (!m) return null;
-    return { owner: m[1], repo: m[2] };
-}
-
-function getGithubRepo(pj: Pj): { owner: string; repo: string } | null {
-    if (pj.github) return parseGithubUrl(pj.github);
-    if (pj.download) return parseGithubReleaseUrl(pj.download);
-    return null;
-}
-
-function getDirectLinks(pj: Pj): DirectLink[] {
+function getDirectLinks(pj: Project): DirectLink[] {
     const links: DirectLink[] = [];
-    if (pj.playstore) links.push({ label: 'Google Play', url: pj.playstore });
-    if (pj.download) {
-        const filename = pj.download.split('/').pop() ?? '다운로드';
-        links.push({ label: filename, url: pj.download });
+    const playstore = getLink(pj, 'playstore');
+    const itch = getLink(pj, 'itch');
+    const download = getLink(pj, 'download');
+    if (playstore) links.push({ label: 'Google Play', url: playstore });
+    if (itch) links.push({ label: 'itch.io', url: itch });
+    if (download) {
+        const filename = download.split('/').pop() ?? '다운로드';
+        links.push({ label: filename, url: download });
     }
     return links;
+}
+
+// 프리렌더 HTML 에도 프로젝트 목록이 들어가도록 초기 상태를 동기적으로 만든다.
+function buildEntries(): ProjectEntry[] {
+    const entries: ProjectEntry[] = [];
+    for (const category of CATEGORIES) {
+        for (const pj of getProjectsByCategory(category.id)) {
+            const repo = getGithubRepo(pj);
+            const directLinks = getDirectLinks(pj);
+            entries.push({
+                projectName: pj.title,
+                projectId: pj.id,
+                projectPath: projectPath(pj),
+                secId: category.id,
+                release: null,
+                loading: repo !== null,
+                directLinks,
+                noBuild: !repo && directLinks.length === 0,
+            });
+        }
+    }
+    return entries;
 }
 
 function formatBytes(bytes: number): string {
@@ -77,32 +84,10 @@ function formatDate(iso: string): string {
 }
 
 function Downloads() {
-    const [items, setItems] = useState<ProjectEntry[]>([]);
+    const [items, setItems] = useState<ProjectEntry[]>(buildEntries);
 
     useEffect(() => {
-        const entries: ProjectEntry[] = [];
-
-        for (const category of projectCategories) {
-            for (const pj of category.projects) {
-                const repo = getGithubRepo(pj);
-                const directLinks = getDirectLinks(pj);
-                const noBuild = !repo && directLinks.length === 0;
-
-                entries.push({
-                    projectName: pj.name,
-                    projectId: pj.id,
-                    secId: category.id,
-                    release: null,
-                    loading: repo !== null,
-                    directLinks,
-                    noBuild,
-                });
-            }
-        }
-
-        setItems(entries);
-
-        if (!entries.some(e => e.loading)) return;
+        if (!buildEntries().some(e => e.loading)) return;
 
         // GitHub API 직접 호출 없음 — Actions가 생성한 정적 파일 읽기
         fetch('/releases.json')
@@ -137,20 +122,20 @@ function Downloads() {
 
     return (
         <>
-            <div id='dl-page'>
+            <main id='dl-page'>
                 <div id='dl-header'>
-                    <p id='dl-title'>DOWNLOADS</p>
+                    <h1 id='dl-title'>DOWNLOADS</h1>
                     <p id='dl-sub'>각 프로젝트의 최신 빌드 파일을 받아보세요.</p>
                 </div>
                 <div id='dl-list'>
-                    {projectCategories.map(category => {
+                    {CATEGORIES.map(category => {
                         const categoryItems = items.filter(item => item.secId === category.id);
                         if (categoryItems.length === 0) return null;
 
                         return (
                             <div key={category.id} className='dl-section'>
                                 <div className='dl-section-header'>
-                                    <img src={category.img} className='dl-section-icon' alt={category.name} />
+                                    <img src={category.icon} className='dl-section-icon' alt='' />
                                     <span className='dl-section-name'>{category.name}</span>
                                 </div>
                                 <div className='dl-section-cards'>
@@ -168,7 +153,7 @@ function Downloads() {
                                                         <span className='dl-no-build'>빌드 없음</span>
                                                     )}
                                                     <Link
-                                                        to={`/project?sec=${encodeURIComponent(item.secId)}&pj=${encodeURIComponent(item.projectId)}`}
+                                                        to={item.projectPath}
                                                         className='dl-proj-link'
                                                         target='_blank'
                                                         rel='noreferrer'
@@ -231,8 +216,8 @@ function Downloads() {
                         );
                     })}
                 </div>
-            </div>
-            <Link to='/'><div id='dl-exit' className='pointer'>
+            </main>
+            <Link to='/' aria-label='메인으로'><div id='dl-exit' className='pointer'>
                 <ExitToAppIcon sx={{ fontSize: 55 }} />
             </div></Link>
         </>

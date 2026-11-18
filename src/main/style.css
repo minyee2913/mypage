@@ -1,5 +1,7 @@
 #title {
     color: white;
+    font-weight: normal; /* p → h1 변경 후에도 기존 모양 유지 */
+    margin-bottom: 1em;
     font-size: calc(4vw + 4vh);
     margin-left: 60px;
     margin-top: 14%;
@@ -32,6 +34,20 @@
 .show-descrip {
   opacity: 1;
   transition: 2s;
+}
+
+/* #tagline / #terminal-panel 의 opacity: 0 (ID 선택자)이 .show-descrip 보다 우선해서
+   애니메이션 후에도 보이지 않던 문제 수정 */
+#tagline.show-descrip,
+#terminal-panel.show-descrip {
+  opacity: 1;
+}
+
+/* 폰 화면에서는 패널이 제목/메뉴와 겹치므로 기존처럼 보이지 않게 둔다 */
+@media (max-width: 600px) {
+  #terminal-panel {
+    display: none;
+  }
 }
 
 #terminal-panel {
@@ -349,6 +365,7 @@ a {
 
 #featured-project-name {
   margin: 0;
+  font-weight: normal;
   color: white;
   font-size: calc(14px + 0.9vw);
 }

@@ -13,15 +13,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 저장소 목록을 src/content 데이터에서 읽기 위해 esbuild 가 필요하다
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
       - name: Fetch release data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/fetch-releases.js
+        run: node scripts/fetch-releases.mjs
 
+      # build/ 는 .gitignore 대상이라 커밋하지 않는다.
+      # 사이트에 반영하려면 npm run deploy 로 다시 배포해야 한다.
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/releases.json build/releases.json
+          git add public/releases.json
           git diff --staged --quiet || git commit -m "chore: update releases.json [skip ci]"
           git push

@@ -1,0 +1,873 @@
+/* =====================================================================
+ * 프로젝트 상세 페이지: 게임 공식 사이트처럼 키아트 배경 위에 타이틀·CTA,
+ * 오른쪽 패널에 상세 정보 탭. 강조색은 --pj-accent (프로젝트별 accent).
+ * ===================================================================== */
+
+.pj-page {
+    --pj-accent: #f2c14e;
+    --pj-bar: 10vh;
+    position: relative;
+    height: calc(100vh - var(--pj-bar));
+    overflow: hidden;
+    background: #0a0a0a;
+    color: #eaeaea;
+    text-align: left;
+    animation: pj-page-in 0.45s ease-out;
+}
+
+@keyframes pj-page-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ----- 배경 키아트 ----- */
+.pj-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.pj-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    image-rendering: auto;
+    animation: pj-hero-zoom 7s ease-out both;
+}
+
+.pj-hero-bg.blur img {
+    filter: blur(28px) saturate(1.2);
+    transform: scale(1.15);
+    opacity: 0.55;
+    animation: none;
+}
+
+@keyframes pj-hero-zoom {
+    from {
+        transform: scale(1.06);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* 글자가 잘 읽히도록 왼쪽·아래를 어둡게 */
+.pj-hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(6, 6, 6, 0.94) 0%, rgba(6, 6, 6, 0.8) 38%, rgba(6, 6, 6, 0.45) 70%, rgba(6, 6, 6, 0.6) 100%),
+        linear-gradient(0deg, rgba(6, 6, 6, 0.9) 0%, rgba(6, 6, 6, 0) 45%);
+}
+
+/* ----- 2단 그리드 ----- */
+.pj-page-grid {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+}
+
+.pj-col-main,
+.pj-col-detail {
+    min-width: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+.pj-col-main {
+    display: flex;
+    flex-direction: column;
+    padding: 3.2vh 2.4vw 0 4vw;
+}
+
+.pj-col-detail {
+    padding: 3.2vh 3vw 3.2vh 1vw;
+}
+
+/* ----- 타이틀 영역 ----- */
+.pj-hero {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.pj-eyebrow {
+    margin: 0 0 6px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: #a9a9a9;
+}
+
+.pj-title {
+    margin: 0;
+    font-weight: normal;
+    font-size: clamp(34px, 4vw, 68px);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    color: #fff;
+    text-shadow:
+        0 0 26px color-mix(in srgb, var(--pj-accent) 45%, transparent),
+        0 3px 0 rgba(0, 0, 0, 0.6);
+    word-break: keep-all;
+}
+
+.pj-title.has-logo {
+    line-height: 0;
+}
+
+.pj-logo {
+    height: clamp(64px, 8vw, 128px);
+    width: auto;
+    max-width: 100%;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 0 22px color-mix(in srgb, var(--pj-accent) 35%, transparent));
+}
+
+.pj-tagline {
+    margin: 12px 0 0;
+    font-size: clamp(16px, 1.45vw, 23px);
+    color: var(--pj-accent);
+    letter-spacing: 0.02em;
+}
+
+.pj-subtitle {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: #c9c9c9;
+    line-height: 1.5;
+}
+
+.pj-badges {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.pj-badges > li {
+    font-size: 12px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.35);
+    color: #e2e2e2;
+}
+
+.pj-badges > li.strong {
+    border-color: var(--pj-accent);
+    color: var(--pj-accent);
+}
+
+.pj-lead {
+    margin: 14px 0 0;
+    max-width: 40em;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #d6d6d6;
+}
+
+/* ----- CTA 버튼 ----- */
+.pj-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.pj-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 38px;
+    box-sizing: border-box;
+    padding: 0 14px;
+    font: inherit;
+    font-size: 14px;
+    color: #f2f2f2;
+    text-decoration: none;
+    background: rgba(12, 12, 12, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 4px;
+    transition: background-color 0.15s, border-color 0.15s, transform 0.15s;
+    white-space: nowrap;
+}
+
+.pj-cta-btn img {
+    width: 20px;
+    height: 20px;
+    image-rendering: pixelated;
+}
+
+.pj-cta-btn:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(40, 40, 40, 0.7);
+    transform: translateY(-1px);
+}
+
+.pj-cta-btn.primary {
+    background: var(--pj-accent);
+    border-color: var(--pj-accent);
+    color: #111;
+    font-size: 15px;
+    padding: 0 20px;
+    box-shadow: 0 6px 22px color-mix(in srgb, var(--pj-accent) 35%, transparent);
+}
+
+.pj-cta-btn.primary:hover {
+    filter: brightness(1.1);
+    background: var(--pj-accent);
+}
+
+.pj-cta-btn.icon {
+    width: 38px;
+    padding: 0;
+    justify-content: center;
+}
+
+.pj-cta-btn:focus-visible {
+    outline: 2px solid var(--pj-accent);
+    outline-offset: 2px;
+}
+
+.pj-page .pj-release {
+    padding: 12px 0 0;
+}
+
+/* ----- 갤러리 ----- */
+.pj-gallery {
+    margin: 20px -2.4vw 0 -4vw;
+}
+
+.pj-gallery .slider-wrap {
+    border-top: 0;
+}
+
+/* ----- 이전 / 다음 프로젝트 (기존 화살표 그대로) ----- */
+.pj-page .project-arrows {
+    margin-top: auto;
+    border-top: 0;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+/* ----- 오른쪽 상세 패널 ----- */
+.pj-panel {
+    /* 뒤 배경이 계속 움직이므로 backdrop-filter(매 프레임 다시 흐림 계산) 대신 불투명도를 높인다 */
+    background: rgba(10, 10, 10, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.pj-panel .pj-sections {
+    padding: 0 18px 18px;
+}
+
+.pj-panel .pj-tabs {
+    margin-top: 0;
+    padding-top: 14px;
+    background: rgb(14, 14, 14);
+    border-radius: 6px 6px 0 0;
+}
+
+.pj-panel .pj-row > dt {
+    color: var(--pj-accent);
+}
+
+/* 기능·문제 해결: 넓은 화면에서는 왼쪽에 항목 목록, 오른쪽에 내용 */
+@media (min-width: 1100px) {
+    .pj-panel .pj-subgroup {
+        display: grid;
+        grid-template-columns: minmax(150px, 32%) minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .pj-panel .pj-subtabs {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: sticky;
+        top: 58px;
+    }
+
+    .pj-panel .pj-inline-media img {
+        max-height: 220px;
+    }
+}
+
+/* ----- 좁은 화면: 위아래로 쌓고 페이지 전체를 스크롤 ----- */
+@media (max-width: 1099px) {
+    .pj-page {
+        overflow-y: auto;
+    }
+
+    .pj-page-grid {
+        display: block;
+        height: auto;
+    }
+
+    .pj-col-main,
+    .pj-col-detail {
+        overflow: visible;
+    }
+
+    .pj-col-main {
+        padding: 28px 5% 0;
+        min-height: auto;
+    }
+
+    .pj-col-detail {
+        padding: 8px 4% 24px;
+    }
+
+    .pj-gallery {
+        margin: 20px -5% 0;
+    }
+
+    .pj-hero-bg {
+        position: absolute;
+        height: 70vh;
+        bottom: auto;
+    }
+
+    .pj-hero-bg::after {
+        background:
+            linear-gradient(90deg, rgba(6, 6, 6, 0.85) 0%, rgba(6, 6, 6, 0.55) 100%),
+            linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0) 60%);
+    }
+
+    .pj-page .project-arrows {
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 800px) {
+    .pj-page {
+        --pj-bar: 8vh;
+    }
+
+    .pj-cta-btn {
+        height: 34px;
+        font-size: 13px;
+        padding: 0 11px;
+    }
+
+    .pj-cta-btn.primary {
+        font-size: 14px;
+        padding: 0 14px;
+    }
+
+    .pj-cta-btn.icon {
+        width: 34px;
+    }
+
+    .pj-lead {
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pj-page,
+    .pj-hero-bg img {
+        animation: none;
+    }
+}
+
+/* ----- 왼쪽 열 중앙 정렬 ----- */
+.pj-hero {
+    text-align: center;
+}
+
+.pj-badges,
+.pj-cta {
+    justify-content: center;
+}
+
+.pj-lead {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 넓은 화면: 왼쪽 열 내용을 세로로도 가운데에 */
+@media (min-width: 1100px) {
+    .pj-col-main {
+        justify-content: center;
+    }
+
+    .pj-col-main > .pj-hero {
+        margin-top: auto;
+    }
+
+    .pj-page .project-arrows {
+        margin-top: auto;
+    }
+}
+
+/* 높이가 낮은 노트북 화면: 간격과 글자를 조금 줄여 스크롤 없이 */
+@media (min-width: 1100px) and (max-height: 820px) {
+    .pj-col-main {
+        padding-top: 2vh;
+    }
+
+    .pj-logo {
+        height: clamp(56px, 6vw, 96px);
+    }
+
+    .pj-title {
+        font-size: clamp(30px, 3.2vw, 54px);
+    }
+
+    .pj-tagline {
+        margin-top: 8px;
+    }
+
+    .pj-badges,
+    .pj-lead {
+        margin-top: 10px;
+    }
+
+    .pj-lead {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .pj-cta {
+        margin-top: 12px;
+        gap: 6px;
+    }
+
+    .pj-cta-btn {
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .pj-cta-btn.icon {
+        width: 32px;
+    }
+
+    .pj-gallery {
+        margin-top: 12px;
+    }
+
+    .pj-page .project-arrows {
+        height: 48px;
+    }
+
+    .pj-page .pj-nav-arrow {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* ----- 패널 안 글자·이미지를 조금 촘촘하게 (스크롤 줄이기) ----- */
+@media (min-width: 1100px) {
+    .pj-panel .pj-sections {
+        font-size: 13.5px;
+        line-height: 1.55;
+    }
+
+    .pj-panel .pj-row {
+        padding: 3px 0;
+    }
+
+    .pj-panel .pj-subpanel {
+        padding: 10px 12px 12px;
+    }
+
+    .pj-panel .pj-inline-media {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .pj-panel .pj-inline-media figure {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .pj-panel .pj-inline-media img {
+        max-height: 150px;
+    }
+
+    .pj-panel .pj-subgroup.row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pj-panel .pj-subgroup.row > .pj-subtabs {
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: static;
+    }
+}
+
+/* ABOUT 하위 항목: 버튼에 이미 이름이 있으니 패널 안 제목은 화면에서 숨김 (문서 구조용으로는 유지) */
+.pj-part-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* 높이가 낮은 노트북 화면: 항목 버튼을 위쪽 가로줄로 옮겨 내용 폭을 넓히고, 탭과 겹치는 섹션 제목은 숨긴다 */
+@media (min-width: 1100px) and (max-height: 820px) {
+    .pj-page-grid {
+        grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+    }
+
+    .pj-col-detail {
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+    }
+
+    .pj-panel .pj-sections {
+        font-size: 12.5px;
+        line-height: 1.5;
+    }
+
+    .pj-panel .pj-section > .pj-h2 {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    .pj-panel .pj-section {
+        padding-top: 10px;
+    }
+
+    .pj-panel .pj-subgroup {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pj-panel .pj-subtabs {
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: static;
+        gap: 4px;
+    }
+
+    .pj-panel .pj-subtab {
+        font-size: 11.5px;
+        padding: 3px 7px;
+    }
+
+    .pj-panel .pj-subtab-no {
+        display: none;
+    }
+
+    .pj-panel .pj-row {
+        grid-template-columns: 6.5em 1fr;
+        gap: 8px;
+        padding: 2px 0;
+    }
+
+    .pj-panel .pj-item-title {
+        font-size: 14px;
+    }
+
+    .pj-panel .pj-item-summary {
+        margin-bottom: 4px;
+    }
+}
+
+/* =====================================================================
+ * 상단 바: 게임 사이트 톤 (반투명 어두운 바 + 라벨 있는 카테고리 탭 + 강조색 표시)
+ * ===================================================================== */
+.category.pj-topbar {
+    --pj-bar-h: 60px;
+    height: var(--pj-bar-h);
+    background: linear-gradient(180deg, rgba(14, 14, 14, 0.96), rgba(10, 10, 10, 0.9));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    gap: 6px;
+    z-index: 6;
+}
+
+.pj-topbar .category-item {
+    position: relative;
+    width: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #9a9a9a;
+    text-decoration: none;
+    scale: 1;
+    transition: color 0.15s, background-color 0.15s;
+}
+
+.pj-topbar .category-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f0f0f0;
+}
+
+.pj-topbar .category-item[aria-current="page"] {
+    color: #fff;
+}
+
+.pj-topbar .category-item > img {
+    height: 28px;
+    width: 28px;
+    margin: 0;
+    image-rendering: pixelated;
+    opacity: 0.75;
+    transition: opacity 0.15s;
+}
+
+.pj-topbar .category-item:hover > img,
+.pj-topbar .category-item[aria-current="page"] > img {
+    opacity: 1;
+}
+
+.pj-topbar-label {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.pj-topbar .category-selected {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    height: 3px;
+    border-radius: 2px 2px 0 0;
+    background-color: var(--pj-accent, #f2c14e);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--pj-accent, #f2c14e) 60%, transparent);
+}
+
+.pj-topbar .back-home-btn,
+.pj-topbar .list-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.16);
+    background-color: rgba(255, 255, 255, 0.03);
+    letter-spacing: 0.04em;
+}
+
+.pj-topbar .back-home-btn:hover,
+.pj-topbar .list-btn:hover,
+.pj-topbar .list-btn[aria-current="page"] {
+    border-color: var(--pj-accent, #f2c14e);
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* 상세 페이지 높이는 상단 바 높이에 맞춘다 */
+.pj-page {
+    --pj-bar: 60px;
+}
+
+@media (max-width: 800px) {
+    .category.pj-topbar {
+        --pj-bar-h: 52px;
+    }
+
+    .pj-page {
+        --pj-bar: 52px;
+    }
+
+    .pj-topbar .category-item {
+        padding: 0 12px;
+    }
+
+    .pj-topbar-label {
+        display: none;
+    }
+
+    .pj-topbar .category-item > img {
+        height: 26px;
+        width: 26px;
+    }
+
+    .pj-topbar .back-home-btn,
+    .pj-topbar .list-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+
+/* 상태 배지 줄 + 링크 복사 버튼 */
+.pj-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.pj-badges-row > .pj-badges {
+    margin-top: 0;
+}
+
+.pj-share {
+    width: 26px;
+    height: 26px;
+    padding: 4px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    transition: border-color 0.15s;
+}
+
+.pj-share img {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+}
+
+.pj-share:hover,
+.pj-share:focus-visible {
+    border-color: var(--pj-accent);
+    outline: none;
+}
+
+/* =====================================================================
+ * 페이지 등장 모션: 게임별 입자 캔버스(IntroFx) + 타이틀 요소 순차 등장
+ * ===================================================================== */
+.pj-intro-fx {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes pj-rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes pj-logo-in {
+    0% {
+        opacity: 0;
+        transform: scale(1.18);
+        filter: blur(6px) brightness(1.8);
+    }
+    60% {
+        opacity: 1;
+        filter: blur(0) brightness(1.3);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+@keyframes pj-panel-in {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.pj-hero > .pj-title {
+    animation: pj-logo-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.pj-hero > :not(.pj-title) {
+    animation: pj-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.pj-hero > :nth-child(2) {
+    animation-delay: 0.35s;
+}
+
+.pj-hero > :nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.pj-hero > :nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.pj-hero > :nth-child(5),
+.pj-hero > :nth-child(6) {
+    animation-delay: 0.65s;
+}
+
+.pj-col-main > .pj-gallery {
+    animation: pj-rise 0.7s 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.pj-col-detail > .pj-panel {
+    animation: pj-panel-in 0.7s 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* 종이가 불타며 드러나는 연출 캔버스 (IGNOTUS) — 내용 위를 덮고 클릭은 통과 */
+.pj-burn-reveal,
+.pj-reveal {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* 하늘오름: 배경이 아래에서 위로 살짝 떠오른다 */
+.pj-page[data-intro="stars"] .pj-hero-bg img {
+    animation: pj-sky-rise 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes pj-sky-rise {
+    from {
+        transform: scale(1.12) translateY(5%);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pj-hero > *,
+    .pj-col-main > .pj-gallery,
+    .pj-col-detail > .pj-panel,
+    .pj-page .pj-hero-bg,
+    .pj-page .pj-hero-bg img {
+        animation: none !important;
+    }
+
+    .pj-intro-fx {
+        display: none;
+    }
+}

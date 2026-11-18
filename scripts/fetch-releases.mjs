@@ -1,19 +1,22 @@
-// node scripts/fetch-releases.js
-// GitHub Actions에서 GITHUB_TOKEN 환경변수로 실행됩니다.
+// node scripts/fetch-releases.mjs [--dry-run]
+// GitHub Actions에서 GITHUB_TOKEN 환경변수로 실행됩니다. (npm ci 필요: esbuild 로 src/content 를 읽음)
 
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+import https from 'node:https';
+import fs from 'node:fs';
+import path from 'node:path';
+import { ROOT, loadContent } from './lib/load-ssr.mjs';
 
-// data.ts의 프로젝트 ID와 실제 GitHub 레포 매핑
-const REPOS = [
-  { id: 'survival-strategy', owner: 'minyee2913',       repo: 'survival_strategy'  },
-  { id: 'albedo',             owner: 'sunrinton2025',    repo: 'amazing_something'  },
-  { id: 'koroshite',          owner: 'minyee2913',       repo: 'koroshite'          },
-  { id: 'bumgeun-rush',       owner: 'minyee2913',       repo: 'beomgeun_rushv2'    },
-  { id: 'escape-the-music',   owner: 'zerOpen-is-on-RG', repo: 'escape_the_music'  },
-  { id: 'valorant',           owner: 'minyee2913',       repo: 'valorant-addon'     },
-];
+// 프로젝트 ID ↔ GitHub 저장소 매핑은 src/content 의 github / download 링크에서 만든다.
+const content = await loadContent();
+const REPOS = content.projects
+  .map((p) => ({ id: p.id, repo: content.getGithubRepo(p) }))
+  .filter((x) => x.repo)
+  .map((x) => ({ id: x.id, owner: x.repo.owner, repo: x.repo.repo }));
+
+if (process.argv.includes('--dry-run')) {
+  for (const r of REPOS) console.log(`${r.id.padEnd(20)} ${r.owner}/${r.repo}`);
+  process.exit(0);
+}
 
 function fetchJSON(url, token) {
   return new Promise((resolve, reject) => {
@@ -73,11 +76,11 @@ async function main() {
     }
   }
 
-  const out = path.resolve(__dirname, '..', 'public', 'releases.json');
+  const out = path.join(ROOT, 'public', 'releases.json');
   fs.writeFileSync(out, JSON.stringify(result, null, 2));
 
   // build/ 에도 직접 반영 (npm run build 없이)
-  const buildOut = path.resolve(__dirname, '..', 'build', 'releases.json');
+  const buildOut = path.join(ROOT, 'build', 'releases.json');
   if (fs.existsSync(path.dirname(buildOut))) {
     fs.writeFileSync(buildOut, JSON.stringify(result, null, 2));
     console.log(`\nSaved → public/releases.json, build/releases.json`);
@@ -86,4 +89,4 @@ async function main() {
   }
 }
 
-main();
+await main();

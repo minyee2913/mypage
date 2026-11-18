@@ -1,0 +1,95 @@
+import type { Project } from "../types";
+
+// 출처: 게임잼 팀 저장소(비공개)의 코드·씬·기획 명세서·HTML 프로토타입과 git 커밋 기록 (2026-08-07 ~ 2026-08-09).
+// 잼 이름과 플레이 영상은 작성자가 준 YouTube 영상(제목: [2026 대전 인디 게임잼] 하늘 오름) 기준.
+// 최종 제목은 타이틀 씬 로고 기준 '하늘오름'으로 판단했다 (기획서 이름은 INFINITY MOVE). 담당 범위는 커밋 기록으로 확인한 것만 적는다.
+export const haneulOreum: Project = {
+    id: "haneul-oreum",
+    category: "unity",
+    accent: "#7fb4ff",
+    intro: "stars",
+    reveal: "warp",
+    title: "하늘오름",
+    subtitle: "베는 반동으로만 하늘을 오르는 2D 원버튼 상승 게임 (2026 대전 인디 게임잼)",
+    description:
+        "멈추지 않는 캐릭터가 적과 발판을 베어 생기는 반동만으로 우주까지 올라가는 2D 원버튼 스코어 어택 게임.",
+    logo: "/img/games/haneul-oreum/logo.png",
+    hero: "/img/games/haneul-oreum/title-bg.jpg",
+    overview: [
+        "2026 대전 인디 게임잼에서 4인 팀으로 사흘 동안 만든 게임이다. 기획서 이름은 INFINITY MOVE였고, 최종 타이틀은 '하늘오름'이다.",
+        "캐릭터는 멈추지 않고 움직이며, 플레이어는 **벨 방향만 정한다**. 베면 반대 방향으로 튕겨 나가는 반동으로 이동하기 때문에, 무엇을 어느 각도로 벨지가 곧 조작이다.",
+        "팀에서 **플레이어 이동·조작의 핵심 시스템**을 맡았고, 이를 위해 엔진 작업 전에 HTML 프로토타입으로 조작감을 먼저 검증했다.",
+    ],
+    gameplay: [
+        "왼쪽 버튼을 누른 채 끌어 120도 부채꼴 베기 방향을 정하고, 놓으면 벤다. 조준하는 동안에는 시간이 느려진다.",
+        "적이나 고정 발판을 베면 강한 반동, 벽만 베면 약한 반동이 생긴다. 벽이나 몸통에 부딪히면 방향이 바뀌고, 곧게 날아가면 속도가 붙는다. 중력은 없다.",
+        "목표물을 벨 때만 콤보가 오르고, 콤보 게이지는 시간이 지나면 줄어든다. 벽이나 몸통에 부딪히면 콤보가 끊기고 게이지가 깎인다.",
+        "게이지가 0이 되거나 바닥으로 떨어지면 끝난다. 목표는 우주를 포함한 세 구간을 지나 100,000m까지 오르는 것이다.",
+    ],
+    genres: ["액션", "스코어 어택", "원버튼", "게임잼"],
+    status: "completed",
+    startDate: "2026-08",
+    endDate: "2026-08",
+    platform: "PC",
+    teamSize: 4,
+    teamComposition: "커밋 기록 기준 분담: 플레이어·연출·사운드 / 타이틀·HUD·콤보 / 적·발판 / 프로젝트 설정",
+    roles: ["플레이어 이동·조작 시스템", "HTML 프로토타입", "연출·사운드·포스트 프로세싱", "구간별 난이도·스폰", "튜토리얼", "빌드·통합"],
+    contribution: "커밋 125개 중 51개",
+    engine: "Unity 6 (URP 2D)",
+    languages: ["C#", "JavaScript (프로토타입)"],
+    frameworks: ["Input System", "Cinemachine", "DOTween", "UnityUtils (직접 만든 라이브러리)"],
+    technologies: ["반동 기반 물리 이동", "HTML5 Canvas 프로토타입", "고도별 볼륨·BGM 블렌딩", "구간별 스폰 가중치"],
+    features: [
+        {
+            name: "베기 반동 이동 시스템",
+            summary: "조준한 방향의 반대로 튕겨 나가는 반동만으로 움직이는 플레이어 핵심 시스템.",
+            purpose: "중력도 점프도 없이 '베는 행동' 하나로 이동·전투·생존을 모두 하게 만드는 게임의 중심 규칙이다.",
+            how: [
+                "누른 채 끌어 베기 방향을 정하는 동안 시간을 느리게 하고, 조준선으로 120도 베기 범위를 보여 준다.",
+                "벤 대상(적·고정 발판·벽)에 따라 반동 세기를 다르게 주고, 벽과 몸통 충돌에서는 튕김으로 방향을 바꾼다.",
+                "곧게 날아가는 동안 속도를 조금씩 올려, 반동을 이어 갈수록 빨라지게 했다.",
+                "프로토타입에서 맞춘 수치와 조준선 표현을 그대로 Unity로 옮겼다.",
+            ],
+            technologies: ["Rigidbody2D", "Input System", "Time Scale"],
+            media: [{ type: "image", src: "/img/games/haneul-oreum/guide.jpg", caption: "베기(ATTACK)와 반동(RECOIL), 속도 방향을 설명하는 튜토리얼 그림", fit: "contain" }],
+        },
+        {
+            name: "HTML 프로토타입으로 조작감 먼저 검증",
+            summary: "잼 초반에 브라우저에서 바로 돌아가는 프로토타입을 만들어 반동 조작감을 팀과 함께 맞췄다.",
+            how: [
+                "HTML5 Canvas와 JavaScript로 베기·반동·적 부활·벽 반사를 구현하고, 반동 세기 같은 수치를 한곳에 모아 바로 바꿔 볼 수 있게 했다.",
+                "디버그 표시와 즉시 재시작으로 수치를 빠르게 반복 조정했다.",
+                "검증한 수치를 Unity 플레이어 물리와 조준선에 옮겨, 엔진 구현 전에 핵심 재미를 확인했다.",
+            ],
+            technologies: ["HTML5 Canvas", "JavaScript"],
+            media: [{ type: "image", src: "/img/games/haneul-oreum/prototype.jpg", caption: "직접 만든 HTML 프로토타입: 조준 중 화면 (속도·시간·베기 횟수 표시)" }],
+        },
+        {
+            name: "고도에 따라 바뀌는 연출과 난이도",
+            summary: "높이 올라갈수록 화면 분위기, 음악, 적 구성이 바뀐다.",
+            how: [
+                "구간별 배경 음악을 나누고, 고도에 따라 포스트 프로세싱 볼륨을 섞어 하늘에서 우주로 넘어가는 분위기를 만들었다.",
+                "팀원이 만든 적 스폰 시스템에 난이도 곡선과 구간별 스폰 가중치를 더해, 올라갈수록 적 구성이 바뀌게 했다.",
+                "콤보 궤적, 목표물 강조, 피격 이펙트와 데미지 표시, 베기 애니메이션과 카메라 흔들림으로 타격감을 더했다.",
+            ],
+            technologies: ["URP Volume", "Cinemachine"],
+        },
+        {
+            name: "튜토리얼과 통합·빌드",
+            summary: "첫 플레이를 위한 튜토리얼 흐름을 만들고, 게임 씬을 조립해 최종 빌드까지 맡았다.",
+            how: [
+                "튜토리얼 흐름과 게임 오버 낙하 연출을 구현했다.",
+                "팀원들의 작업을 게임 씬에 합치고 다수의 Pull Request를 병합해 최종 빌드를 만들었다.",
+                "공용 유틸리티(싱글톤, 사운드, 카메라 연출, 데미지 표시 등)를 프로젝트 초기에 넣어 팀이 함께 썼다.",
+            ],
+        },
+    ],
+    media: [
+        { type: "youtube", src: "https://youtu.be/PxXznDr4lW0", caption: "하늘오름 플레이 영상" },
+        { type: "image", src: "/img/games/haneul-oreum/title-bg.jpg", caption: "타이틀 배경 아트" },
+        { type: "image", src: "/img/games/haneul-oreum/prototype.jpg", caption: "HTML 프로토타입 플레이 화면" },
+        { type: "image", src: "/img/games/haneul-oreum/guide.jpg", caption: "튜토리얼 조작 안내 그림", fit: "contain" },
+    ],
+    externalLinks: [{ type: "youtube", url: "https://youtu.be/PxXznDr4lW0", label: "플레이 영상" }],
+    displayOrder: 4,
+};

@@ -1,11 +1,43 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { PrCategory, Pj } from "./dataStructure";
-import "./style.css";
-import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
+import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import Modal from "react-modal";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import "./style.css";
+import "./details.css";
+import "./page.css";
 
-import "./data";
+import {
+    CATEGORIES,
+    DEFAULT_ACCENT,
+    PROJECTS_PATH,
+    SITE,
+    STATUS_LABEL,
+    assetPath,
+    extractYouTubeId,
+    formatPeriod,
+    formatReleaseTarget,
+    getCategory,
+    getCoverImage,
+    getHeroImage,
+    getImages,
+    getIntroStyle,
+    getRevealStyle,
+    getLink,
+    getLinks,
+    getProjectByAlias,
+    getProjectBySlug,
+    getProjectsByCategory,
+    projectPath,
+    projectSummary,
+} from "../content";
+import type { CategoryId, Project } from "../content";
+import MediaSlider from "./MediaSlider";
+import ProjectSections from "./sections";
+import { TooltipLayer } from "./tooltip";
+import IntroFx from "./introFx";
+import RevealFx from "./revealFx";
+import Error404 from "../404";
 
 interface ReleaseAsset {
     id: number;
@@ -29,293 +61,336 @@ function formatBytes(bytes: number): string {
 
 function formatDate(iso: string): string {
     const d = new Date(iso);
-    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
 }
 
-function extractYouTubeId(url: string): string | null {
-    const m = url.match(/(?:youtu\.be\/|[?&]v=)([A-Za-z0-9_-]{11})/);
-    return m ? m[1] : null;
-}
+/* ------------------------------------------------------------------ */
+/* 공통 상단 바 (기존 카테고리 바)                                         */
+/* ------------------------------------------------------------------ */
 
-type SlideItem =
-    | { type: 'image'; src: string }
-    | { type: 'youtube'; videoId: string };
-
-function MediaSlider({
-    images,
-    youtubeUrl,
-    onImageClick,
-}: {
-    images: string[];
-    youtubeUrl?: string;
-    onImageClick: (src: string) => void;
-}) {
-    const slides: SlideItem[] = [];
-    const ytId = youtubeUrl ? extractYouTubeId(youtubeUrl) : null;
-    if (ytId) slides.push({ type: 'youtube' as const, videoId: ytId });
-    slides.push(...images.map(src => ({ type: 'image' as const, src })));
-
-    const [idx, setIdx] = useState(0);
-    const [wrapW, setWrapW] = useState(0);
-    const wrapRef = useRef<HTMLDivElement>(null);
-    const total = slides.length;
-
-    useLayoutEffect(() => {
-        const el = wrapRef.current;
-        if (!el) return;
-        const update = () => setWrapW(el.offsetWidth);
-        update();
-        const obs = new ResizeObserver(update);
-        obs.observe(el);
-        return () => obs.disconnect();
-    }, []);
-
-    useEffect(() => {
-        if (total <= 1) return;
-        const t = setTimeout(() => setIdx(i => (i + 1) % total), 5000);
-        return () => clearTimeout(t);
-    }, [idx, total]);
-
-    if (total === 0) return null;
-
-    const go = (dir: 1 | -1) => setIdx(i => (i + dir + total) % total);
-
-    const peekPx  = wrapW * 0.20;
-    const gapPx   = wrapW * 0.02;
-    const slidePx = wrapW * 0.60;
-    const stepPx  = slidePx + gapPx;
-    const trackX  = wrapW > 0 ? peekPx - idx * stepPx : 0;
-
+function CategoryBar({ active, listActive }: { active?: CategoryId; listActive?: boolean }) {
     return (
-        <div ref={wrapRef} className="slider-wrap">
-            <div
-                className="slider-track"
-                style={{ transform: `translateX(${trackX}px)` }}
-            >
-                {slides.map((slide, i) => (
-                    <div
-                        key={i}
-                        className={`slider-slide${i === idx ? ' active' : ''}`}
-                        style={wrapW > 0 ? { width: slidePx, marginRight: gapPx } : {}}
+        <nav className="category pj-topbar" aria-label="프로젝트 카테고리">
+            <Link to="/" className="back-home-btn pointer">
+                {"<"} Main
+            </Link>
+            {CATEGORIES.map((c) => {
+                const first = getProjectsByCategory(c.id)[0];
+                return (
+                    <Link
+                        key={c.id}
+                        to={first ? projectPath(first) : PROJECTS_PATH}
+                        className="category-item pointer"
+                        id={"category-" + c.id}
+                        aria-label={c.name}
+                        aria-current={active === c.id ? "page" : undefined}
                     >
-                        {slide.type === 'image' ? (
-                            <img
-                                src={slide.src}
-                                className="slider-img"
-                                onClick={() => onImageClick(slide.src)}
-                                draggable={false}
-                                alt=""
-                            />
-                        ) : (
-                            <iframe
-                                className="slider-iframe"
-                                src={`https://www.youtube-nocookie.com/embed/${slide.videoId}?rel=0`}
-                                allowFullScreen
-                                title="YouTube"
-                            />
-                        )}
-                    </div>
-                ))}
-            </div>
-
-            {total > 1 && (
-                <>
-                    <button className="slider-nav-btn slider-nav-prev" onClick={() => go(-1)}>&#8249;</button>
-                    <button className="slider-nav-btn slider-nav-next" onClick={() => go(1)}>&#8250;</button>
-                    <div className="slider-dots">
-                        {slides.map((_, i) => (
-                            <button
-                                key={i}
-                                className={`slider-dot${i === idx ? ' active' : ''}`}
-                                onClick={() => setIdx(i)}
-                            />
-                        ))}
-                    </div>
-                </>
-            )}
-        </div>
+                        <img src={c.icon} alt="" />
+                        <span className="pj-topbar-label">{c.name}</span>
+                        {active === c.id && <div className="category-selected" />}
+                    </Link>
+                );
+            })}
+            <Link to={PROJECTS_PATH} className="list-btn pointer" aria-current={listActive ? "page" : undefined}>
+                List
+            </Link>
+        </nav>
     );
 }
 
-function ProjectDetail({
-    pj,
-    pjCode,
-    sectLen,
-    sectionId,
-    navigate,
-    onImageClick,
-}: {
-    pj: Pj;
-    pjCode: number;
-    sectLen: number;
-    sectionId: string;
-    navigate: (dir: 1 | -1) => void;
-    onImageClick: (src: string) => void;
-}) {
-    const [release, setRelease] = useState<Release | null>(null);
+/* ------------------------------------------------------------------ */
+/* /projects/ 목록                                                       */
+/* ------------------------------------------------------------------ */
 
-    useEffect(() => {
-        if (!pj.github) { setRelease(null); return; }
-        fetch('/releases.json')
-            .then(r => r.ok ? r.json() : {})
-            .then((map: Record<string, Release>) => setRelease(map[pj.id] ?? null))
-            .catch(() => setRelease(null));
-    }, [pj.id, pj.github]);
-
-    const projectImages = pj.img.filter(Boolean);
-    const hasReleaseAssets = release && release.assets.length > 0;
-
-    return (
-        <div className="project_sec">
-            <div className="project-scroll">
-                <div className="pj-header">
-                    <p className="title">{pj.name}</p>
-                    <p className="platform">{pj.platform}</p>
-                    <CopyToClipboard
-                        text={`https://human.minyee2913.net/project?pj=${pj.id}&sec=${sectionId}`}
-                        onCopy={() => alert("클립보드에 복사되었습니다.")}
-                    >
-                        <div className="share_btn hovertext pointer" data-hover="공유">
-                            <img src="img/import.png" alt="share" />
-                        </div>
-                    </CopyToClipboard>
-                </div>
-
-                <MediaSlider
-                    key={`${sectionId}-${pjCode}`}
-                    images={projectImages}
-                    youtubeUrl={pj.youtube}
-                    onImageClick={onImageClick}
-                />
-
-                <div className="buttons">
-                    {pj.docs && <a href={pj.docs} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="기획 / 문서"><img src="img/docs.png" alt="docs" /></a>}
-                    {pj.youtube && <a href={pj.youtube} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="플레이 영상"><img src="img/youtube.png" alt="youtube" /></a>}
-                    {pj.playstore && <a href={pj.playstore} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="스토어"><img src="img/playstore.png" alt="playstore" /></a>}
-                    {pj.github && <a href={pj.github} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="GitHub"><img src="img/github.png" alt="github" /></a>}
-                    {pj.download && !hasReleaseAssets && <a href={pj.download} target="_blank" rel="noreferrer" className="btn hovertext pointer" data-hover="다운로드"><img src="img/download.png" alt="download" /></a>}
-                </div>
-
-                {hasReleaseAssets && (
-                    <div className="pj-release">
-                        <p className="pj-release-meta">{release!.tag_name} · {formatDate(release!.published_at)}</p>
-                        <div className="pj-release-assets">
-                            {release!.assets.map(asset => (
-                                <a
-                                    key={asset.id}
-                                    href={asset.browser_download_url}
-                                    className="pj-asset-btn"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <span className="pj-asset-name">{asset.name}</span>
-                                    <span className="pj-asset-size">{formatBytes(asset.size)}</span>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                <p className="descrip">{pj.description}</p>
-            </div>
-
-            <div className="project-arrows">
-                {pjCode > 0 && (
-                    <img src="img/up_arrow.png" className="pj-nav-arrow pointer" alt="prev" onClick={() => navigate(-1)} />
-                )}
-                {pjCode + 1 < sectLen && (
-                    <img src="img/down_arrow.png" className="pj-nav-arrow pointer" alt="next" onClick={() => navigate(1)} />
-                )}
-            </div>
-        </div>
-    );
-}
-
-function Project() {
-    const [query, setQuery] = useSearchParams();
-    const [modalImg, setImg] = useState("");
-    const [isModal, setModal] = useState(false);
-
-    const sectionId = query.get("sec") ?? "unity";
-    const projectParam = query.get("pj");
-
-    const sect = PrCategory.data.find(v => v.id === sectionId);
-    let pjCode = 0;
-    if (sect) {
-        const pn = Number(projectParam);
-        if (!isNaN(pn) && projectParam !== null) {
-            pjCode = Math.max(0, Math.min(pn, sect.projects.length - 1));
-        } else if (projectParam) {
-            const f = sect.projects.find(v => v.id === projectParam);
-            if (f) pjCode = sect.projects.indexOf(f);
-        }
-    }
-
-    const navigate = (dir: 1 | -1) => {
-        setQuery(prev => {
-            const next = new URLSearchParams(prev);
-            next.set("pj", (pjCode + dir).toString());
-            return next;
-        });
-    };
-
-    const setSection = (sec: string) => {
-        setQuery(prev => {
-            const next = new URLSearchParams(prev);
-            next.set("sec", sec);
-            next.delete("pj");
-            return next;
-        });
-    };
-
-    const currentProject = sect?.projects[pjCode];
-
+export function ProjectsIndex() {
     return (
         <>
-            <div className="category">
-                <Link to="/" className="back-home-btn pointer">{'<'} Main</Link>
-                {PrCategory.data.map(v => (
-                    <div
-                        key={v.id}
-                        className="category-item pointer hovertext"
-                        data-hover={v.name}
-                        id={"category-" + v.id}
-                        onClick={() => setSection(v.id)}
-                    >
-                        <img src={v.img} alt={v.name} />
-                        {sectionId === v.id && <div className="category-selected" />}
-                    </div>
-                ))}
-            </div>
+            <CategoryBar listActive />
             <div style={{ textAlign: "center" }}>
-                {currentProject && sect && (
-                    <ProjectDetail
-                        key={`${sectionId}-${pjCode}`}
-                        pj={currentProject}
-                        pjCode={pjCode}
-                        sectLen={sect.projects.length}
-                        sectionId={sectionId}
-                        navigate={navigate}
-                        onImageClick={src => { setImg(src); setModal(true); }}
-                    />
-                )}
+                <main className="project_sec">
+                    <div className="project-scroll pj-list-scroll">
+                        <header className="pj-header">
+                            <h1 className="title">PROJECTS</h1>
+                            <p className="platform">
+                                {SITE.name} · {SITE.author.jobTitle}
+                            </p>
+                        </header>
+                        {CATEGORIES.map((c) => (
+                            <section key={c.id} className="pj-list-section" aria-labelledby={`cat-${c.id}`}>
+                                <h2 className="pj-h2" id={`cat-${c.id}`}>
+                                    <img src={c.icon} alt="" className="pj-list-icon" /> {c.name}
+                                </h2>
+                                <ul className="pj-list">
+                                    {getProjectsByCategory(c.id).map((p) => (
+                                        <li key={p.id}>
+                                            <ProjectCard project={p} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        ))}
+                    </div>
+                </main>
             </div>
-            <Modal isOpen={isModal} onRequestClose={() => setModal(false)} style={{
-                overlay: { zIndex: 9, backgroundColor: "rgba(0, 0, 0, 0.5)" },
-                content: {
-                    width: "80vw",
-                    height: "40vw",
-                    margin: "auto",
-                    zIndex: 10,
-                    backgroundImage: `url(${modalImg})`,
-                    backgroundSize: "contain",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundColor: "#0d0d0d",
-                }
-            }} />
         </>
     );
 }
 
-export default Project;
+function ProjectCard({ project: p }: { project: Project }) {
+    const ytId = (p.media ?? []).filter((m) => m.type === "youtube").map((m) => extractYouTubeId(m.src)).find(Boolean);
+    // 스크린샷이 없으면 YouTube 영상 썸네일 사용
+    const cover = getCoverImage(p) ?? (ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : undefined);
+    const contain = getImages(p)[0]?.fit === "contain";
+    const meta = [p.platform, formatPeriod(p), p.status ? STATUS_LABEL[p.status] : undefined].filter(Boolean).join(" · ");
+    return (
+        <article className="pj-card">
+            <Link to={projectPath(p)} className="pj-card-link">
+                <div className={`pj-card-thumb${cover ? "" : " empty"}`}>
+                    {cover ? (
+                        <img src={cover} alt="" loading="lazy" className={contain ? "contain" : undefined} />
+                    ) : (
+                        <span aria-hidden="true">NO IMAGE</span>
+                    )}
+                </div>
+                <div className="pj-card-body">
+                    <h3 className="pj-card-title">{p.title}</h3>
+                    {meta && <p className="pj-card-meta">{meta}</p>}
+                    <p className="pj-card-desc">{projectSummary(p)}</p>
+                </div>
+            </Link>
+        </article>
+    );
+}
+
+/* ------------------------------------------------------------------ */
+/* /projects/:slug 상세 — 게임 공식 사이트처럼: 키아트 배경 + 타이틀/CTA + 상세 탭  */
+/* ------------------------------------------------------------------ */
+
+interface Cta {
+    href: string;
+    label: string;
+    icon?: string;
+    primary?: boolean;
+}
+
+function buildCtas(pj: Project, hideDownload: boolean): Cta[] {
+    const released = pj.status === "released";
+    const ctas: Cta[] = [];
+    const steam = getLink(pj, "steam");
+    const itch = getLink(pj, "itch");
+    const playstore = getLink(pj, "playstore");
+    const download = getLink(pj, "download");
+    const discord = getLink(pj, "discord");
+    const youtube = getLink(pj, "youtube");
+    const docs = getLink(pj, "docs");
+    const github = getLink(pj, "github");
+    if (itch) ctas.push({ href: itch, label: "itch.io에서 플레이", icon: "/img/itch.png" });
+    if (steam) ctas.push({ href: steam, label: released ? "Steam" : "Steam 위시리스트", icon: "/img/steam.png" });
+    if (playstore) ctas.push({ href: playstore, label: "Google Play", icon: "/img/playstore.png" });
+    if (download && !hideDownload) ctas.push({ href: download, label: "다운로드", icon: "/img/download.png" });
+    if (youtube) {
+        // 링크 라벨에 '트레일러'가 있으면 트레일러, 아니면 플레이 영상으로 짧게 표시
+        const label = getLinks(pj, "youtube")[0]?.label ?? "";
+        ctas.push({ href: youtube, label: label.includes("트레일러") ? "트레일러" : label.includes("소개") ? "소개 영상" : "플레이 영상", icon: "/img/youtube.png" });
+    }
+    if (discord) ctas.push({ href: discord, label: "Discord", icon: "/img/discord.png" });
+    if (docs) ctas.push({ href: docs, label: "기획 문서", icon: "/img/docs.png" });
+    if (github) ctas.push({ href: github, label: "GitHub", icon: "/img/github.png" });
+    if (ctas[0]) ctas[0].primary = true;
+    return ctas;
+}
+
+function ProjectDetail({ pj, onImageClick }: { pj: Project; onImageClick: (src: string, alt: string) => void }) {
+    const [release, setRelease] = useState<Release | null>(null);
+    const github = getLink(pj, "github");
+
+    useEffect(() => {
+        if (!github) {
+            setRelease(null);
+            return;
+        }
+        fetch("/releases.json")
+            .then((r) => (r.ok ? r.json() : {}))
+            .then((map: Record<string, Release>) => setRelease(map[pj.id] ?? null))
+            .catch(() => setRelease(null));
+    }, [pj.id, github]);
+
+    const siblings = getProjectsByCategory(pj.category);
+    const pos = siblings.indexOf(pj);
+    const prev = pos > 0 ? siblings[pos - 1] : undefined;
+    const next = pos + 1 < siblings.length ? siblings[pos + 1] : undefined;
+
+    const hasReleaseAssets = !!release && release.assets.length > 0;
+    const ctas = buildCtas(pj, hasReleaseAssets);
+    const hero = getHeroImage(pj);
+    // 세로 스크린샷·저해상도 썸네일은 잘라 쓰면 어색하므로 흐리게 깔아 분위기만 낸다
+    const heroBlur = !pj.hero && (getImages(pj)[0]?.fit === "contain" || !getImages(pj)[0]);
+    const release_ = formatReleaseTarget(pj);
+    const badges = [pj.status ? STATUS_LABEL[pj.status] : undefined, release_, pj.platform].filter(Boolean) as string[];
+    const style = { "--pj-accent": pj.accent ?? DEFAULT_ACCENT } as CSSProperties;
+
+    return (
+        <article className="pj-page" style={style} data-intro={getIntroStyle(pj)}>
+            {hero && (
+                <div className={`pj-hero-bg${heroBlur ? " blur" : ""}`} aria-hidden="true">
+                    <img src={hero} alt="" />
+                </div>
+            )}
+
+            <IntroFx style={getIntroStyle(pj)} accent={pj.accent ?? DEFAULT_ACCENT} />
+            <RevealFx style={getRevealStyle(pj)} accent={pj.accent ?? DEFAULT_ACCENT} />
+
+            <div className="pj-page-grid">
+                <div className="pj-col-main">
+                    <header className="pj-hero">
+                        <h1 className={`pj-title${pj.logo ? " has-logo" : ""}`}>
+                            {pj.logo ? (
+                                <>
+                                    <img className="pj-logo" src={assetPath(pj.logo)} alt="" />
+                                    <span className="sr-only">{pj.title}</span>
+                                </>
+                            ) : (
+                                pj.title
+                            )}
+                        </h1>
+                        {pj.tagline && <p className="pj-tagline">{pj.tagline}</p>}
+                        {pj.subtitle && <p className="pj-subtitle">{pj.subtitle}</p>}
+                        <div className="pj-badges-row">
+                            {badges.length > 0 && (
+                                <ul className="pj-badges" aria-label="프로젝트 상태">
+                                    {badges.map((b, i) => (
+                                        <li key={b} className={i === 0 ? "strong" : undefined}>
+                                            {b}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            <CopyToClipboard text={SITE.url + projectPath(pj)} onCopy={() => alert("클립보드에 복사되었습니다.")}>
+                                <button type="button" className="pj-share pointer" aria-label="이 페이지 링크 복사" title="링크 복사">
+                                    <img src="/img/import.png" alt="" />
+                                </button>
+                            </CopyToClipboard>
+                        </div>
+
+                        <div className="pj-cta">
+                            {ctas.map((c) => (
+                                <a
+                                    key={c.href + c.label}
+                                    href={c.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={`pj-cta-btn${c.primary ? " primary" : ""}`}
+                                >
+                                    {c.icon && <img src={c.icon} alt="" />}
+                                    {c.label}
+                                </a>
+                            ))}
+                        </div>
+
+                        {hasReleaseAssets && (
+                            <div className="pj-release">
+                                <p className="pj-release-meta">
+                                    {release!.tag_name} · {formatDate(release!.published_at)}
+                                </p>
+                                <div className="pj-release-assets">
+                                    {release!.assets.map((asset) => (
+                                        <a key={asset.id} href={asset.browser_download_url} className="pj-asset-btn" target="_blank" rel="noreferrer">
+                                            <span className="pj-asset-name">{asset.name}</span>
+                                            <span className="pj-asset-size">{formatBytes(asset.size)}</span>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </header>
+
+                    {(pj.media?.length ?? 0) > 0 && (
+                        <div className="pj-gallery">
+                            <MediaSlider key={pj.id} project={pj} media={pj.media ?? []} onImageClick={onImageClick} />
+                        </div>
+                    )}
+
+                    <nav className="project-arrows" aria-label="같은 카테고리의 다른 프로젝트">
+                        {prev && (
+                            <Link to={projectPath(prev)} className="pj-nav-link" aria-label={`이전 프로젝트: ${prev.title}`} title={prev.title}>
+                                <img src="/img/up_arrow.png" className="pj-nav-arrow pointer" alt="" />
+                            </Link>
+                        )}
+                        {next && (
+                            <Link to={projectPath(next)} className="pj-nav-link" aria-label={`다음 프로젝트: ${next.title}`} title={next.title}>
+                                <img src="/img/down_arrow.png" className="pj-nav-arrow pointer" alt="" />
+                            </Link>
+                        )}
+                    </nav>
+                </div>
+
+                <div className="pj-col-detail">
+                    <div className="pj-panel">
+                        <ProjectSections project={pj} />
+                    </div>
+                </div>
+            </div>
+        </article>
+    );
+}
+
+export function ProjectPage() {
+    const { slug } = useParams();
+    const [modal, setModal] = useState<{ src: string; alt: string } | null>(null);
+    const project = getProjectBySlug(slug);
+
+    if (!project) {
+        // 이름을 바꾼 프로젝트의 예전 주소는 새 주소로 보낸다
+        const renamed = getProjectByAlias(slug);
+        return renamed ? <Navigate replace to={projectPath(renamed)} /> : <Error404 />;
+    }
+
+    return (
+        <div className="pj-route" style={{ "--pj-accent": project.accent ?? DEFAULT_ACCENT } as CSSProperties}>
+            <CategoryBar active={project.category} />
+            <TooltipLayer />
+            <ProjectDetail key={project.id} pj={project} onImageClick={(src, alt) => setModal({ src, alt })} />
+            <Modal
+                isOpen={!!modal}
+                onRequestClose={() => setModal(null)}
+                contentLabel={modal?.alt ?? "이미지 확대"}
+                style={{
+                    overlay: { zIndex: 9, backgroundColor: "rgba(0, 0, 0, 0.75)" },
+                    content: {
+                        width: "86vw",
+                        height: "48vw",
+                        maxHeight: "80vh",
+                        margin: "auto",
+                        zIndex: 10,
+                        backgroundImage: modal ? `url(${modal.src})` : undefined,
+                        backgroundSize: "contain",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        backgroundColor: "#0d0d0d",
+                    },
+                }}
+            />
+        </div>
+    );
+}
+
+/* ------------------------------------------------------------------ */
+/* 이전 주소 /project?sec=unity&pj=ignotus (또는 pj=0) → /projects/<slug>  */
+/* ------------------------------------------------------------------ */
+
+export function LegacyProjectRedirect() {
+    const [query] = useSearchParams();
+    const sec = query.get("sec") ?? "unity";
+    const pj = query.get("pj");
+    const inSection = getCategory(sec) ? getProjectsByCategory(sec) : [];
+
+    let target: Project | undefined;
+    if (pj !== null && pj !== "" && !isNaN(Number(pj))) {
+        target = inSection[Math.max(0, Math.min(Number(pj), inSection.length - 1))];
+    } else if (pj) {
+        target = getProjectBySlug(pj);
+    } else {
+        target = inSection[0];
+    }
+    return <Navigate replace to={target ? projectPath(target) : PROJECTS_PATH} />;
+}

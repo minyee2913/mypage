@@ -9,35 +9,36 @@ import FlagIcon from '@mui/icons-material/Flag';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Link } from 'react-router-dom';
-import { projectCategories } from '../project/data';
+import {
+  PROJECTS_PATH,
+  SITE,
+  STATUS_LABEL_EN,
+  formatReleaseTargetEn,
+  getCoverImage,
+  getFeaturedProjects,
+  getLink,
+  projectPath,
+  projectSummary,
+} from '../content';
 
-const titleText = "minyee2913";
+const titleText = SITE.name;
+const IS_SERVER = typeof window === 'undefined';
 
 let i: NodeJS.Timer;
 
-const featuredProjects = (() => {
-  const hasAllImages = (imgs: string[]) => imgs.length >= 3 && imgs.every(Boolean);
-  const bySection = (secId: string) =>
-    projectCategories
-      .find((sec) => sec.id === secId)
-      ?.projects
-      .filter((pj) => hasAllImages(pj.img))
-      .slice(0, 2)
-      .map((pj) => ({ secId, project: pj })) ?? [];
+const featuredProjects = getFeaturedProjects();
 
-  const selected = [...bySection("unity"), ...bySection("minecraft")];
-
-  if (selected.length > 0) return selected;
-
-  // 안전장치: 위 규칙에서 하나도 못 뽑는 경우 이미지가 있는 것만 노출
-  return projectCategories
-    .flatMap((sec) => sec.projects.map((pj) => ({ secId: sec.id, project: pj })))
-    .filter(({ project }) => hasAllImages(project.img));
-})();
+const socialIcon: Record<string, JSX.Element> = {
+  'KakaoTalk Open Chat': <ChatIcon sx={{ color: 'white', fontSize: 36 }} />,
+  GitHub: <GitHubIcon sx={{ color: 'white', fontSize: 36 }} />,
+  YouTube: <YouTubeIcon sx={{ color: 'white', fontSize: 36 }} />,
+};
+const socialOrder = ['KakaoTalk Open Chat', 'GitHub', 'YouTube'];
 
 function Main() {
-  const [title, setTitle] = useState('');
-  const [show, setShow] = useState('');
+  // 프리렌더 HTML 에는 완성된 텍스트를 넣고, 브라우저에서는 기존 타이핑 애니메이션을 그대로 재생한다.
+  const [title, setTitle] = useState(IS_SERVER ? titleText : '');
+  const [show, setShow] = useState(IS_SERVER ? 'show-descrip' : '');
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
   const featuredProject = featuredProjects[featuredIndex] ?? null;
@@ -85,17 +86,30 @@ function Main() {
     };
   }, []);
 
+  const releaseEn = featuredProject ? formatReleaseTargetEn(featuredProject) : undefined;
+  const statusText = featuredProject?.status
+    ? STATUS_LABEL_EN[featuredProject.status] + (releaseEn ? ` (Release: ${releaseEn})` : '')
+    : null;
+  const cover = featuredProject ? getCoverImage(featuredProject) : undefined;
+  const video = featuredProject ? getLink(featuredProject, 'youtube') : undefined;
+
   return (
-    <div id='base'>
-        <div id='social-tab'>
-            <a href='https://open.kakao.com/me/minyee2913' target='blank'><span className='hover-text'>오픈채팅</span><ChatIcon sx={{ color: 'white', fontSize: 36 }} /></a>
-            <a href='https://github.com/minyee2913' target='blank'><span className='hover-text'>깃허브</span><GitHubIcon sx={{ color: 'white', fontSize: 36 }} /></a>
-            <a href='https://www.youtube.com/channel/UCZQUWTcP51kOFG0TWeHnr_g' target='blank'><span className='hover-text'>유튜브</span><YouTubeIcon sx={{ color: 'white', fontSize: 36 }} /></a>
-        </div>
+    <main id='base'>
+        <nav id='social-tab' aria-label='연락처 및 소셜 링크'>
+            {socialOrder.map((name) => {
+              const s = SITE.social.find((x) => x.name === name);
+              if (!s) return null;
+              return (
+                <a key={s.name} href={s.url} target='_blank' rel='noreferrer' aria-label={s.label}>
+                  <span className='hover-text'>{s.label}</span>{socialIcon[s.name]}
+                </a>
+              );
+            })}
+        </nav>
         <div id='main-content'>
-            <p id='title'>{title}</p>
-            <p id='description' className={'description ' + show}>Game Developer</p>
-            <p id='tagline' className={show}>Building action systems, roguelike loops, and multiplayer gameplay.</p>
+            <h1 id='title' aria-label={titleText}>{title}</h1>
+            <p id='description' className={'description ' + show}>{SITE.author.jobTitle}</p>
+            <p id='tagline' className={show}>{SITE.author.tagline}</p>
             <div id='terminal-panel' className={show}>
               <p className='terminal-header'>DOS.CONSOLE :: PROFILE v1.3</p>
               <div className='terminal-row'>
@@ -105,15 +119,22 @@ function Main() {
               <p className='terminal-value'>unity-gameplay-backend-dev</p>
               <div className='terminal-row'>
                 <span className='terminal-prompt'>C:\DEV\ME&gt;</span>
-                <span className='terminal-line'>skills --core</span>
+                <span className='terminal-line'>about</span>
               </div>
-              <p className='terminal-value'>Unity | C# | Go | TypeScript | Multiplayer | AI Systems</p>
+              <p className='terminal-value'>{SITE.author.about}</p>
               <div className='terminal-row'>
                 <span className='terminal-prompt'>C:\DEV\ME&gt;</span>
-                <span className='terminal-line'>currently_working_on</span>
+                <span className='terminal-line'>skills --core</span>
+              </div>
+              <p className='terminal-value'>{SITE.author.skills.join(' | ')}</p>
+              <div className='terminal-row'>
+                <span className='terminal-prompt'>C:\DEV\ME&gt;</span>
+                <span className='terminal-line'>featured_project</span>
               </div>
               <p className='terminal-value'>
-                {featuredProject ? `${featuredProject.project.name} / ${featuredProject.project.platform ?? 'Game Project'} / in-progress` : 'new gameplay prototypes'}
+                {featuredProject
+                  ? [featuredProject.title, featuredProject.platform ?? 'Game Project', statusText].filter(Boolean).join(' / ')
+                  : 'new gameplay prototypes'}
               </p>
               <div className='terminal-row terminal-last'>
                 <span className='terminal-prompt'>C:\DEV\ME&gt;</span>
@@ -121,8 +142,8 @@ function Main() {
               </div>
             </div>
         </div>
-        <div className='menu menu-always-open'>
-          <Link className="menu-link" to='/project' style={{ textDecoration: "none"}}>
+        <nav className='menu menu-always-open' aria-label='메뉴'>
+          <Link className="menu-link" to={PROJECTS_PATH} style={{ textDecoration: "none"}}>
             <div id='project' className='menu-sec'>
               <AccountTreeIcon sx={{ color: 'white', fontSize: 44 }}></AccountTreeIcon>
               <span>Projects</span>
@@ -134,16 +155,16 @@ function Main() {
               <span>Repositories</span>
             </div>
           </Link>
-          <a className="menu-link" href='https://particle.minyee2913.net' target='blank' rel='noreferrer'>
+          <a className="menu-link" href='https://particle.minyee2913.net' target='_blank' rel='noreferrer'>
             <div id='particle' className='menu-sec'>
-              <img className='menu-icon-img' src='img/vfx.png' alt='Editor' />
+              <img className='menu-icon-img' src='/img/vfx.png' alt='' />
               <span>Editor</span>
             </div>
           </a>
-        </div>
+        </nav>
 
         {featuredProject ? (
-          <div id="featured-card" className="pointer">
+          <section id="featured-card" className="pointer" aria-label="대표 프로젝트">
             {featuredProjects.length > 1 ? (
               <>
                 <button type="button" className="featured-nav-btn left" onClick={PrevFeatured} aria-label="이전 프로젝트">
@@ -155,48 +176,37 @@ function Main() {
               </>
             ) : null}
             <div id="featured-thumb">
-              <img
-                src={featuredProject.project.img[0]}
-                alt={featuredProject.project.name}
-              />
+              <img src={cover} alt={`${featuredProject.title} 스크린샷`} />
             </div>
             <div id="featured-meta">
               <div>
-                <p id="featured-project-name">{featuredProject.project.name}</p>
-                <p id="featured-platform">{featuredProject.project.platform ?? ""}</p>
-                <p id="featured-status">Status: In Development</p>
+                <h2 id="featured-project-name">{featuredProject.title}</h2>
+                <p id="featured-platform">{featuredProject.platform ?? ""}</p>
+                {statusText ? <p id="featured-status">Status: {statusText}</p> : null}
               </div>
               <div>
                 <p id="featured-desc">
                   {(() => {
-                    const desc = featuredProject.project.description ?? "";
+                    const desc = projectSummary(featuredProject);
                     if (desc.length <= 120) return desc;
                     return desc.slice(0, 120) + "...";
                   })()}
                 </p>
                 <div id="featured-actions">
-                  <Link
-                    className="featured-action-btn"
-                    to={`/project?sec=${encodeURIComponent(featuredProject.secId)}&pj=${encodeURIComponent(featuredProject.project.id)}`}
-                  >
+                  <Link className="featured-action-btn" to={projectPath(featuredProject)}>
                     View Project
                   </Link>
-                  {featuredProject.project.youtube ? (
-                    <a
-                      className="featured-action-btn outlined"
-                      href={featuredProject.project.youtube}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                  {video ? (
+                    <a className="featured-action-btn outlined" href={video} target="_blank" rel="noreferrer">
                       Watch Gameplay
                     </a>
                   ) : null}
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         ) : null}
-    </div>
+    </main>
   );
 }
 
