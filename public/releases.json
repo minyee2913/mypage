@@ -2,42 +2,42 @@
   "survival-strategy": {
     "tag_name": "lol",
     "name": "lol",
-    "published_at": "2024-01-01T00:00:00Z",
+    "published_at": "2025-06-24T05:27:14Z",
     "html_url": "https://github.com/minyee2913/survival_strategy/releases/tag/lol",
     "assets": [
       {
-        "id": 1,
+        "id": 266704914,
         "name": "survival_strategy.exe.zip",
-        "size": 0,
+        "size": 166883685,
         "browser_download_url": "https://github.com/minyee2913/survival_strategy/releases/download/lol/survival_strategy.exe.zip"
+      }
+    ]
+  },
+  "albedo": {
+    "tag_name": "dd",
+    "name": "d",
+    "published_at": "2025-07-18T22:23:07Z",
+    "html_url": "https://github.com/sunrinton2025/amazing_something/releases/tag/dd",
+    "assets": [
+      {
+        "id": 274220510,
+        "name": "albedo.zip",
+        "size": 43218661,
+        "browser_download_url": "https://github.com/sunrinton2025/amazing_something/releases/download/dd/albedo.zip"
       }
     ]
   },
   "koroshite": {
     "tag_name": "0.0.0.final.boss",
     "name": "0.0.0.final.boss",
-    "published_at": "2024-01-01T00:00:00Z",
+    "published_at": "2024-11-21T23:48:31Z",
     "html_url": "https://github.com/minyee2913/koroshite/releases/tag/0.0.0.final.boss",
     "assets": [
       {
-        "id": 2,
+        "id": 208203382,
         "name": "Koro.zip",
-        "size": 0,
+        "size": 165830409,
         "browser_download_url": "https://github.com/minyee2913/koroshite/releases/download/0.0.0.final.boss/Koro.zip"
-      }
-    ]
-  },
-  "albedo": {
-    "tag_name": "dd",
-    "name": "dd",
-    "published_at": "2024-01-01T00:00:00Z",
-    "html_url": "https://github.com/sunrinton2025/amazing_something/releases/tag/dd",
-    "assets": [
-      {
-        "id": 3,
-        "name": "albedo.zip",
-        "size": 0,
-        "browser_download_url": "https://github.com/sunrinton2025/amazing_something/releases/download/dd/albedo.zip"
       }
     ]
   }
