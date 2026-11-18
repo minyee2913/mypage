@@ -14,3 +14,7 @@
 ## 링크
 
 - [GitHub](https://github.com/minyee2913/beomgeun_rushv2)
+
+## 미디어
+
+- 이미지: https://human.minyee2913.net/img/games/bumgeun-rush/1.jpg (점프와 슬라이드로 달리는 화면)

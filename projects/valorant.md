@@ -16,3 +16,4 @@
 ## 미디어
 
 - 영상: https://youtu.be/27_Dz3ObTzc (플레이 영상)
+- 이미지: https://human.minyee2913.net/img/games/valorant/1.jpg (마인크래프트 안에 구현한 발로란트 총기)

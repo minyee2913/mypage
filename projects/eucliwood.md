@@ -15,6 +15,11 @@
 
 대기업의 탐욕으로 오염된 땅을 정화하며 기업에 맞서 싸우는 이야기다.
 
+## 개발 결과 및 성과
+
+- [기타] KRAFTON · JA Korea Better Ground 게임 제작 멘토링 참여 (2023) - 2023-07 ~ 2023-11, 아트·개발 멘토링을 받아 게임을 개선
+- [출품] 2023 대한민국 SW·AI 교육 페스티벌 발표 (2023-11)
+
 ## 링크
 
 - [YouTube](https://youtu.be/qeY9_LM9LVc?si=74Ngadrt-ges73ge)
@@ -23,3 +28,5 @@
 ## 미디어
 
 - 영상: https://youtu.be/qeY9_LM9LVc (플레이 영상)
+- 이미지: https://human.minyee2913.net/img/games/eucliwood/1.jpg (땅이 썩기 전에 오염 물질을 중화하는 퍼즐)
+- 이미지: https://human.minyee2913.net/img/games/eucliwood/2.jpg (퍼즐 뒤에 이어지는 실시간 전투)

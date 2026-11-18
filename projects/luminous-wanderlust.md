@@ -138,6 +138,8 @@ Godot로 만든 전용 클라이언트가 서버에 내장된 게이트웨이로
 
 **사용 기술**: Godot 4 (.NET), Pion WebRTC, WebSocket, Xbox Live 인증
 
+- [루미너스 런처 (전용 클라이언트) 자세히 보기](https://human.minyee2913.net/projects/luminous-launcher)
+
 ### Java Edition 접속 게이트웨이
 
 수정하지 않은 Minecraft Java Edition 클라이언트로도 같은 서버에 접속한다.
@@ -176,6 +178,7 @@ Discord Activity 안에서 서버의 실제 세계를 실시간으로 보는 관
 - 장비·유물·직업 데이터를 Notion으로 단방향 동기화하고, 리소스 팩을 6개로 나눠 빌드하며, 실제 플레이를 녹화해 영상을 편집하는 도구와 신규 유저 이탈 분석 도구를 만들었다.
 - 테스트 파일 111개(그중 110개 직접 작성)로 메모리 월드 위 통합 테스트를 돌린다.
 - AI 코딩 에이전트를 위한 규칙을 문서로 두었다: 증거 없이 '고쳤다/검증했다'라고 쓰지 않기, 측정 수치는 조건과 함께 보고하기, 봇 결과를 사람 테스트로 내세우지 않기, 업스트림 병합 후 양쪽 부모 비교와 2인 접속 테스트.
+- 반복 작업은 Claude Code 스킬로 만들었다: 실행 중인 서버에 콘솔 명령을 보내고 로그를 읽는 스킬, 실제 플레이를 녹화·편집해 장비 소개 영상(롱폼·숏폼·썸네일)을 만드는 스킬.
 
 **사용 기술**: pprof, Go test, Notion API
 
@@ -243,6 +246,7 @@ Discord Activity 안에서 서버의 실제 세계를 실시간으로 보는 관
 
 ## 링크
 
+- [전용 클라이언트(루미너스 런처) 다운로드](https://luminousrpg.github.io/luminous_launcher/)
 - [소개 영상](https://youtu.be/KXWGr7WgbKQ)
 - [개발 과정 재생목록](https://www.youtube.com/playlist?list=PL8M1DnGkh0qNDJc4cs4UIvycqQP5NVUkv)
 - [기획 문서 (Notion)](https://luminous-rpg.notion.site/146ab655c564453c8ce716dc37aabda6)

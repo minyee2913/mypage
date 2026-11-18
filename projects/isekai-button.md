@@ -31,3 +31,8 @@
 ## 미디어
 
 - 영상: https://youtu.be/XC09-MKsyCw (플레이 영상)
+- 이미지: https://human.minyee2913.net/img/games/isekai-button/intro.jpg (게임 진입 전 대화)
+- 이미지: https://human.minyee2913.net/img/games/isekai-button/1.jpg (던전 방: 남은 몬스터 표시와 스킬 슬롯)
+- 이미지: https://human.minyee2913.net/img/games/isekai-button/2.jpg (게임 시작 시 앞에 무기가 떨어진다)
+- 이미지: https://human.minyee2913.net/img/games/isekai-button/3.jpg (좌클릭을 홀드하면 공격 범위가 보이고, 놓으면 공격한다)
+- 이미지: https://human.minyee2913.net/img/games/isekai-button/4.jpg (숫자키를 눌러 스킬을 사용한다)

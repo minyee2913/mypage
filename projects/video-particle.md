@@ -12,3 +12,7 @@
 ## 링크
 
 - [GitHub](https://github.com/minyee2913/videoParticle)
+
+## 미디어
+
+- 이미지: https://human.minyee2913.net/img/games/video-particle/1.jpg (영상을 마인크래프트 파티클로 재생한 화면)

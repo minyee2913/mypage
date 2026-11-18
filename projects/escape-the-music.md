@@ -25,3 +25,4 @@
 ## 미디어
 
 - 영상: https://youtu.be/hjJWSH370Qw (플레이 영상)
+- 이미지: https://human.minyee2913.net/img/games/escape-the-music/1.jpg (노트 판정 PERFECT 연출)

@@ -15,3 +15,4 @@
 ## 미디어
 
 - 영상: https://youtu.be/ndHBnaODyos (플레이 영상)
+- 이미지: https://human.minyee2913.net/img/games/blockbeat/1.jpg (Block Beat 타이틀과 플레이 화면)
